@@ -297,3 +297,4 @@ Reiniciar:
 	mov r11, #0
 	bl Dibujo1
 	b loopContinue$
+
