@@ -382,70 +382,70 @@ LOAD ./libcsud.a
  .ARM.attributes
                 0x0000000000340550       0x32 ./libcsud.a(platform.broadcom2835.c.o)
 
-.text           0x0000000000340584      0xeb0
+.text           0x0000000000340584      0xec8
  *.c.o(.text)
  *(.text)
- .text          0x0000000000340584      0x234 build/anim.o
+ .text          0x0000000000340584      0x244 build/anim.o
                 0x0000000000340584                Animacion
                 0x000000000034065c                DrawBackgroundRectangle
                 0x00000000003406b0                drawImageWithTransparency
                 0x0000000000340720                GetBackgroundColor
-                0x0000000000340734                removeImageWithBlack
- .text          0x00000000003407b8      0x1f0 build/drawing.o
-                0x00000000003407b8                SetForeColour
-                0x00000000003407d0                DrawPixel
-                0x0000000000340830                SetGraphicsAddress
-                0x000000000034083c                DrawLine
-                0x00000000003408b8                DrawCharacter
-                0x0000000000340924                DrawString
- .text          0x00000000003409a8        0x0 build/fondo.o
- .text          0x00000000003409a8       0x60 build/frameBuffer.o
-                0x00000000003409a8                InitialiseFrameBuffer
- .text          0x0000000000340a08       0x98 build/gpio.o
-                0x0000000000340a08                GetGpioAddress
-                0x0000000000340a10                SetGpioFunction
-                0x0000000000340a60                SetGpio
- .text          0x0000000000340aa0       0x7c build/juego.o
-                0x0000000000340aa0                juego
-                0x0000000000340ad0                escogiendo
- .text          0x0000000000340b1c      0x144 build/keyboard.o
-                0x0000000000340b1c                KeyboardUpdate
-                0x0000000000340ba0                KeyWasDown
-                0x0000000000340bd0                KeyboardGetChar
- .text          0x0000000000340c60       0x6c build/mailbox.o
-                0x0000000000340c60                GetMailboxBase
-                0x0000000000340c68                MailboxRead
-                0x0000000000340c9c                MailboxWrite
- .text          0x0000000000340ccc      0x1b0 build/main.o
- .text          0x0000000000340e7c       0x48 build/maths.o
-                0x0000000000340e7c                DivideU32
- .text          0x0000000000340ec4        0x0 build/p1_1.o
- .text          0x0000000000340ec4        0x0 build/p1_2.o
- .text          0x0000000000340ec4        0x0 build/p1_3.o
- .text          0x0000000000340ec4        0x0 build/p2_1.o
- .text          0x0000000000340ec4        0x0 build/p2_2.o
- .text          0x0000000000340ec4        0x0 build/p2_3.o
- .text          0x0000000000340ec4        0x0 build/p3_1.o
- .text          0x0000000000340ec4        0x0 build/p3_2.o
- .text          0x0000000000340ec4        0x0 build/p3_3.o
- .text          0x0000000000340ec4       0x18 build/random.o
-                0x0000000000340ec4                Random
- .text          0x0000000000340edc       0x40 build/systemTimer.o
-                0x0000000000340edc                GetSystemTimerBase
-                0x0000000000340ee4                GetTimeStamp
-                0x0000000000340ef4                Wait
- .text          0x0000000000340f1c       0x74 build/tags.o
-                0x0000000000340f1c                FindTag
- .text          0x0000000000340f90      0x2c0 build/terminal.o
-                0x0000000000340fc8                TerminalDisplay
-                0x0000000000341070                TerminalClear
-                0x0000000000341088                Print
-                0x0000000000341160                ReadLine
- .text          0x0000000000341250      0x1e4 build/text.o
-                0x0000000000341250                ReverseString
-                0x000000000034127c                UnsignedString
-                0x00000000003412cc                SignedString
-                0x00000000003412f8                FormatString
+                0x0000000000340744                removeImageWithBlack
+ .text          0x00000000003407c8      0x1f0 build/drawing.o
+                0x00000000003407c8                SetForeColour
+                0x00000000003407e0                DrawPixel
+                0x0000000000340840                SetGraphicsAddress
+                0x000000000034084c                DrawLine
+                0x00000000003408c8                DrawCharacter
+                0x0000000000340934                DrawString
+ .text          0x00000000003409b8        0x0 build/fondo.o
+ .text          0x00000000003409b8       0x60 build/frameBuffer.o
+                0x00000000003409b8                InitialiseFrameBuffer
+ .text          0x0000000000340a18       0x98 build/gpio.o
+                0x0000000000340a18                GetGpioAddress
+                0x0000000000340a20                SetGpioFunction
+                0x0000000000340a70                SetGpio
+ .text          0x0000000000340ab0       0x84 build/juego.o
+                0x0000000000340ab0                juego
+                0x0000000000340ae0                escogiendo
+ .text          0x0000000000340b34      0x144 build/keyboard.o
+                0x0000000000340b34                KeyboardUpdate
+                0x0000000000340bb8                KeyWasDown
+                0x0000000000340be8                KeyboardGetChar
+ .text          0x0000000000340c78       0x6c build/mailbox.o
+                0x0000000000340c78                GetMailboxBase
+                0x0000000000340c80                MailboxRead
+                0x0000000000340cb4                MailboxWrite
+ .text          0x0000000000340ce4      0x1b0 build/main.o
+ .text          0x0000000000340e94       0x48 build/maths.o
+                0x0000000000340e94                DivideU32
+ .text          0x0000000000340edc        0x0 build/p1_1.o
+ .text          0x0000000000340edc        0x0 build/p1_2.o
+ .text          0x0000000000340edc        0x0 build/p1_3.o
+ .text          0x0000000000340edc        0x0 build/p2_1.o
+ .text          0x0000000000340edc        0x0 build/p2_2.o
+ .text          0x0000000000340edc        0x0 build/p2_3.o
+ .text          0x0000000000340edc        0x0 build/p3_1.o
+ .text          0x0000000000340edc        0x0 build/p3_2.o
+ .text          0x0000000000340edc        0x0 build/p3_3.o
+ .text          0x0000000000340edc       0x18 build/random.o
+                0x0000000000340edc                Random
+ .text          0x0000000000340ef4       0x40 build/systemTimer.o
+                0x0000000000340ef4                GetSystemTimerBase
+                0x0000000000340efc                GetTimeStamp
+                0x0000000000340f0c                Wait
+ .text          0x0000000000340f34       0x74 build/tags.o
+                0x0000000000340f34                FindTag
+ .text          0x0000000000340fa8      0x2c0 build/terminal.o
+                0x0000000000340fe0                TerminalDisplay
+                0x0000000000341088                TerminalClear
+                0x00000000003410a0                Print
+                0x0000000000341178                ReadLine
+ .text          0x0000000000341268      0x1e4 build/text.o
+                0x0000000000341268                ReverseString
+                0x0000000000341294                UnsignedString
+                0x00000000003412e4                SignedString
+                0x0000000000341310                FormatString
 
 /DISCARD/
  *(*)

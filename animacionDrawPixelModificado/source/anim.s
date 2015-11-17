@@ -271,21 +271,31 @@ characterLoop$:
 // * r0 posicion x
 // * r1 posicion y
 // * salida el color en r0
+// * (x + (y * ancho)) * tamanio pixel
 // ******************************************
 .globl GetBackgroundColor
 GetBackgroundColor:
-    push {lr}
+    push {r4-r12, lr}
     
-    mov r2,r0 //posicion en x
-    mov r3,r1 //posicion en y
+    mov r2, r0 //posicion en x
+    mov r3, r1 //posicion en y
 
-    ldr r0,=fondo
+    ldr r5, =fondo
 
+    pixel .req r5
+
+    ldr r6, =768
+    mul r4, r3, r6 //y * ancho
+    add r2, r2, r4 //x + (y * ancho)
+    
+
+    ldrh r0, [pixel, r2] //obtiene color fondo
 
     //ldr r0, =0xF800
-    pop {pc}
 
+    pop {r4-r12, pc}
 
+    .unreq pixel
 
 // ******************************************
 // Subrutina para dibujar una imagen. 
