@@ -36,19 +36,19 @@ again:
 
     teq r0, #'b' //personaje1
     ldreq r0, =p1_1Height
-    bleq laberinto
+    beq regreso
 
     teq r0, #'n' //personaje2
     ldreq r0, =p2_1Height
-    bleq laberinto
+    beq regreso
 
     teq r0, #'m' //personaje3
     ldreq r0, =p3_1Height
-    bleq laberinto
 
     bne again
 
 regreso:
+	bl laberinto
 	pop {lr}
 	mov pc, lr
 
