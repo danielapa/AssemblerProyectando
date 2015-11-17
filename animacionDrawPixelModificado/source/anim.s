@@ -280,7 +280,7 @@ GetBackgroundColor:
     mov r2, r0 //posicion en x
     mov r3, r1 //posicion en y
 
-    ldr r5, =fondo
+    ldr r5, =laberin
 
     pixel .req r5
 

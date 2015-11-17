@@ -59,6 +59,17 @@ regreso:
 laberinto:
 	push {lr}
 
+	mov r5, r0 //mueve personaje escogido a r5
+
+	ldr r0, =laberinHeight
+	mov r1,#0
+	mov r2,#0
+
+	push {r5}
+	bl drawImageWithTransparency
+	pop {r5}
+
+	mov r0, r5
 	mov r1,#0
 	mov r2,#0
 
