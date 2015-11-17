@@ -284,10 +284,11 @@ GetBackgroundColor:
 
     pixel .req r5
 
-    ldr r6, =768
+    ldr r6, =1024
+    mov r7, #2
     mul r4, r3, r6 //y * ancho
-    add r2, r2, r4 //x + (y * ancho)
-    
+    add r3, r2, r4 //x + (y * ancho)
+    mul r2, r3, r7 //*2
 
     ldrh r0, [pixel, r2] //obtiene color fondo
 

@@ -36,16 +36,29 @@ again:
 
     teq r0, #'b' //personaje1
     ldreq r0, =p1_1Height
-    beq seguir
+    bleq laberinto
+
     teq r0, #'n' //personaje2
     ldreq r0, =p2_1Height
-    beq seguir    
+    bleq laberinto
+
     teq r0, #'m' //personaje3
     ldreq r0, =p3_1Height
+    bleq laberinto
 
     bne again
 
-seguir:
+regreso:
+	pop {lr}
+	mov pc, lr
+
+/**********************************************************************
+* Laberinto
+***********************************************************************/
+.globl laberinto
+laberinto:
+	push {lr}
+
 	mov r1,#0
 	mov r2,#0
 
