@@ -26,6 +26,7 @@ _start:
 */
 b main
 
+
 /*
 * This command tells the assembler to put this code with the rest.
 */
