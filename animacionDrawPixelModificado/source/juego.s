@@ -79,6 +79,12 @@ again:
     bne again
 
 regreso:
+    /*bl KeyboardUpdate
+    bl KeyboardGetChar
+
+    cmp r0, #'u'
+    bne regreso*/
+    
 	bl laberinto
 	pop {lr}
 	mov pc, lr
