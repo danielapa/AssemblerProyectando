@@ -104,21 +104,21 @@ laberinto:
 
 	ldr r5, =direccionPersonaje1 //mueve personaje pos 1 escogido guardado en memoria para pintarlo
 	ldr r0, [r5]
-	mov r1,#0
+	mov r1,#58
 	mov r2,#0
 
 	bl drawImageWithTransparency
 
 	ldr r5, =direccionPersonaje2 //mueve personaje pos 2 escogido guardado en memoria para pintarlo
 	ldr r0, [r5]
-	mov r1,#0
+	mov r1,#58
 	mov r2,#0
 
 	bl drawImageWithTransparency
 
 	ldr r5, =direccionPersonaje3 //mueve personaje pos 3 escogido guardado en memoria para pintarlo
 	ldr r0, [r5]
-	mov r1,#0
+	mov r1,#58
 	mov r2,#0
 
 	bl drawImageWithTransparency	
