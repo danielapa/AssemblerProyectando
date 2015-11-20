@@ -166,48 +166,47 @@ LOAD ./libcsud.a
                 0x000000000030b0f2                laberinWidth
                 0x000000000030b0f4                laberin
  .data          0x000000000048c0f4        0x0 build/mailbox.o
- .data          0x000000000048c0f4      0x220 build/main.o
- .data          0x000000000048c314        0x0 build/maths.o
- .data          0x000000000048c314     0x3694 build/p1_1.o
-                0x000000000048c314                p1_1Height
-                0x000000000048c316                p1_1Width
-                0x000000000048c318                p1_1
- .data          0x000000000048f9a8     0x3694 build/p1_2.o
-                0x000000000048f9a8                p1_2Height
-                0x000000000048f9aa                p1_2Width
-                0x000000000048f9ac                p1_2
- .data          0x000000000049303c     0x3694 build/p1_3.o
-                0x000000000049303c                p1_3Height
-                0x000000000049303e                p1_3Width
-                0x0000000000493040                p1_3
- .data          0x00000000004966d0     0x336c build/p2_1.o
-                0x00000000004966d0                p2_1Height
-                0x00000000004966d2                p2_1Width
-                0x00000000004966d4                p2_1
- .data          0x0000000000499a3c     0x336c build/p2_2.o
-                0x0000000000499a3c                p2_2Height
-                0x0000000000499a3e                p2_2Width
-                0x0000000000499a40                p2_2
- .data          0x000000000049cda8     0x336c build/p2_3.o
-                0x000000000049cda8                p2_3Height
-                0x000000000049cdaa                p2_3Width
-                0x000000000049cdac                p2_3
- .data          0x00000000004a0114     0x3694 build/p3_1.o
-                0x00000000004a0114                p3_1Height
-                0x00000000004a0116                p3_1Width
-                0x00000000004a0118                p3_1
- .data          0x00000000004a37a8     0x3694 build/p3_2.o
-                0x00000000004a37a8                p3_2Height
-                0x00000000004a37aa                p3_2Width
-                0x00000000004a37ac                p3_2
- .data          0x00000000004a6e3c     0x3694 build/p3_3.o
-                0x00000000004a6e3c                p3_3Height
-                0x00000000004a6e3e                p3_3Width
-                0x00000000004a6e40                p3_3
- .data          0x00000000004aa4d0        0x0 build/random.o
- .data          0x00000000004aa4d0        0x0 build/systemTimer.o
- .data          0x00000000004aa4d0       0x24 build/tags.o
- *fill*         0x00000000004aa4f4        0xc 
+ .data          0x000000000048c0f4      0x22c build/main.o
+ .data          0x000000000048c320        0x0 build/maths.o
+ .data          0x000000000048c320     0x3694 build/p1_1.o
+                0x000000000048c320                p1_1Height
+                0x000000000048c322                p1_1Width
+                0x000000000048c324                p1_1
+ .data          0x000000000048f9b4     0x3694 build/p1_2.o
+                0x000000000048f9b4                p1_2Height
+                0x000000000048f9b6                p1_2Width
+                0x000000000048f9b8                p1_2
+ .data          0x0000000000493048     0x3694 build/p1_3.o
+                0x0000000000493048                p1_3Height
+                0x000000000049304a                p1_3Width
+                0x000000000049304c                p1_3
+ .data          0x00000000004966dc     0x336c build/p2_1.o
+                0x00000000004966dc                p2_1Height
+                0x00000000004966de                p2_1Width
+                0x00000000004966e0                p2_1
+ .data          0x0000000000499a48     0x336c build/p2_2.o
+                0x0000000000499a48                p2_2Height
+                0x0000000000499a4a                p2_2Width
+                0x0000000000499a4c                p2_2
+ .data          0x000000000049cdb4     0x336c build/p2_3.o
+                0x000000000049cdb4                p2_3Height
+                0x000000000049cdb6                p2_3Width
+                0x000000000049cdb8                p2_3
+ .data          0x00000000004a0120     0x3694 build/p3_1.o
+                0x00000000004a0120                p3_1Height
+                0x00000000004a0122                p3_1Width
+                0x00000000004a0124                p3_1
+ .data          0x00000000004a37b4     0x3694 build/p3_2.o
+                0x00000000004a37b4                p3_2Height
+                0x00000000004a37b6                p3_2Width
+                0x00000000004a37b8                p3_2
+ .data          0x00000000004a6e48     0x3694 build/p3_3.o
+                0x00000000004a6e48                p3_3Height
+                0x00000000004a6e4a                p3_3Width
+                0x00000000004a6e4c                p3_3
+ .data          0x00000000004aa4dc        0x0 build/random.o
+ .data          0x00000000004aa4dc        0x0 build/systemTimer.o
+ .data          0x00000000004aa4dc       0x24 build/tags.o
  .data          0x00000000004aa500     0xb100 build/terminal.o
  .data          0x00000000004b5600        0x0 build/text.o
  .data          0x00000000004b5600        0x0 ./libcsud.a(device.keyboard.c.o)
@@ -394,7 +393,7 @@ LOAD ./libcsud.a
  .ARM.attributes
                 0x00000000004c1550       0x32 ./libcsud.a(platform.broadcom2835.c.o)
 
-.text           0x00000000004c1584      0xfa8
+.text           0x00000000004c1584      0xf94
  *.c.o(.text)
  *(.text)
  .text          0x00000000004c1584      0x24c build/anim.o
@@ -417,49 +416,49 @@ LOAD ./libcsud.a
                 0x00000000004c1a20                GetGpioAddress
                 0x00000000004c1a28                SetGpioFunction
                 0x00000000004c1a78                SetGpio
- .text          0x00000000004c1ab8      0x15c build/juego.o
+ .text          0x00000000004c1ab8      0x148 build/juego.o
                 0x00000000004c1ab8                juego
                 0x00000000004c1ae8                escogiendo
                 0x00000000004c1b84                laberinto
- .text          0x00000000004c1c14      0x144 build/keyboard.o
-                0x00000000004c1c14                KeyboardUpdate
-                0x00000000004c1c98                KeyWasDown
-                0x00000000004c1cc8                KeyboardGetChar
- .text          0x00000000004c1d58        0x0 build/laberin.o
- .text          0x00000000004c1d58       0x6c build/mailbox.o
-                0x00000000004c1d58                GetMailboxBase
-                0x00000000004c1d60                MailboxRead
-                0x00000000004c1d94                MailboxWrite
- .text          0x00000000004c1dc4      0x1b0 build/main.o
- .text          0x00000000004c1f74       0x48 build/maths.o
-                0x00000000004c1f74                DivideU32
- .text          0x00000000004c1fbc        0x0 build/p1_1.o
- .text          0x00000000004c1fbc        0x0 build/p1_2.o
- .text          0x00000000004c1fbc        0x0 build/p1_3.o
- .text          0x00000000004c1fbc        0x0 build/p2_1.o
- .text          0x00000000004c1fbc        0x0 build/p2_2.o
- .text          0x00000000004c1fbc        0x0 build/p2_3.o
- .text          0x00000000004c1fbc        0x0 build/p3_1.o
- .text          0x00000000004c1fbc        0x0 build/p3_2.o
- .text          0x00000000004c1fbc        0x0 build/p3_3.o
- .text          0x00000000004c1fbc       0x18 build/random.o
-                0x00000000004c1fbc                Random
- .text          0x00000000004c1fd4       0x40 build/systemTimer.o
-                0x00000000004c1fd4                GetSystemTimerBase
-                0x00000000004c1fdc                GetTimeStamp
-                0x00000000004c1fec                Wait
- .text          0x00000000004c2014       0x74 build/tags.o
-                0x00000000004c2014                FindTag
- .text          0x00000000004c2088      0x2c0 build/terminal.o
-                0x00000000004c20c0                TerminalDisplay
-                0x00000000004c2168                TerminalClear
-                0x00000000004c2180                Print
-                0x00000000004c2258                ReadLine
- .text          0x00000000004c2348      0x1e4 build/text.o
-                0x00000000004c2348                ReverseString
-                0x00000000004c2374                UnsignedString
-                0x00000000004c23c4                SignedString
-                0x00000000004c23f0                FormatString
+ .text          0x00000000004c1c00      0x144 build/keyboard.o
+                0x00000000004c1c00                KeyboardUpdate
+                0x00000000004c1c84                KeyWasDown
+                0x00000000004c1cb4                KeyboardGetChar
+ .text          0x00000000004c1d44        0x0 build/laberin.o
+ .text          0x00000000004c1d44       0x6c build/mailbox.o
+                0x00000000004c1d44                GetMailboxBase
+                0x00000000004c1d4c                MailboxRead
+                0x00000000004c1d80                MailboxWrite
+ .text          0x00000000004c1db0      0x1b0 build/main.o
+ .text          0x00000000004c1f60       0x48 build/maths.o
+                0x00000000004c1f60                DivideU32
+ .text          0x00000000004c1fa8        0x0 build/p1_1.o
+ .text          0x00000000004c1fa8        0x0 build/p1_2.o
+ .text          0x00000000004c1fa8        0x0 build/p1_3.o
+ .text          0x00000000004c1fa8        0x0 build/p2_1.o
+ .text          0x00000000004c1fa8        0x0 build/p2_2.o
+ .text          0x00000000004c1fa8        0x0 build/p2_3.o
+ .text          0x00000000004c1fa8        0x0 build/p3_1.o
+ .text          0x00000000004c1fa8        0x0 build/p3_2.o
+ .text          0x00000000004c1fa8        0x0 build/p3_3.o
+ .text          0x00000000004c1fa8       0x18 build/random.o
+                0x00000000004c1fa8                Random
+ .text          0x00000000004c1fc0       0x40 build/systemTimer.o
+                0x00000000004c1fc0                GetSystemTimerBase
+                0x00000000004c1fc8                GetTimeStamp
+                0x00000000004c1fd8                Wait
+ .text          0x00000000004c2000       0x74 build/tags.o
+                0x00000000004c2000                FindTag
+ .text          0x00000000004c2074      0x2c0 build/terminal.o
+                0x00000000004c20ac                TerminalDisplay
+                0x00000000004c2154                TerminalClear
+                0x00000000004c216c                Print
+                0x00000000004c2244                ReadLine
+ .text          0x00000000004c2334      0x1e4 build/text.o
+                0x00000000004c2334                ReverseString
+                0x00000000004c2360                UnsignedString
+                0x00000000004c23b0                SignedString
+                0x00000000004c23dc                FormatString
 
 /DISCARD/
  *(*)

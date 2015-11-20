@@ -1,9 +1,10 @@
 /**********************************************************************
-* juego.s
+* Taller de Assembler
 * Proyecto 2
 * Ma. Belen Hernandez
 * Daniela I. Pocasangre A.
 * 
+* juego.s
 **********************************************************************/
 
 /**********************************************************************
@@ -26,7 +27,7 @@ drawingBG:
     teq r0, #'s' //revisa si se inicia el juego
     bne drawingBG
 
-    bleq escogiendo
+    bleq escogiendo //si se presiona s, empieza el juego
 
 	pop {lr}
 	mov pc, lr
@@ -39,12 +40,12 @@ escogiendo:
 	push {lr}
 
 again:
-	bl KeyboardUpdate
+	bl KeyboardUpdate //se revisa que personaje es escogido
     bl KeyboardGetChar
 
-    teq r0, #'b' //personaje1
+    teq r0, #'b' //personaje1 - verde
     ldreq r0, =p1_1Height
-    ldreq r5, =direccionPersonaje1
+    ldreq r5, =direccionPersonaje1 //guarda en memoria los sprites del personaje
     streq r0, [r5]
     ldreq r0, =p1_2Height
     ldreq r5, =direccionPersonaje2
@@ -54,9 +55,9 @@ again:
     streq r0, [r5]            
     beq regreso
 
-    teq r0, #'n' //personaje2
+    teq r0, #'n' //personaje2 - azul
     ldreq r0, =p2_1Height
-    ldreq r5, =direccionPersonaje1
+    ldreq r5, =direccionPersonaje1 //guarda en memoria los sprites del personaje
     streq r0, [r5]
     ldreq r0, =p2_2Height
     ldreq r5, =direccionPersonaje2
@@ -66,9 +67,9 @@ again:
     streq r0, [r5]       
     beq regreso
 
-    teq r0, #'m' //personaje3
+    teq r0, #'m' //personaje3 - rosado
     ldreq r0, =p3_1Height
-    ldreq r5, =direccionPersonaje1
+    ldreq r5, =direccionPersonaje1 //guarda en memoria los sprites del personaje
     streq r0, [r5]
     ldreq r0, =p3_2Height
     ldreq r5, =direccionPersonaje2
@@ -79,13 +80,7 @@ again:
     bne again
 
 regreso:
-    /*bl KeyboardUpdate
-    bl KeyboardGetChar
-
-    cmp r0, #'u'
-    bne regreso*/
-    
-	bl laberinto
+	bl laberinto //si se escogio personaje, se va al laberinto
 	pop {lr}
 	mov pc, lr
 
@@ -96,33 +91,34 @@ regreso:
 laberinto:
 	push {r4-r11, lr}
 
-	ldr r0, =laberinHeight
+	ldr r0, =laberinHeight //inicia laberinto de fondo y personaje en el inicio
 	mov r1,#0
 	mov r2,#0
 
 	bl drawImageWithTransparency
 
-	ldr r5, =direccionPersonaje1 //mueve personaje pos 1 escogido guardado en memoria para pintarlo
+	ldr r5, =direccionPersonaje1 //mueve personaje guardado en memoria para pintarlo por primera vez
 	ldr r0, [r5]
 	mov r1,#58
 	mov r2,#0
 
 	bl drawImageWithTransparency
 
-	ldr r5, =direccionPersonaje2 //mueve personaje pos 2 escogido guardado en memoria para pintarlo
-	ldr r0, [r5]
-	mov r1,#58
-	mov r2,#0
+//inicia ciclo laberinto
+ ciclo:
+    bl KeyboardUpdate
+    bl KeyboardGetChar
 
-	bl drawImageWithTransparency
+    cmp r0, #'e'
+    beq salir
 
-	ldr r5, =direccionPersonaje3 //mueve personaje pos 3 escogido guardado en memoria para pintarlo
-	ldr r0, [r5]
-	mov r1,#58
-	mov r2,#0
+//AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
+//SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
+//ASI CREO QUE SERIA MAS ORDENADO Y SI PIERDE SOLO SE VA A LA ETIQUETA SALIR Y YA SE MUEVE EL LR A PC  EN ORDEN O PODEMOS GUARDARLO EN MEMORIA
 
-	bl drawImageWithTransparency	
+    bne ciclo
 
+salir:
 	pop {r4-r11, lr}
 	mov pc, lr
 

@@ -1,22 +1,12 @@
-/******************************************************************************
-*	main.s
-*	 by Alex Chadwick
-*
-*	A sample assembly code implementation of the input02 operating system, that 
-*	demonstrates a command line interface.
-*
-*	main.s contains the main operating system, and IVT code.
-******************************************************************************/
+/**********************************************************************
+* Taller de Assembler
+* Proyecto 2
+* Ma. Belen Hernandez
+* Daniela I. Pocasangre A.
+* 
+* main.s
+**********************************************************************/
 
-/*
-* .globl is a directive to our assembler, that tells it to export this symbol
-* to the elf file. Convention dictates that the symbol _start is used for the 
-* entry point, so this all has the net effect of setting the entry point here.
-* Ultimately, this is useless as the elf itself is not used in the final 
-* result, and so the entry point really doesnt matter, but it aids clarity,
-* allows simulators to run the elf, and also stops us getting a linker warning
-* about having no entry point. 
-*/
 .section .init
 .globl _start
 _start:
@@ -215,7 +205,7 @@ ok:
 .section .data
 .align 2
 welcome:
-	.ascii "Welcome to Alex's OS - Everyone's favourite OS"
+	.ascii "Welcome to Daniela and Belen's OS - Everyone's favourite OS"
 welcomeEnd:
 .align 2
 prompt:
