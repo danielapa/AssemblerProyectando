@@ -57,7 +57,10 @@ again:
     streq r0, [r5]
     ldreq r0, =p1_3Height
     ldreq r5, =direccionPersonaje3
-    streq r0, [r5]            
+    streq r0, [r5]  
+    ldreq r0, =p1_1Width
+    ldreq r5, =direccionPersonaje4
+    streq r0, [r5]                 
     beq regreso
 
     teq r0, #'n' //personaje2 - azul
@@ -69,6 +72,9 @@ again:
     streq r0, [r5]
     ldreq r0, =p2_3Height
     ldreq r5, =direccionPersonaje3
+    streq r0, [r5]  
+    ldreq r0, =p2_1Width
+    ldreq r5, =direccionPersonaje4
     streq r0, [r5]       
     beq regreso
 
@@ -81,7 +87,10 @@ again:
     streq r0, [r5]
     ldreq r0, =p3_3Height
     ldreq r5, =direccionPersonaje3
-    streq r0, [r5]     
+    streq r0, [r5] 
+    ldreq r0, =p3_1Width
+    ldreq r5, =direccionPersonaje4
+    streq r0, [r5]      
     bne again
 
 regreso:
@@ -143,3 +152,5 @@ direccionPersonaje1: .word 0
 direccionPersonaje2: .word 0
 .globl direccionPersonaje3
 direccionPersonaje3: .word 0
+.globl direccionPersonaje4
+direccionPersonaje4: .word 0
