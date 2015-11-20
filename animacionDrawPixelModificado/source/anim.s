@@ -18,8 +18,14 @@
 // * No recibe parametros
 // * No tiene salidas
 // ******************************************
-.globl Animacion
-Animacion:
+.globl Caminar
+Caminar:
+
+.macro verificar direccion
+    mov r0, \direccion 
+    bl KeyWasDown
+.endm
+
     push {lr, r4-r11}
 
     paso_actual .req r4
@@ -27,56 +33,54 @@ Animacion:
     y .req r6
     
     mov paso_actual, #0
-    mov x, #200
-    mov y, #200
-
-    // -----------------------------
-    // dibujar primera imagen
-    ldr r0, =p1_1Height
-    mov r1, x
-    mov r2, y
-    bl drawImageWithTransparency
-    // -----------------------------
-    
-
+    mov x, #58
+    mov y, #0
 
     loopContinue$:
+
+        // -----------------------------
+        // dibujar primera imagen
+        ldr r0, =p1_1Height
+        mov r1, x
+        mov r2, y
+        bl drawImageWithTransparency
+        // -----------------------------
 
         // *******************************
         // 1 - revisar teclas
         // *******************************
+        Revision:
         bl KeyboardUpdate
         bl KeyboardGetChar
-
-        // -----------------------------
-        // revisar tecla para salir (q, Q, f, F)
-        // -----------------------------
-        teq r0,#'q'
-        teqne r0,#'Q'
-        teqne r0,#'f'
-        teqne r0,#'F'
-        beq finAnimacion
-        
-        // -----------------------------
-        // revisar tecla para moverse
-        // -----------------------------
-        teq r0,#'m'
-        teqne r0,#'M'
-        beq moverPersonaje
 
         // -----------------------------
         // revisar tecla l (si esta presionada)
         //  para mover continuamente
         // -----------------------------
-        mov r0, #15 //(tecla l o L)
-        bl KeyWasDown
+
+        /*teq r0, #'\r'
+        bleq Derecha*/
+        verificar #79
         cmp r0, #0
-        bne moverPersonaje
+        bne moverPersonajeDer
+        verificar #80
+        cmp r0, #0
+        bne moverPersonajeIzq
+        verificar #81
+        cmp r0, #0
+        bne moverPersonajeDown
+        verificar #82
+        cmp r0, #0
+        bne moverPersonajeUp
 
+        b loopContinue$
 
-        b continuarAnimacion$
+    moverPersonajeDer:
+        /*ldr r7, =0//color del fondo
+        bl GetBackgroundColor
+        cmp r0, r7
+        bne loopContinue$*/
 
-    moverPersonaje:
         // borrar 5px de ancho
         mov r0, x
         mov r1, y
@@ -89,6 +93,70 @@ Animacion:
         add x, #5
         b continuarAnimacion$
 
+    moverPersonajeIzq:
+        // borrar 5px de ancho
+        ldr r0, =p1_1Width
+        ldrh r0, [r0]
+        add r0, x, r0
+        sub r0, #5
+        mov r1, y
+        mov r2, #5
+        ldr r3, =p1_1Height
+        ldrh r3,[r3]
+        bl DrawBackgroundRectangle
+
+        // sumar 5px a la posicion en x
+        sub x, #5
+        b continuarAnimacion$
+
+    moverPersonajeDown:
+        /*ldr r7, =0 //color del fondo
+        bl GetBackgroundColor
+        cmp r0, r7
+        bne loopContinue$*/
+
+        ldr r0, =p1_3Height
+        mov r1, x
+        mov r2, y
+        bl drawImageWithTransparency
+
+        ldr r0, =30000
+        bl Wait
+
+        // borrar 5px de alto
+        mov r0, x
+        mov r1, y
+        ldr r2, =p1_1Width
+        ldrh r2,[r2]
+        mov r3, #5
+        bl DrawBackgroundRectangle
+
+        // sumar 5px a la posicion en y
+        add y, #5
+        b Revision
+
+    moverPersonajeUp:
+        ldr r0, =p1_3Height
+        mov r1, x
+        mov r2, y
+        bl drawImageWithTransparency
+
+        ldr r0, =30000
+        bl Wait
+        // borrar 5px de alto
+        mov r0, x
+        ldr r1, =p1_1Height
+        ldrh r1, [r1]
+        add r1, y, r1
+        sub r1, #5
+        ldr r2, =p1_1Width
+        ldrh r2,[r2]
+        mov r3, #5
+        bl DrawBackgroundRectangle
+
+        // sumar 5px a la posicion en y
+        sub y, #5
+        b Revision
 
 
     continuarAnimacion$:
@@ -124,7 +192,7 @@ Animacion:
         // *******************************
         // 5 - retardo
         // *******************************
-        ldr r0, =50000
+        ldr r0, =30000
         bl Wait
 
         // *******************************
@@ -151,6 +219,13 @@ Animacion:
     .unreq x
     .unreq y
 
+    Derecha:
+    mov r0, #79 //(tecla flecha derecha)
+    push {lr}
+    bl KeyWasDown
+    pop {lr}
+    cmp r0, #0
+    bne moverPersonajeDer
 
 
 // ******************************************

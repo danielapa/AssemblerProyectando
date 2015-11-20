@@ -96,6 +96,12 @@ regreso:
 laberinto:
 	push {r4-r11, lr}
 
+    ldr r0, =bgHeight //inicia laberinto de fondo y personaje en el inicio
+    mov r1,#0
+    mov r2,#0
+
+    bl drawImageWithTransparency
+
 	ldr r0, =laberinHeight //inicia laberinto de fondo y personaje en el inicio
 	mov r1,#0
 	mov r2,#0
@@ -117,6 +123,7 @@ laberinto:
     cmp r0, #'e'
     beq salir
 
+    bl Caminar
 //AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
 //SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
 //ASI CREO QUE SERIA MAS ORDENADO Y SI PIERDE SOLO SE VA A LA ETIQUETA SALIR Y YA SE MUEVE EL LR A PC  EN ORDEN O PODEMOS GUARDARLO EN MEMORIA
