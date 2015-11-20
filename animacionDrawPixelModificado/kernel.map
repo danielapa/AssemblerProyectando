@@ -1,119 +1,127 @@
 Archive member included because of file (symbol)
 
-./libcsud.a(device.keyboard.c.o)
+.\libcsud.a(device.keyboard.c.o)
                               build/keyboard.o (KeyboardGetAddress)
-./libcsud.a(platform.c.o)     ./libcsud.a(device.keyboard.c.o) (MemoryAllocate)
-./libcsud.a(usbd.c.o)         build/main.o (UsbInitialise)
-./libcsud.a(device.hid.c.o)   ./libcsud.a(device.keyboard.c.o) (HidReadDevice)
-./libcsud.a(device.hub.c.o)   ./libcsud.a(usbd.c.o) (HubPortReset)
-./libcsud.a(hcd.designware20.c.o)
-                              ./libcsud.a(usbd.c.o) (HcdSumbitControlMessage)
-./libcsud.a(hcd.designware20.roothub.c.o)
-                              ./libcsud.a(hcd.designware20.c.o) (HcdProcessRootHubMessage)
-./libcsud.a(platform.armv6.c.o)
-                              ./libcsud.a(hcd.designware20.c.o) (__aeabi_uidiv)
-./libcsud.a(platform.broadcom2835.c.o)
-                              ./libcsud.a(usbd.c.o) (MicroDelay)
+.\libcsud.a(platform.c.o)     .\libcsud.a(device.keyboard.c.o) (MemoryAllocate)
+.\libcsud.a(usbd.c.o)         build/main.o (UsbInitialise)
+.\libcsud.a(device.hid.c.o)   .\libcsud.a(device.keyboard.c.o) (HidReadDevice)
+.\libcsud.a(device.hub.c.o)   .\libcsud.a(usbd.c.o) (HubPortReset)
+.\libcsud.a(hcd.designware20.c.o)
+                              .\libcsud.a(usbd.c.o) (HcdSumbitControlMessage)
+.\libcsud.a(hcd.designware20.roothub.c.o)
+                              .\libcsud.a(hcd.designware20.c.o) (HcdProcessRootHubMessage)
+.\libcsud.a(platform.armv6.c.o)
+                              .\libcsud.a(hcd.designware20.c.o) (__aeabi_uidiv)
+.\libcsud.a(platform.broadcom2835.c.o)
+                              .\libcsud.a(usbd.c.o) (MicroDelay)
 
 Allocating common symbols
 Common symbol       size              file
 
-CorePhysical        0x4               ./libcsud.a(hcd.designware20.c.o)
-DeviceNumbers       0x4               ./libcsud.a(usbd.c.o)
-HostPhysical        0x4               ./libcsud.a(hcd.designware20.c.o)
-keyboards           0x10              ./libcsud.a(device.keyboard.c.o)
-PowerPhysical       0x4               ./libcsud.a(hcd.designware20.c.o)
-Heap                0x4000            ./libcsud.a(platform.c.o)
-Allocations         0xc00             ./libcsud.a(platform.c.o)
+CorePhysical        0x4               .\libcsud.a(hcd.designware20.c.o)
+DeviceNumbers       0x4               .\libcsud.a(usbd.c.o)
+HostPhysical        0x4               .\libcsud.a(hcd.designware20.c.o)
+keyboards           0x10              .\libcsud.a(device.keyboard.c.o)
+PowerPhysical       0x4               .\libcsud.a(hcd.designware20.c.o)
+Heap                0x4000            .\libcsud.a(platform.c.o)
+Allocations         0xc00             .\libcsud.a(platform.c.o)
 
 Discarded input sections
 
- .bss           0x0000000000000000        0x0 build/anim.o
+ .bss           0x00000000        0x0 build/anim.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/anim.o
- .bss           0x0000000000000000        0x0 build/drawing.o
+                0x00000000       0x14 build/anim.o
+ .bss           0x00000000        0x0 build/drawing.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/drawing.o
- .bss           0x0000000000000000        0x0 build/fondo.o
+                0x00000000       0x14 build/drawing.o
+ .bss           0x00000000        0x0 build/fondo.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/fondo.o
- .bss           0x0000000000000000        0x0 build/frameBuffer.o
+                0x00000000       0x14 build/fondo.o
+ .bss           0x00000000        0x0 build/fondoInicio.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/frameBuffer.o
- .bss           0x0000000000000000        0x0 build/gpio.o
+                0x00000000       0x14 build/fondoInicio.o
+ .bss           0x00000000        0x0 build/fondoSeleccion.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/gpio.o
- .bss           0x0000000000000000        0x0 build/juego.o
+                0x00000000       0x14 build/fondoSeleccion.o
+ .bss           0x00000000        0x0 build/frameBuffer.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/juego.o
- .bss           0x0000000000000000        0x0 build/keyboard.o
+                0x00000000       0x14 build/frameBuffer.o
+ .bss           0x00000000        0x0 build/gpio.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/keyboard.o
- .bss           0x0000000000000000        0x0 build/laberin.o
+                0x00000000       0x14 build/gpio.o
+ .bss           0x00000000        0x0 build/juego.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/laberin.o
- .bss           0x0000000000000000        0x0 build/mailbox.o
+                0x00000000       0x14 build/juego.o
+ .bss           0x00000000        0x0 build/keyboard.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/mailbox.o
- .bss           0x0000000000000000        0x0 build/main.o
+                0x00000000       0x14 build/keyboard.o
+ .bss           0x00000000        0x0 build/laberin.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/main.o
- .bss           0x0000000000000000        0x0 build/maths.o
+                0x00000000       0x14 build/laberin.o
+ .bss           0x00000000        0x0 build/mailbox.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/maths.o
- .bss           0x0000000000000000        0x0 build/p1_1.o
+                0x00000000       0x14 build/mailbox.o
+ .bss           0x00000000        0x0 build/main.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p1_1.o
- .bss           0x0000000000000000        0x0 build/p1_2.o
+                0x00000000       0x14 build/main.o
+ .bss           0x00000000        0x0 build/maths.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p1_2.o
- .bss           0x0000000000000000        0x0 build/p1_3.o
+                0x00000000       0x14 build/maths.o
+ .bss           0x00000000        0x0 build/p1_1.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p1_3.o
- .bss           0x0000000000000000        0x0 build/p2_1.o
+                0x00000000       0x14 build/p1_1.o
+ .bss           0x00000000        0x0 build/p1_2.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p2_1.o
- .bss           0x0000000000000000        0x0 build/p2_2.o
+                0x00000000       0x14 build/p1_2.o
+ .bss           0x00000000        0x0 build/p1_3.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p2_2.o
- .bss           0x0000000000000000        0x0 build/p2_3.o
+                0x00000000       0x14 build/p1_3.o
+ .bss           0x00000000        0x0 build/p2_1.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p2_3.o
- .bss           0x0000000000000000        0x0 build/p3_1.o
+                0x00000000       0x14 build/p2_1.o
+ .bss           0x00000000        0x0 build/p2_2.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p3_1.o
- .bss           0x0000000000000000        0x0 build/p3_2.o
+                0x00000000       0x14 build/p2_2.o
+ .bss           0x00000000        0x0 build/p2_3.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p3_2.o
- .bss           0x0000000000000000        0x0 build/p3_3.o
+                0x00000000       0x14 build/p2_3.o
+ .bss           0x00000000        0x0 build/p3_1.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/p3_3.o
- .bss           0x0000000000000000        0x0 build/random.o
+                0x00000000       0x14 build/p3_1.o
+ .bss           0x00000000        0x0 build/p3_2.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/random.o
- .bss           0x0000000000000000        0x0 build/systemTimer.o
+                0x00000000       0x14 build/p3_2.o
+ .bss           0x00000000        0x0 build/p3_3.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/systemTimer.o
- .bss           0x0000000000000000        0x0 build/tags.o
+                0x00000000       0x14 build/p3_3.o
+ .bss           0x00000000        0x0 build/random.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/tags.o
- .bss           0x0000000000000000        0x0 build/terminal.o
+                0x00000000       0x14 build/random.o
+ .bss           0x00000000        0x0 build/systemTimer.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/terminal.o
- .bss           0x0000000000000000        0x0 build/text.o
+                0x00000000       0x14 build/systemTimer.o
+ .bss           0x00000000        0x0 build/tags.o
  .ARM.attributes
-                0x0000000000000000       0x14 build/text.o
+                0x00000000       0x14 build/tags.o
+ .bss           0x00000000        0x0 build/terminal.o
+ .ARM.attributes
+                0x00000000       0x14 build/terminal.o
+ .bss           0x00000000        0x0 build/text.o
+ .ARM.attributes
+                0x00000000       0x14 build/text.o
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-*default*        0x0000000000000000 0xffffffffffffffff
+*default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 LOAD build/anim.o
 LOAD build/drawing.o
 LOAD build/fondo.o
+LOAD build/fondoInicio.o
+LOAD build/fondoSeleccion.o
 LOAD build/frameBuffer.o
 LOAD build/gpio.o
 LOAD build/juego.o
@@ -136,329 +144,339 @@ LOAD build/systemTimer.o
 LOAD build/tags.o
 LOAD build/terminal.o
 LOAD build/text.o
-LOAD ./libcsud.a
+LOAD .\libcsud.a
 
-.init           0x0000000000008000        0x4
+.init           0x00008000        0x4
  *(.init)
- .init          0x0000000000008000        0x4 build/main.o
-                0x0000000000008000                _start
+ .init          0x00008000        0x4 build/main.o
+                0x00008000                _start
 
-.data           0x0000000000009000   0x4b8582
+.data           0x00009000   0x7b9582
  *(.data)
- .data          0x0000000000009000        0x0 build/anim.o
- .data          0x0000000000009000   0x180810 build/drawing.o
- .data          0x0000000000189810   0x180004 build/fondo.o
-                0x0000000000189810                fondoHeight
-                0x0000000000189812                fondoWidth
-                0x0000000000189814                fondo
- *fill*         0x0000000000309814      0x7ec 
- .data          0x000000000030a000     0x1000 build/frameBuffer.o
-                0x000000000030a000                FrameBufferInfo
- .data          0x000000000030b000        0x0 build/gpio.o
- .data          0x000000000030b000        0xc build/juego.o
-                0x000000000030b000                direccionPersonaje1
-                0x000000000030b004                direccionPersonaje2
-                0x000000000030b008                direccionPersonaje3
- *fill*         0x000000000030b00c        0x4 
- .data          0x000000000030b010       0xe0 build/keyboard.o
- .data          0x000000000030b0f0   0x181004 build/laberin.o
-                0x000000000030b0f0                laberinHeight
-                0x000000000030b0f2                laberinWidth
-                0x000000000030b0f4                laberin
- .data          0x000000000048c0f4        0x0 build/mailbox.o
- .data          0x000000000048c0f4      0x22c build/main.o
- .data          0x000000000048c320        0x0 build/maths.o
- .data          0x000000000048c320     0x3694 build/p1_1.o
-                0x000000000048c320                p1_1Height
-                0x000000000048c322                p1_1Width
-                0x000000000048c324                p1_1
- .data          0x000000000048f9b4     0x3694 build/p1_2.o
-                0x000000000048f9b4                p1_2Height
-                0x000000000048f9b6                p1_2Width
-                0x000000000048f9b8                p1_2
- .data          0x0000000000493048     0x3694 build/p1_3.o
-                0x0000000000493048                p1_3Height
-                0x000000000049304a                p1_3Width
-                0x000000000049304c                p1_3
- .data          0x00000000004966dc     0x336c build/p2_1.o
-                0x00000000004966dc                p2_1Height
-                0x00000000004966de                p2_1Width
-                0x00000000004966e0                p2_1
- .data          0x0000000000499a48     0x336c build/p2_2.o
-                0x0000000000499a48                p2_2Height
-                0x0000000000499a4a                p2_2Width
-                0x0000000000499a4c                p2_2
- .data          0x000000000049cdb4     0x336c build/p2_3.o
-                0x000000000049cdb4                p2_3Height
-                0x000000000049cdb6                p2_3Width
-                0x000000000049cdb8                p2_3
- .data          0x00000000004a0120     0x3694 build/p3_1.o
-                0x00000000004a0120                p3_1Height
-                0x00000000004a0122                p3_1Width
-                0x00000000004a0124                p3_1
- .data          0x00000000004a37b4     0x3694 build/p3_2.o
-                0x00000000004a37b4                p3_2Height
-                0x00000000004a37b6                p3_2Width
-                0x00000000004a37b8                p3_2
- .data          0x00000000004a6e48     0x3694 build/p3_3.o
-                0x00000000004a6e48                p3_3Height
-                0x00000000004a6e4a                p3_3Width
-                0x00000000004a6e4c                p3_3
- .data          0x00000000004aa4dc        0x0 build/random.o
- .data          0x00000000004aa4dc        0x0 build/systemTimer.o
- .data          0x00000000004aa4dc       0x24 build/tags.o
- .data          0x00000000004aa500     0xb100 build/terminal.o
- .data          0x00000000004b5600        0x0 build/text.o
- .data          0x00000000004b5600        0x0 ./libcsud.a(device.keyboard.c.o)
- .data          0x00000000004b5600        0x4 ./libcsud.a(platform.c.o)
-                0x00000000004b5600                FirstAllocation
- .data          0x00000000004b5604        0x0 ./libcsud.a(usbd.c.o)
- .data          0x00000000004b5604        0x0 ./libcsud.a(device.hid.c.o)
- .data          0x00000000004b5604        0x0 ./libcsud.a(device.hub.c.o)
- .data          0x00000000004b5604        0x0 ./libcsud.a(hcd.designware20.c.o)
- .data          0x00000000004b5604       0x64 ./libcsud.a(hcd.designware20.roothub.c.o)
-                0x00000000004b5604                DeviceDescriptor
-                0x00000000004b5618                ConfigurationDescriptor
-                0x00000000004b5634                String0
-                0x00000000004b5638                String1
-                0x00000000004b565c                HubDescriptor
- .data          0x00000000004b5668        0x0 ./libcsud.a(platform.armv6.c.o)
- .data          0x00000000004b5668        0x0 ./libcsud.a(platform.broadcom2835.c.o)
+ .data          0x00009000        0x0 build/anim.o
+ .data          0x00009000   0x180810 build/drawing.o
+ .data          0x00189810   0x180004 build/fondo.o
+                0x00189810                fondoHeight
+                0x00189812                fondoWidth
+                0x00189814                fondo
+ .data          0x00309814   0x180004 build/fondoInicio.o
+                0x00309814                fondoInicioHeight
+                0x00309816                fondoInicioWidth
+                0x00309818                fondoInicio
+ .data          0x00489818   0x181004 build/fondoSeleccion.o
+                0x00489818                fondoSeleccionHeight
+                0x0048981a                fondoSeleccionWidth
+                0x0048981c                fondoSeleccion
+ *fill*         0x0060a81c      0x7e4 
+ .data          0x0060b000     0x1000 build/frameBuffer.o
+                0x0060b000                FrameBufferInfo
+ .data          0x0060c000        0x0 build/gpio.o
+ .data          0x0060c000        0xc build/juego.o
+                0x0060c000                direccionPersonaje1
+                0x0060c004                direccionPersonaje2
+                0x0060c008                direccionPersonaje3
+ *fill*         0x0060c00c        0x4 
+ .data          0x0060c010       0xe0 build/keyboard.o
+ .data          0x0060c0f0   0x181004 build/laberin.o
+                0x0060c0f0                laberinHeight
+                0x0060c0f2                laberinWidth
+                0x0060c0f4                laberin
+ .data          0x0078d0f4        0x0 build/mailbox.o
+ .data          0x0078d0f4      0x22c build/main.o
+ .data          0x0078d320        0x0 build/maths.o
+ .data          0x0078d320     0x3694 build/p1_1.o
+                0x0078d320                p1_1Height
+                0x0078d322                p1_1Width
+                0x0078d324                p1_1
+ .data          0x007909b4     0x3694 build/p1_2.o
+                0x007909b4                p1_2Height
+                0x007909b6                p1_2Width
+                0x007909b8                p1_2
+ .data          0x00794048     0x3694 build/p1_3.o
+                0x00794048                p1_3Height
+                0x0079404a                p1_3Width
+                0x0079404c                p1_3
+ .data          0x007976dc     0x336c build/p2_1.o
+                0x007976dc                p2_1Height
+                0x007976de                p2_1Width
+                0x007976e0                p2_1
+ .data          0x0079aa48     0x336c build/p2_2.o
+                0x0079aa48                p2_2Height
+                0x0079aa4a                p2_2Width
+                0x0079aa4c                p2_2
+ .data          0x0079ddb4     0x336c build/p2_3.o
+                0x0079ddb4                p2_3Height
+                0x0079ddb6                p2_3Width
+                0x0079ddb8                p2_3
+ .data          0x007a1120     0x3694 build/p3_1.o
+                0x007a1120                p3_1Height
+                0x007a1122                p3_1Width
+                0x007a1124                p3_1
+ .data          0x007a47b4     0x3694 build/p3_2.o
+                0x007a47b4                p3_2Height
+                0x007a47b6                p3_2Width
+                0x007a47b8                p3_2
+ .data          0x007a7e48     0x3694 build/p3_3.o
+                0x007a7e48                p3_3Height
+                0x007a7e4a                p3_3Width
+                0x007a7e4c                p3_3
+ .data          0x007ab4dc        0x0 build/random.o
+ .data          0x007ab4dc        0x0 build/systemTimer.o
+ .data          0x007ab4dc       0x24 build/tags.o
+ .data          0x007ab500     0xb100 build/terminal.o
+ .data          0x007b6600        0x0 build/text.o
+ .data          0x007b6600        0x0 .\libcsud.a(device.keyboard.c.o)
+ .data          0x007b6600        0x4 .\libcsud.a(platform.c.o)
+                0x007b6600                FirstAllocation
+ .data          0x007b6604        0x0 .\libcsud.a(usbd.c.o)
+ .data          0x007b6604        0x0 .\libcsud.a(device.hid.c.o)
+ .data          0x007b6604        0x0 .\libcsud.a(device.hub.c.o)
+ .data          0x007b6604        0x0 .\libcsud.a(hcd.designware20.c.o)
+ .data          0x007b6604       0x64 .\libcsud.a(hcd.designware20.roothub.c.o)
+                0x007b6604                DeviceDescriptor
+                0x007b6618                ConfigurationDescriptor
+                0x007b6634                String0
+                0x007b6638                String1
+                0x007b665c                HubDescriptor
+ .data          0x007b6668        0x0 .\libcsud.a(platform.armv6.c.o)
+ .data          0x007b6668        0x0 .\libcsud.a(platform.broadcom2835.c.o)
  *.c.o(*)
- .text          0x00000000004b5668     0x1000 ./libcsud.a(device.keyboard.c.o)
-                0x00000000004b5668                KeyboardDetached
-                0x00000000004b56e4                KeyboardDeallocate
-                0x00000000004b575c                KeyboardIndex
-                0x00000000004b57b4                KeyboardGetAddress
-                0x00000000004b57fc                KeyboardScan
-                0x00000000004b5ec8                KeyboardCount
-                0x00000000004b5ed8                KeyboardSetLeds
-                0x00000000004b60f4                KeyboardGetLedSupport
-                0x00000000004b6140                KeyboardPoll
-                0x00000000004b6484                KeyboardGetModifiers
-                0x00000000004b64d0                KeyboardGetKeyDownCount
-                0x00000000004b6534                KeyboadGetKeyIsDown
-                0x00000000004b65ec                KeyboardGetKeyDown
- .bss           0x00000000004b6668       0x14 ./libcsud.a(device.keyboard.c.o)
-                0x00000000004b6668                keyboardAddresses
-                0x00000000004b6678                keyboardCount
- .comment       0x00000000004b667c       0x11 ./libcsud.a(device.keyboard.c.o)
-                                         0x12 (size before relaxing)
+ .text          0x007b6668     0x1000 .\libcsud.a(device.keyboard.c.o)
+                0x007b6668                KeyboardDetached
+                0x007b66e4                KeyboardDeallocate
+                0x007b675c                KeyboardIndex
+                0x007b67b4                KeyboardGetAddress
+                0x007b67fc                KeyboardScan
+                0x007b6ec8                KeyboardCount
+                0x007b6ed8                KeyboardSetLeds
+                0x007b70f4                KeyboardGetLedSupport
+                0x007b7140                KeyboardPoll
+                0x007b7484                KeyboardGetModifiers
+                0x007b74d0                KeyboardGetKeyDownCount
+                0x007b7534                KeyboadGetKeyIsDown
+                0x007b75ec                KeyboardGetKeyDown
+ .bss           0x007b7668       0x14 .\libcsud.a(device.keyboard.c.o)
+                0x007b7668                keyboardAddresses
+                0x007b7678                keyboardCount
+ .comment       0x007b767c       0x11 .\libcsud.a(device.keyboard.c.o)
+                                 0x12 (size before relaxing)
  .ARM.attributes
-                0x00000000004b668d       0x32 ./libcsud.a(device.keyboard.c.o)
- *fill*         0x00000000004b66bf        0x1 
- COMMON         0x00000000004b66c0       0x10 ./libcsud.a(device.keyboard.c.o)
-                0x00000000004b66c0                keyboards
- .text          0x00000000004b66d0      0x5c0 ./libcsud.a(platform.c.o)
-                0x00000000004b66d0                MemoryReserve
-                0x00000000004b66d8                MemoryAllocate
-                0x00000000004b6b28                MemoryDeallocate
-                0x00000000004b6c40                MemoryCopy
- .bss           0x00000000004b6c90        0x8 ./libcsud.a(platform.c.o)
-                0x00000000004b6c90                FirstFreeAllocation
-                0x00000000004b6c94                allocated
- .comment       0x0000000000000000       0x12 ./libcsud.a(platform.c.o)
+                0x007b768d       0x32 .\libcsud.a(device.keyboard.c.o)
+ *fill*         0x007b76bf        0x1 
+ COMMON         0x007b76c0       0x10 .\libcsud.a(device.keyboard.c.o)
+                0x007b76c0                keyboards
+ .text          0x007b76d0      0x5c0 .\libcsud.a(platform.c.o)
+                0x007b76d0                MemoryReserve
+                0x007b76d8                MemoryAllocate
+                0x007b7b28                MemoryDeallocate
+                0x007b7c40                MemoryCopy
+ .bss           0x007b7c90        0x8 .\libcsud.a(platform.c.o)
+                0x007b7c90                FirstFreeAllocation
+                0x007b7c94                allocated
+ .comment       0x00000000       0x12 .\libcsud.a(platform.c.o)
  .ARM.attributes
-                0x00000000004b6c98       0x32 ./libcsud.a(platform.c.o)
- *fill*         0x00000000004b6cca        0x6 
- COMMON         0x00000000004b6cd0     0x4c00 ./libcsud.a(platform.c.o)
-                0x00000000004b6cd0                Heap
-                0x00000000004bacd0                Allocations
- .text          0x00000000004bb8d0     0x10e8 ./libcsud.a(usbd.c.o)
-                0x00000000004bb8d0                UsbGetRootHub
-                0x00000000004bb8e0                UsbPrintDeviceTree
-                0x00000000004bb9ac                UsbControlMessage
-                0x00000000004bbaa4                UsbGetDescriptor
-                0x00000000004bbb90                UsbGetString
-                0x00000000004bbbfc                UsbReadStringLang
-                0x00000000004bbc80                UsbReadString
-                0x00000000004bbd80                UsbReadDeviceDescriptor
-                0x00000000004bbec0                UsbSetAddress
-                0x00000000004bbfa0                UsbSetConfiguration
-                0x00000000004bc074                UsbConfigure
-                0x00000000004bc244                UsbGetDescription
-                0x00000000004bc4f4                UsbScanDevice
-                0x00000000004bc71c                UsbAllocateDevice
-                0x00000000004bc7d8                UsbDeallocateDevice
-                0x00000000004bc8f0                UsbScanRootHub
-                0x00000000004bc940                UsbInitialise
-                0x00000000004bc99c                UsbCheckForChange
- .bss           0x00000000004bc9b8        0x4 ./libcsud.a(usbd.c.o)
-                0x00000000004bc9b8                RootHub
- .rodata        0x00000000004bc9bc      0x248 ./libcsud.a(usbd.c.o)
+                0x007b7c98       0x32 .\libcsud.a(platform.c.o)
+ *fill*         0x007b7cca        0x6 
+ COMMON         0x007b7cd0     0x4c00 .\libcsud.a(platform.c.o)
+                0x007b7cd0                Heap
+                0x007bbcd0                Allocations
+ .text          0x007bc8d0     0x10e8 .\libcsud.a(usbd.c.o)
+                0x007bc8d0                UsbGetRootHub
+                0x007bc8e0                UsbPrintDeviceTree
+                0x007bc9ac                UsbControlMessage
+                0x007bcaa4                UsbGetDescriptor
+                0x007bcb90                UsbGetString
+                0x007bcbfc                UsbReadStringLang
+                0x007bcc80                UsbReadString
+                0x007bcd80                UsbReadDeviceDescriptor
+                0x007bcec0                UsbSetAddress
+                0x007bcfa0                UsbSetConfiguration
+                0x007bd074                UsbConfigure
+                0x007bd244                UsbGetDescription
+                0x007bd4f4                UsbScanDevice
+                0x007bd71c                UsbAllocateDevice
+                0x007bd7d8                UsbDeallocateDevice
+                0x007bd8f0                UsbScanRootHub
+                0x007bd940                UsbInitialise
+                0x007bd99c                UsbCheckForChange
+ .bss           0x007bd9b8        0x4 .\libcsud.a(usbd.c.o)
+                0x007bd9b8                RootHub
+ .rodata        0x007bd9bc      0x248 .\libcsud.a(usbd.c.o)
  .rodata.str1.4
-                0x00000000004bcc04       0x10 ./libcsud.a(usbd.c.o)
- .comment       0x0000000000000000       0x12 ./libcsud.a(usbd.c.o)
+                0x007bdc04       0x10 .\libcsud.a(usbd.c.o)
+ .comment       0x00000000       0x12 .\libcsud.a(usbd.c.o)
  .ARM.attributes
-                0x00000000004bcc14       0x32 ./libcsud.a(usbd.c.o)
- *fill*         0x00000000004bcc46        0x2 
- COMMON         0x00000000004bcc48        0x4 ./libcsud.a(usbd.c.o)
-                0x00000000004bcc48                DeviceNumbers
- .text          0x00000000004bcc4c     0x1b24 ./libcsud.a(device.hid.c.o)
-                0x00000000004bcc4c                HidEnumerateActionCountField
-                0x00000000004bcd74                HidDetached
-                0x00000000004bcdb0                HidEnumerateActionAddField
-                0x00000000004bd5b8                HidDeallocate
-                0x00000000004bd70c                HidEnumerateActionCountReport
-                0x00000000004bd7c4                HidGetReport
-                0x00000000004bd880                HidSetReport
-                0x00000000004bd930                BitSet
-                0x00000000004bda5c                BitGetUnsigned
-                0x00000000004bdb64                BitGetSigned
-                0x00000000004bdb90                HidReadDevice
-                0x00000000004bdd8c                HidWriteDevice
-                0x00000000004bdf38                HidSetProtocol
-                0x00000000004bdfe8                HidEnumerateReport
-                0x00000000004be140                HidParseReportDescriptor
-                0x00000000004be470                HidScan
-                0x00000000004be760                HidGetFieldValue
- .bss           0x00000000004be770        0x0 ./libcsud.a(device.hid.c.o)
- .comment       0x0000000000000000       0x12 ./libcsud.a(device.hid.c.o)
+                0x007bdc14       0x32 .\libcsud.a(usbd.c.o)
+ *fill*         0x007bdc46        0x2 
+ COMMON         0x007bdc48        0x4 .\libcsud.a(usbd.c.o)
+                0x007bdc48                DeviceNumbers
+ .text          0x007bdc4c     0x1b24 .\libcsud.a(device.hid.c.o)
+                0x007bdc4c                HidEnumerateActionCountField
+                0x007bdd74                HidDetached
+                0x007bddb0                HidEnumerateActionAddField
+                0x007be5b8                HidDeallocate
+                0x007be70c                HidEnumerateActionCountReport
+                0x007be7c4                HidGetReport
+                0x007be880                HidSetReport
+                0x007be930                BitSet
+                0x007bea5c                BitGetUnsigned
+                0x007beb64                BitGetSigned
+                0x007beb90                HidReadDevice
+                0x007bed8c                HidWriteDevice
+                0x007bef38                HidSetProtocol
+                0x007befe8                HidEnumerateReport
+                0x007bf140                HidParseReportDescriptor
+                0x007bf470                HidScan
+                0x007bf760                HidGetFieldValue
+ .bss           0x007bf770        0x0 .\libcsud.a(device.hid.c.o)
+ .comment       0x00000000       0x12 .\libcsud.a(device.hid.c.o)
  .ARM.attributes
-                0x00000000004be770       0x32 ./libcsud.a(device.hid.c.o)
- *fill*         0x00000000004be7a2        0x2 
- .text          0x00000000004be7a4      0xd34 ./libcsud.a(device.hub.c.o)
-                0x00000000004be7a4                HubDetached
-                0x00000000004be844                HubDeallocate
-                0x00000000004be920                HubReadDescriptor
-                0x00000000004bea18                HubGetStatus
-                0x00000000004beaf0                HubPortGetStatus
-                0x00000000004bebd0                HubChangeFeature
-                0x00000000004bec84                HubChangePortFeature
-                0x00000000004bed40                HubPowerOn
-                0x00000000004bede8                HubPortReset
-                0x00000000004beebc                HubPortConnectionChanged
-                0x00000000004bf0c4                HubCheckConnection
-                0x00000000004bf1f8                HubRecursiveCheck
-                0x00000000004bf2c0                HubScan
- .bss           0x00000000004bf4d8        0x0 ./libcsud.a(device.hub.c.o)
- .comment       0x0000000000000000       0x12 ./libcsud.a(device.hub.c.o)
+                0x007bf770       0x32 .\libcsud.a(device.hid.c.o)
+ *fill*         0x007bf7a2        0x2 
+ .text          0x007bf7a4      0xd34 .\libcsud.a(device.hub.c.o)
+                0x007bf7a4                HubDetached
+                0x007bf844                HubDeallocate
+                0x007bf920                HubReadDescriptor
+                0x007bfa18                HubGetStatus
+                0x007bfaf0                HubPortGetStatus
+                0x007bfbd0                HubChangeFeature
+                0x007bfc84                HubChangePortFeature
+                0x007bfd40                HubPowerOn
+                0x007bfde8                HubPortReset
+                0x007bfebc                HubPortConnectionChanged
+                0x007c00c4                HubCheckConnection
+                0x007c01f8                HubRecursiveCheck
+                0x007c02c0                HubScan
+ .bss           0x007c04d8        0x0 .\libcsud.a(device.hub.c.o)
+ .comment       0x00000000       0x12 .\libcsud.a(device.hub.c.o)
  .ARM.attributes
-                0x00000000004bf4d8       0x32 ./libcsud.a(device.hub.c.o)
- *fill*         0x00000000004bf50a        0x2 
- .text          0x00000000004bf50c     0x160c ./libcsud.a(hcd.designware20.c.o)
-                0x00000000004bf50c                WriteThroughRegMask
-                0x00000000004bf5a0                WriteThroughReg
-                0x00000000004bf5a8                ReadBackReg
-                0x00000000004bf64c                ClearReg
-                0x00000000004bf6b4                SetReg
-                0x00000000004bf750                HcdReset
-                0x00000000004bf800                HcdTransmitFifoFlush
-                0x00000000004bf894                HcdReceiveFifoFlush
-                0x00000000004bf90c                HcdPrepareChannel
-                0x00000000004bfc24                HcdTransmitChannel
-                0x00000000004bfcd0                HcdChannelInterruptToError
-                0x00000000004bfdac                HcdChannelSendWaitOne
-                0x00000000004c0068                HcdChannelSendWait
-                0x00000000004c0180                HcdSumbitControlMessage
-                0x00000000004c03c8                HcdInitialise
-                0x00000000004c055c                HcdStart
-                0x00000000004c0ab8                HcdStop
-                0x00000000004c0adc                HcdDeinitialise
- .bss           0x00000000004c0b18       0x14 ./libcsud.a(hcd.designware20.c.o)
-                0x00000000004c0b18                Core
-                0x00000000004c0b1c                Host
-                0x00000000004c0b20                Power
-                0x00000000004c0b24                databuffer
-                0x00000000004c0b28                PhyInitialised
- .comment       0x0000000000000000       0x12 ./libcsud.a(hcd.designware20.c.o)
+                0x007c04d8       0x32 .\libcsud.a(device.hub.c.o)
+ *fill*         0x007c050a        0x2 
+ .text          0x007c050c     0x160c .\libcsud.a(hcd.designware20.c.o)
+                0x007c050c                WriteThroughRegMask
+                0x007c05a0                WriteThroughReg
+                0x007c05a8                ReadBackReg
+                0x007c064c                ClearReg
+                0x007c06b4                SetReg
+                0x007c0750                HcdReset
+                0x007c0800                HcdTransmitFifoFlush
+                0x007c0894                HcdReceiveFifoFlush
+                0x007c090c                HcdPrepareChannel
+                0x007c0c24                HcdTransmitChannel
+                0x007c0cd0                HcdChannelInterruptToError
+                0x007c0dac                HcdChannelSendWaitOne
+                0x007c1068                HcdChannelSendWait
+                0x007c1180                HcdSumbitControlMessage
+                0x007c13c8                HcdInitialise
+                0x007c155c                HcdStart
+                0x007c1ab8                HcdStop
+                0x007c1adc                HcdDeinitialise
+ .bss           0x007c1b18       0x14 .\libcsud.a(hcd.designware20.c.o)
+                0x007c1b18                Core
+                0x007c1b1c                Host
+                0x007c1b20                Power
+                0x007c1b24                databuffer
+                0x007c1b28                PhyInitialised
+ .comment       0x00000000       0x12 .\libcsud.a(hcd.designware20.c.o)
  .ARM.attributes
-                0x00000000004c0b2c       0x32 ./libcsud.a(hcd.designware20.c.o)
- *fill*         0x00000000004c0b5e        0x2 
- COMMON         0x00000000004c0b60        0xc ./libcsud.a(hcd.designware20.c.o)
-                0x00000000004c0b60                CorePhysical
-                0x00000000004c0b64                HostPhysical
-                0x00000000004c0b68                PowerPhysical
- .text          0x00000000004c0b6c      0x6f0 ./libcsud.a(hcd.designware20.roothub.c.o)
-                0x00000000004c0b6c                HcdProcessRootHubMessage
- .bss           0x00000000004c125c        0x4 ./libcsud.a(hcd.designware20.roothub.c.o)
-                0x00000000004c125c                RootHubDeviceNumber
- .comment       0x0000000000000000       0x12 ./libcsud.a(hcd.designware20.roothub.c.o)
+                0x007c1b2c       0x32 .\libcsud.a(hcd.designware20.c.o)
+ *fill*         0x007c1b5e        0x2 
+ COMMON         0x007c1b60        0xc .\libcsud.a(hcd.designware20.c.o)
+                0x007c1b60                CorePhysical
+                0x007c1b64                HostPhysical
+                0x007c1b68                PowerPhysical
+ .text          0x007c1b6c      0x6f0 .\libcsud.a(hcd.designware20.roothub.c.o)
+                0x007c1b6c                HcdProcessRootHubMessage
+ .bss           0x007c225c        0x4 .\libcsud.a(hcd.designware20.roothub.c.o)
+                0x007c225c                RootHubDeviceNumber
+ .comment       0x00000000       0x12 .\libcsud.a(hcd.designware20.roothub.c.o)
  .ARM.attributes
-                0x00000000004c1260       0x32 ./libcsud.a(hcd.designware20.roothub.c.o)
- *fill*         0x00000000004c1292        0x2 
- .text          0x00000000004c1294      0x16c ./libcsud.a(platform.armv6.c.o)
-                0x00000000004c1294                __aeabi_uidivmod
-                0x00000000004c13c8                __aeabi_uidiv
- .bss           0x00000000004c1400        0x0 ./libcsud.a(platform.armv6.c.o)
- .comment       0x0000000000000000       0x12 ./libcsud.a(platform.armv6.c.o)
+                0x007c2260       0x32 .\libcsud.a(hcd.designware20.roothub.c.o)
+ *fill*         0x007c2292        0x2 
+ .text          0x007c2294      0x16c .\libcsud.a(platform.armv6.c.o)
+                0x007c2294                __aeabi_uidivmod
+                0x007c23c8                __aeabi_uidiv
+ .bss           0x007c2400        0x0 .\libcsud.a(platform.armv6.c.o)
+ .comment       0x00000000       0x12 .\libcsud.a(platform.armv6.c.o)
  .ARM.attributes
-                0x00000000004c1400       0x32 ./libcsud.a(platform.armv6.c.o)
- *fill*         0x00000000004c1432        0x2 
- .text          0x00000000004c1434      0x11c ./libcsud.a(platform.broadcom2835.c.o)
-                0x00000000004c1434                MicroDelay
-                0x00000000004c14a4                PowerOnUsb
- .bss           0x00000000004c1550        0x0 ./libcsud.a(platform.broadcom2835.c.o)
- .comment       0x0000000000000000       0x12 ./libcsud.a(platform.broadcom2835.c.o)
+                0x007c2400       0x32 .\libcsud.a(platform.armv6.c.o)
+ *fill*         0x007c2432        0x2 
+ .text          0x007c2434      0x11c .\libcsud.a(platform.broadcom2835.c.o)
+                0x007c2434                MicroDelay
+                0x007c24a4                PowerOnUsb
+ .bss           0x007c2550        0x0 .\libcsud.a(platform.broadcom2835.c.o)
+ .comment       0x00000000       0x12 .\libcsud.a(platform.broadcom2835.c.o)
  .ARM.attributes
-                0x00000000004c1550       0x32 ./libcsud.a(platform.broadcom2835.c.o)
+                0x007c2550       0x32 .\libcsud.a(platform.broadcom2835.c.o)
 
-.text           0x00000000004c1584      0xf94
+.text           0x007c2584      0xfa8
  *.c.o(.text)
  *(.text)
- .text          0x00000000004c1584      0x24c build/anim.o
-                0x00000000004c1584                Animacion
-                0x00000000004c165c                DrawBackgroundRectangle
-                0x00000000004c16b0                drawImageWithTransparency
-                0x00000000004c1720                GetBackgroundColor
-                0x00000000004c174c                removeImageWithBlack
- .text          0x00000000004c17d0      0x1f0 build/drawing.o
-                0x00000000004c17d0                SetForeColour
-                0x00000000004c17e8                DrawPixel
-                0x00000000004c1848                SetGraphicsAddress
-                0x00000000004c1854                DrawLine
-                0x00000000004c18d0                DrawCharacter
-                0x00000000004c193c                DrawString
- .text          0x00000000004c19c0        0x0 build/fondo.o
- .text          0x00000000004c19c0       0x60 build/frameBuffer.o
-                0x00000000004c19c0                InitialiseFrameBuffer
- .text          0x00000000004c1a20       0x98 build/gpio.o
-                0x00000000004c1a20                GetGpioAddress
-                0x00000000004c1a28                SetGpioFunction
-                0x00000000004c1a78                SetGpio
- .text          0x00000000004c1ab8      0x148 build/juego.o
-                0x00000000004c1ab8                juego
-                0x00000000004c1ae8                escogiendo
-                0x00000000004c1b84                laberinto
- .text          0x00000000004c1c00      0x144 build/keyboard.o
-                0x00000000004c1c00                KeyboardUpdate
-                0x00000000004c1c84                KeyWasDown
-                0x00000000004c1cb4                KeyboardGetChar
- .text          0x00000000004c1d44        0x0 build/laberin.o
- .text          0x00000000004c1d44       0x6c build/mailbox.o
-                0x00000000004c1d44                GetMailboxBase
-                0x00000000004c1d4c                MailboxRead
-                0x00000000004c1d80                MailboxWrite
- .text          0x00000000004c1db0      0x1b0 build/main.o
- .text          0x00000000004c1f60       0x48 build/maths.o
-                0x00000000004c1f60                DivideU32
- .text          0x00000000004c1fa8        0x0 build/p1_1.o
- .text          0x00000000004c1fa8        0x0 build/p1_2.o
- .text          0x00000000004c1fa8        0x0 build/p1_3.o
- .text          0x00000000004c1fa8        0x0 build/p2_1.o
- .text          0x00000000004c1fa8        0x0 build/p2_2.o
- .text          0x00000000004c1fa8        0x0 build/p2_3.o
- .text          0x00000000004c1fa8        0x0 build/p3_1.o
- .text          0x00000000004c1fa8        0x0 build/p3_2.o
- .text          0x00000000004c1fa8        0x0 build/p3_3.o
- .text          0x00000000004c1fa8       0x18 build/random.o
-                0x00000000004c1fa8                Random
- .text          0x00000000004c1fc0       0x40 build/systemTimer.o
-                0x00000000004c1fc0                GetSystemTimerBase
-                0x00000000004c1fc8                GetTimeStamp
-                0x00000000004c1fd8                Wait
- .text          0x00000000004c2000       0x74 build/tags.o
-                0x00000000004c2000                FindTag
- .text          0x00000000004c2074      0x2c0 build/terminal.o
-                0x00000000004c20ac                TerminalDisplay
-                0x00000000004c2154                TerminalClear
-                0x00000000004c216c                Print
-                0x00000000004c2244                ReadLine
- .text          0x00000000004c2334      0x1e4 build/text.o
-                0x00000000004c2334                ReverseString
-                0x00000000004c2360                UnsignedString
-                0x00000000004c23b0                SignedString
-                0x00000000004c23dc                FormatString
+ .text          0x007c2584      0x24c build/anim.o
+                0x007c2584                Animacion
+                0x007c265c                DrawBackgroundRectangle
+                0x007c26b0                drawImageWithTransparency
+                0x007c2720                GetBackgroundColor
+                0x007c274c                removeImageWithBlack
+ .text          0x007c27d0      0x1f0 build/drawing.o
+                0x007c27d0                SetForeColour
+                0x007c27e8                DrawPixel
+                0x007c2848                SetGraphicsAddress
+                0x007c2854                DrawLine
+                0x007c28d0                DrawCharacter
+                0x007c293c                DrawString
+ .text          0x007c29c0        0x0 build/fondo.o
+ .text          0x007c29c0        0x0 build/fondoInicio.o
+ .text          0x007c29c0        0x0 build/fondoSeleccion.o
+ .text          0x007c29c0       0x60 build/frameBuffer.o
+                0x007c29c0                InitialiseFrameBuffer
+ .text          0x007c2a20       0x98 build/gpio.o
+                0x007c2a20                GetGpioAddress
+                0x007c2a28                SetGpioFunction
+                0x007c2a78                SetGpio
+ .text          0x007c2ab8      0x15c build/juego.o
+                0x007c2ab8                juego
+                0x007c2ae8                escogiendo
+                0x007c2b94                laberinto
+ .text          0x007c2c14      0x144 build/keyboard.o
+                0x007c2c14                KeyboardUpdate
+                0x007c2c98                KeyWasDown
+                0x007c2cc8                KeyboardGetChar
+ .text          0x007c2d58        0x0 build/laberin.o
+ .text          0x007c2d58       0x6c build/mailbox.o
+                0x007c2d58                GetMailboxBase
+                0x007c2d60                MailboxRead
+                0x007c2d94                MailboxWrite
+ .text          0x007c2dc4      0x1b0 build/main.o
+ .text          0x007c2f74       0x48 build/maths.o
+                0x007c2f74                DivideU32
+ .text          0x007c2fbc        0x0 build/p1_1.o
+ .text          0x007c2fbc        0x0 build/p1_2.o
+ .text          0x007c2fbc        0x0 build/p1_3.o
+ .text          0x007c2fbc        0x0 build/p2_1.o
+ .text          0x007c2fbc        0x0 build/p2_2.o
+ .text          0x007c2fbc        0x0 build/p2_3.o
+ .text          0x007c2fbc        0x0 build/p3_1.o
+ .text          0x007c2fbc        0x0 build/p3_2.o
+ .text          0x007c2fbc        0x0 build/p3_3.o
+ .text          0x007c2fbc       0x18 build/random.o
+                0x007c2fbc                Random
+ .text          0x007c2fd4       0x40 build/systemTimer.o
+                0x007c2fd4                GetSystemTimerBase
+                0x007c2fdc                GetTimeStamp
+                0x007c2fec                Wait
+ .text          0x007c3014       0x74 build/tags.o
+                0x007c3014                FindTag
+ .text          0x007c3088      0x2c0 build/terminal.o
+                0x007c30c0                TerminalDisplay
+                0x007c3168                TerminalClear
+                0x007c3180                Print
+                0x007c3258                ReadLine
+ .text          0x007c3348      0x1e4 build/text.o
+                0x007c3348                ReverseString
+                0x007c3374                UnsignedString
+                0x007c33c4                SignedString
+                0x007c33f0                FormatString
 
 /DISCARD/
  *(*)
