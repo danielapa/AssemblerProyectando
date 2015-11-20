@@ -14,13 +14,13 @@
 juego:
 	push {lr}
 
-drawingBG:
 	ldr r0, =fondoInicioHeight
 	mov r1,#0
 	mov r2,#0
 
 	bl drawImageWithTransparency
 
+drawingBG:
 	bl KeyboardUpdate
     bl KeyboardGetChar
 
@@ -39,12 +39,12 @@ drawingBG:
 escogiendo:
 	push {lr}
 
-again:
     ldr r0, =fondoSeleccionHeight
     mov r1,#0
     mov r2,#0
     bl drawImageWithTransparency
 
+again:
 	bl KeyboardUpdate //se revisa que personaje es escogido
     bl KeyboardGetChar
 
