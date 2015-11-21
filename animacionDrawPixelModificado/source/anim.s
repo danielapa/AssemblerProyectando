@@ -111,19 +111,6 @@ Caminar:
         b continuarAnimacion$
 
     moverPersonajeDown:
-        ldr r0, =direccionPersonaje3
-        ldr r0, [r0]
-        mov r1, x
-        mov r2, y
-        mov r3, #5
-        //bl Choque
-        cmp r3, #7
-        subeq r2, #5
-        subeq y, #5
-        bl drawImageWithTransparency
-
-        ldr r0, =30000
-        bl Wait
 
         // borrar 5px de alto
         mov r0, x
@@ -136,22 +123,23 @@ Caminar:
 
         // sumar 5px a la posicion en y
         add y, #5
-        b Revision
 
-    moverPersonajeUp:
         ldr r0, =direccionPersonaje3
         ldr r0, [r0]
         mov r1, x
         mov r2, y
-        mov r3, #4
-        //bl Choque
-        cmp r3, #6
-        addeq r2, #5
-        addeq y, #5
+        mov r3, #5
+        bl Choque
+        cmp r3, #7
+        subeq r2, #5
+        subeq y, #5
         bl drawImageWithTransparency
 
         ldr r0, =30000
         bl Wait
+        b Revision
+
+    moverPersonajeUp:
         // borrar 5px de alto
         mov r0, x
         ldr r1, =direccionPersonaje1
@@ -167,6 +155,21 @@ Caminar:
 
         // restar 5px a la posicion en y
         sub y, #5
+
+        ldr r0, =direccionPersonaje3
+        ldr r0, [r0]
+        mov r1, x
+        mov r2, y
+        mov r3, #4
+        bl Choque
+        cmp r3, #6
+        addeq r2, #5
+        addeq y, #5
+        bl drawImageWithTransparency
+
+        ldr r0, =30000
+        bl Wait
+
         b Revision
 
 
