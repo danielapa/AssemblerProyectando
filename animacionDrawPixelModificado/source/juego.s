@@ -119,8 +119,9 @@ laberinto:
 
 	ldr r5, =direccionPersonaje1 //mueve personaje guardado en memoria para pintarlo por primera vez
 	ldr r0, [r5]
-	mov r1,#58
-	mov r2,#0
+	mov r1,#400
+    add r1, #75
+	mov r2,#100
 
 	bl drawImageWithTransparency
 

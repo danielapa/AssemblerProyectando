@@ -31,8 +31,9 @@ Caminar:
     y .req r6
     
     mov paso_actual, #0
-    mov x, #58
-    mov y, #0
+    mov x, #400
+    add x, #75
+    mov y, #100
 
     loopContinue$:
 
@@ -71,7 +72,7 @@ Caminar:
         cmp r0, #0
         bne moverPersonajeUp
 
-        b loopContinue$
+        b Revision
 
     moverPersonajeDer:
 
@@ -86,6 +87,7 @@ Caminar:
 
         // sumar 5px a la posicion en x
         add x, #5
+        mov r3, #5
         b continuarAnimacion$
 
     moverPersonajeIzq:
@@ -105,6 +107,7 @@ Caminar:
 
         // sumar 5px a la posicion en x
         sub x, #5
+        mov r3, #4
         b continuarAnimacion$
 
     moverPersonajeDown:
@@ -159,12 +162,6 @@ Caminar:
 
 
     continuarAnimacion$:
-        // *******************************
-        // 2 - borrar al personaje
-        // *******************************
-        // ESTE PASO YA NO ES NECESARIO YA QUE LE
-        // CAEMOS ENCIMA AL PERSONAJE
-        
 
         // *******************************
         // 3 - actualizar paso
@@ -172,7 +169,6 @@ Caminar:
         add paso_actual, #1
         cmp paso_actual, #3
         moveq paso_actual, #0
-
 
         // *******************************
         // 4 - actualizar al personaje
@@ -188,12 +184,25 @@ Caminar:
         ldreq r0, [r0]
         mov r1, x
         mov r2, y
-        push {r0, r1, r2}
-        //bl Choque
-        pop {r0, r1, r2}
-        //bne loopContinue$
-        bl drawImageWithTransparency
-
+        bl Choque //revisa si el personaje se choco
+        cmp r3, #6 //si se sumo 2 a r3 y este era 4, iba a la izquierda
+        addeq r1, #5
+        addeq x, #5
+        push {r3}
+        bleq drawImageWithTransparency
+        pop {r3}
+        cmp r3, #7 //si se sumo 2 a r3 y este era 5, iba a la derecha
+        subeq r1, #5
+        subeq x, #5
+        push {r3}
+        bleq drawImageWithTransparency
+        pop {r3}
+        cmp r3, #4 //izquierda normal
+        push {r3}
+        bleq drawImageWithTransparency
+        pop {r3}
+        cmp r3, #5 //derecha normal
+        bleq drawImageWithTransparency
 
         // *******************************
         // 5 - retardo
@@ -203,7 +212,7 @@ Caminar:
 
         // *******************************
 
-        b loopContinue$
+        b Revision
 
     finAnimacion:
 
@@ -244,9 +253,10 @@ Caminar:
 
 .globl Choque
 Choque:
-    push {r4-r12, lr}
+    push {r0, r1, r2, r4-r12, lr}
     
-    ldr r4, =53150 //color del fondo, donde debe de estar personaje
+    ldr r4, =bg //color del fondo, donde debe de estar personaje
+    ldrh r4, [r4]
 
     x           .req r5
     y           .req r6
@@ -255,6 +265,10 @@ Choque:
     conth       .req r9
     contw       .req r10
         
+    ldrh height, [r0]
+    add r0, #2
+    ldrh width, [r0]
+
     mov x, r1
     mov y, r2
     mov conth, #0
@@ -266,26 +280,24 @@ characterLoopC$:
 
     bl GetBackgroundColor
 
-    cmp r0, r4
-    bne termino
-
+    cmp r0, r4 //compara color de fondo con azul
+    addne r3, #2 //si no es igual, se choco
+    popne {r0, r1, r2, r4-r12, pc}
+    
     add contw, #1
     cmp contw, width
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    beq termino
+    popeq {r0, r1, r2, r4-r12, pc} //se ha terminado de revisar y no hay choques
     b characterLoopC$
 
-termino:    
     .unreq x
     .unreq y
     .unreq height
     .unreq width
     .unreq conth
-    .unreq contw    
-
-    pop {r4-r12, pc}
+    .unreq contw      
 
 // ******************************************
 // Subrutina para dibujar un rectangulo con el
@@ -418,7 +430,7 @@ characterLoop$:
 // ******************************************
 .globl GetBackgroundColor
 GetBackgroundColor:
-    push {r4-r12, lr}
+    push {r3, r4-r12, lr}
     
     mov r2, r0 //posicion en x
     mov r3, r1 //posicion en y
@@ -437,7 +449,7 @@ GetBackgroundColor:
 
     //ldr r0, =0xF800
 
-    pop {r4-r12, pc}
+    pop {r3, r4-r12, pc}
 
     .unreq pixel
 
