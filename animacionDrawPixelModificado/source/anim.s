@@ -31,9 +31,8 @@ Caminar:
     y .req r6
     
     mov paso_actual, #0
-    mov x, #400
-    add x, #75
-    mov y, #100
+    mov x, #65
+    mov y, #45
 
     loopContinue$:
 

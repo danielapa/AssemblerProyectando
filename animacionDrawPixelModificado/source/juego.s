@@ -117,13 +117,55 @@ laberinto:
 
 	bl drawImageWithTransparency
 
-	ldr r5, =direccionPersonaje1 //mueve personaje guardado en memoria para pintarlo por primera vez
-	ldr r0, [r5]
-	mov r1,#400
-    add r1, #75
-	mov r2,#100
-
+    // laberinto elementos del laberinto laberinto
+	ldr r0, =blueLockHeight
+	mov r1,#199
+	mov r2,#49
 	bl drawImageWithTransparency
+
+    ldr r0, =redLockHeight
+    mov r1,#79
+    mov r2,#400
+    add r2,#73
+    bl drawImageWithTransparency
+
+    ldr r0, =greenLockHeight
+    mov r1,#700
+    add r1,#83
+    mov r2,#264
+    bl drawImageWithTransparency
+
+    ldr r0, =yellowLockHeight
+    mov r1,#900
+    add r1, #50
+    mov r2,#628
+    bl drawImageWithTransparency
+
+    ldr r0, =blueKeyHeight
+    mov r1,#500
+    add r1,#54
+    mov r2,#300
+    add r2,#54
+    bl drawImageWithTransparency
+
+    ldr r0, =redKeyHeight
+    mov r1,#800
+    add r1,#77
+    mov r2,#200
+    add r2,#61
+    bl drawImageWithTransparency
+
+    ldr r0, =greenKeyHeight
+    mov r1,#400
+    add r1,#67
+    mov r2,#632
+    bl drawImageWithTransparency
+
+    ldr r0, =yellowKeyHeight
+    mov r1,#80
+    mov r2,#388
+    bl drawImageWithTransparency
+
 
 //inicia ciclo laberinto
  ciclo:
