@@ -331,7 +331,7 @@ Llaves:
     pop {r4-r12, pc}
 
 // *****************************************************************************************
-// Subrutina para determinar si el personaje se encuentra con una llave para abrir un bloque
+// Subrutina para pintar un espacio de color de un  objeto
 // Entradas:
 // * r0 direccion del personaje
 //     * [r0+0] alto del personaje
@@ -353,7 +353,7 @@ PaintingBG:
     conth       .req r9
     contw       .req r10
     
-    push {r4,r5,r6,r7,r8,r9,r10,lr}
+    push {r4,r5,r6,r7,r8,r9,r10,r11, lr}
     
     mov addr, r0
     mov x, r1
@@ -368,18 +368,21 @@ PaintingBG:
     
 BGLoop$:
     ldrh r2, [addr]
-    
-    add r0, x, contw
-    add r1, y, conth
 
-    bl StoreColour
+    ldrh r11, =0     // validar transparencia
+    cmp r2, r11
+
+    addne r0, x, contw
+    addne r1, y, conth
+
+    blne StoreColour
 
     add contw, #1
     cmp contw, width
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r4,r5,r6,r7,r8,r9,r10,pc}
+    popeq {r4,r5,r6,r7,r8,r9,r10,r11, pc}
     add addr, #2
     b BGLoop$
     
@@ -391,6 +394,67 @@ BGLoop$:
     .unreq conth
     .unreq contw
 
+// *****************************************************************************************
+// Subrutina para pintar un espacio de color del fondo
+// Entradas:
+// * r0 direccion del personaje
+//     * [r0+0] alto del personaje
+//     * [r0+2] ancho del personaje
+//     * [r0+4] primer pixel del personaje
+// * r1 posicion x
+// * r2 posicion y
+// Salida:
+// * no tiene
+// *****************************************************************************************
+
+.globl PaintingBGBlue
+PaintingBGBlue:
+    addr        .req r4
+    x           .req r5
+    y           .req r6
+    height      .req r7
+    width       .req r8
+    conth       .req r9
+    contw       .req r10
+    
+    push {r4,r5,r6,r7,r8,r9,r10,r11, lr}
+    
+    mov addr, r0
+    mov x, r1
+    mov y, r2
+    mov conth, #0
+    mov contw, #0
+
+    ldrh height, [addr]
+    add addr,#2
+    ldrh width, [addr]
+    add addr,#2
+    
+BGLoopB$:
+    ldr r2, =bg //color del fondo, donde debe de estar personaje
+    ldrh r2, [r2]
+
+    add r0, x, contw
+    add r1, y, conth
+
+    bl StoreColour
+
+    add contw, #1
+    cmp contw, width
+    moveq contw, #0
+    addeq conth, #1
+    cmp conth, height
+    popeq {r4,r5,r6,r7,r8,r9,r10,r11, pc}
+    add addr, #2
+    b BGLoopB$
+    
+    .unreq addr
+    .unreq x
+    .unreq y
+    .unreq height
+    .unreq width
+    .unreq conth
+    .unreq contw
 
 // ******************************************
 // Subrutina para dibujar un rectangulo con el
@@ -569,7 +633,7 @@ StoreColour:
     mov r2, r0 //posicion en x
     mov r3, r1 //posicion en y
 
-    ldr r5, =bg
+    ldr r5, =nivel1
 
     pixel .req r5
 

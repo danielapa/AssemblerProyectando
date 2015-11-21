@@ -509,91 +509,92 @@ LOAD ./libcsud.a
  .ARM.attributes
                 0x00000000007f70e8       0x32 ./libcsud.a(platform.broadcom2835.c.o)
 
-.text           0x00000000007f711c     0x1448
+.text           0x00000000007f711c     0x14f8
  *.c.o(.text)
  *(.text)
  .text          0x00000000007f711c      0x124 build/Dibujando.o
                 0x00000000007f711c                drawImagen
- .text          0x00000000007f7240      0x4b0 build/anim.o
+ .text          0x00000000007f7240      0x514 build/anim.o
                 0x00000000007f7240                Caminar
                 0x00000000007f748c                Choque
                 0x00000000007f74e8                Llaves
                 0x00000000007f74f0                PaintingBG
-                0x00000000007f7548                DrawBackgroundRectangle
-                0x00000000007f759c                drawImageWithTransparency
-                0x00000000007f760c                GetBackgroundColor
-                0x00000000007f7638                StoreColour
-                0x00000000007f7668                removeImageWithBlack
- .text          0x00000000007f76f0        0x0 build/bg.o
- .text          0x00000000007f76f0        0x0 build/blueKey.o
- .text          0x00000000007f76f0        0x0 build/blueLock.o
- .text          0x00000000007f76f0      0x1f0 build/drawing.o
-                0x00000000007f76f0                SetForeColour
-                0x00000000007f7708                DrawPixel
-                0x00000000007f7768                SetGraphicsAddress
-                0x00000000007f7774                DrawLine
-                0x00000000007f77f0                DrawCharacter
-                0x00000000007f785c                DrawString
- .text          0x00000000007f78e0        0x0 build/fondo.o
- .text          0x00000000007f78e0        0x0 build/fondoInicio.o
- .text          0x00000000007f78e0        0x0 build/fondoSeleccion.o
- .text          0x00000000007f78e0       0x60 build/frameBuffer.o
-                0x00000000007f78e0                InitialiseFrameBuffer
- .text          0x00000000007f7940       0x98 build/gpio.o
-                0x00000000007f7940                GetGpioAddress
-                0x00000000007f7948                SetGpioFunction
-                0x00000000007f7998                SetGpio
- .text          0x00000000007f79d8        0x0 build/greenKey.o
- .text          0x00000000007f79d8        0x0 build/greenLock.o
- .text          0x00000000007f79d8        0x0 build/heartEmpty.o
- .text          0x00000000007f79d8        0x0 build/heartFull.o
- .text          0x00000000007f79d8      0x274 build/juego.o
-                0x00000000007f79d8                juego
-                0x00000000007f7a08                escogiendo
-                0x00000000007f7ad8                laberinto
- .text          0x00000000007f7c4c      0x144 build/keyboard.o
-                0x00000000007f7c4c                KeyboardUpdate
-                0x00000000007f7cd0                KeyWasDown
-                0x00000000007f7d00                KeyboardGetChar
- .text          0x00000000007f7d90       0x6c build/mailbox.o
-                0x00000000007f7d90                GetMailboxBase
-                0x00000000007f7d98                MailboxRead
-                0x00000000007f7dcc                MailboxWrite
- .text          0x00000000007f7dfc      0x1b0 build/main.o
- .text          0x00000000007f7fac       0x48 build/maths.o
-                0x00000000007f7fac                DivideU32
- .text          0x00000000007f7ff4        0x0 build/nivel1.o
- .text          0x00000000007f7ff4        0x0 build/p1_1.o
- .text          0x00000000007f7ff4        0x0 build/p1_2.o
- .text          0x00000000007f7ff4        0x0 build/p1_3.o
- .text          0x00000000007f7ff4        0x0 build/p2_1.o
- .text          0x00000000007f7ff4        0x0 build/p2_2.o
- .text          0x00000000007f7ff4        0x0 build/p2_3.o
- .text          0x00000000007f7ff4        0x0 build/p3_1.o
- .text          0x00000000007f7ff4        0x0 build/p3_2.o
- .text          0x00000000007f7ff4        0x0 build/p3_3.o
- .text          0x00000000007f7ff4       0x18 build/random.o
-                0x00000000007f7ff4                Random
- .text          0x00000000007f800c        0x0 build/redKey.o
- .text          0x00000000007f800c        0x0 build/redLock.o
- .text          0x00000000007f800c       0x40 build/systemTimer.o
-                0x00000000007f800c                GetSystemTimerBase
-                0x00000000007f8014                GetTimeStamp
-                0x00000000007f8024                Wait
- .text          0x00000000007f804c       0x74 build/tags.o
-                0x00000000007f804c                FindTag
- .text          0x00000000007f80c0      0x2c0 build/terminal.o
-                0x00000000007f80f8                TerminalDisplay
-                0x00000000007f81a0                TerminalClear
-                0x00000000007f81b8                Print
-                0x00000000007f8290                ReadLine
- .text          0x00000000007f8380      0x1e4 build/text.o
-                0x00000000007f8380                ReverseString
-                0x00000000007f83ac                UnsignedString
-                0x00000000007f83fc                SignedString
-                0x00000000007f8428                FormatString
- .text          0x00000000007f8564        0x0 build/yellowKey.o
- .text          0x00000000007f8564        0x0 build/yellowLock.o
+                0x00000000007f7550                PaintingBGBlue
+                0x00000000007f75ac                DrawBackgroundRectangle
+                0x00000000007f7600                drawImageWithTransparency
+                0x00000000007f7670                GetBackgroundColor
+                0x00000000007f769c                StoreColour
+                0x00000000007f76cc                removeImageWithBlack
+ .text          0x00000000007f7754        0x0 build/bg.o
+ .text          0x00000000007f7754        0x0 build/blueKey.o
+ .text          0x00000000007f7754        0x0 build/blueLock.o
+ .text          0x00000000007f7754      0x1f0 build/drawing.o
+                0x00000000007f7754                SetForeColour
+                0x00000000007f776c                DrawPixel
+                0x00000000007f77cc                SetGraphicsAddress
+                0x00000000007f77d8                DrawLine
+                0x00000000007f7854                DrawCharacter
+                0x00000000007f78c0                DrawString
+ .text          0x00000000007f7944        0x0 build/fondo.o
+ .text          0x00000000007f7944        0x0 build/fondoInicio.o
+ .text          0x00000000007f7944        0x0 build/fondoSeleccion.o
+ .text          0x00000000007f7944       0x60 build/frameBuffer.o
+                0x00000000007f7944                InitialiseFrameBuffer
+ .text          0x00000000007f79a4       0x98 build/gpio.o
+                0x00000000007f79a4                GetGpioAddress
+                0x00000000007f79ac                SetGpioFunction
+                0x00000000007f79fc                SetGpio
+ .text          0x00000000007f7a3c        0x0 build/greenKey.o
+ .text          0x00000000007f7a3c        0x0 build/greenLock.o
+ .text          0x00000000007f7a3c        0x0 build/heartEmpty.o
+ .text          0x00000000007f7a3c        0x0 build/heartFull.o
+ .text          0x00000000007f7a3c      0x2c0 build/juego.o
+                0x00000000007f7a3c                juego
+                0x00000000007f7a6c                escogiendo
+                0x00000000007f7b3c                laberinto
+ .text          0x00000000007f7cfc      0x144 build/keyboard.o
+                0x00000000007f7cfc                KeyboardUpdate
+                0x00000000007f7d80                KeyWasDown
+                0x00000000007f7db0                KeyboardGetChar
+ .text          0x00000000007f7e40       0x6c build/mailbox.o
+                0x00000000007f7e40                GetMailboxBase
+                0x00000000007f7e48                MailboxRead
+                0x00000000007f7e7c                MailboxWrite
+ .text          0x00000000007f7eac      0x1b0 build/main.o
+ .text          0x00000000007f805c       0x48 build/maths.o
+                0x00000000007f805c                DivideU32
+ .text          0x00000000007f80a4        0x0 build/nivel1.o
+ .text          0x00000000007f80a4        0x0 build/p1_1.o
+ .text          0x00000000007f80a4        0x0 build/p1_2.o
+ .text          0x00000000007f80a4        0x0 build/p1_3.o
+ .text          0x00000000007f80a4        0x0 build/p2_1.o
+ .text          0x00000000007f80a4        0x0 build/p2_2.o
+ .text          0x00000000007f80a4        0x0 build/p2_3.o
+ .text          0x00000000007f80a4        0x0 build/p3_1.o
+ .text          0x00000000007f80a4        0x0 build/p3_2.o
+ .text          0x00000000007f80a4        0x0 build/p3_3.o
+ .text          0x00000000007f80a4       0x18 build/random.o
+                0x00000000007f80a4                Random
+ .text          0x00000000007f80bc        0x0 build/redKey.o
+ .text          0x00000000007f80bc        0x0 build/redLock.o
+ .text          0x00000000007f80bc       0x40 build/systemTimer.o
+                0x00000000007f80bc                GetSystemTimerBase
+                0x00000000007f80c4                GetTimeStamp
+                0x00000000007f80d4                Wait
+ .text          0x00000000007f80fc       0x74 build/tags.o
+                0x00000000007f80fc                FindTag
+ .text          0x00000000007f8170      0x2c0 build/terminal.o
+                0x00000000007f81a8                TerminalDisplay
+                0x00000000007f8250                TerminalClear
+                0x00000000007f8268                Print
+                0x00000000007f8340                ReadLine
+ .text          0x00000000007f8430      0x1e4 build/text.o
+                0x00000000007f8430                ReverseString
+                0x00000000007f845c                UnsignedString
+                0x00000000007f84ac                SignedString
+                0x00000000007f84d8                FormatString
+ .text          0x00000000007f8614        0x0 build/yellowKey.o
+ .text          0x00000000007f8614        0x0 build/yellowLock.o
 
 /DISCARD/
  *(*)

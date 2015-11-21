@@ -121,10 +121,21 @@ laberinto:
     // * BLOQUES
     //****************
 
+    ldr r0, =blueLockHeight
+    mov r1,#199
+    mov r2,#49
+    bl PaintingBG
+
 	ldr r0, =blueLockHeight
 	mov r1,#199
 	mov r2,#49
 	bl drawImageWithTransparency
+
+    ldr r0, =redLockHeight
+    mov r1,#79
+    mov r2,#400
+    add r2,#73
+    bl PaintingBG
 
     ldr r0, =redLockHeight
     mov r1,#79
@@ -136,7 +147,19 @@ laberinto:
     mov r1,#700
     add r1,#83
     mov r2,#264
+    bl PaintingBG
+
+    ldr r0, =greenLockHeight
+    mov r1,#700
+    add r1,#83
+    mov r2,#264
     bl drawImageWithTransparency
+
+    ldr r0, =yellowLockHeight
+    mov r1,#900
+    add r1, #50
+    mov r2,#628
+    bl PaintingBG
 
     ldr r0, =yellowLockHeight
     mov r1,#900
@@ -145,7 +168,7 @@ laberinto:
     bl drawImageWithTransparency
 
     //****************
-    // * BLOQUES
+    // * LLAVES
     //****************
 
     ldr r0, =blueKeyHeight
