@@ -111,7 +111,7 @@ laberinto:
 
     bl drawImageWithTransparency
 
-	ldr r0, =laberinHeight //inicia laberinto de fondo y personaje en el inicio
+	ldr r0, =nivel1Height //inicia laberinto de fondo y personaje en el inicio
 	mov r1,#0
 	mov r2,#0
 

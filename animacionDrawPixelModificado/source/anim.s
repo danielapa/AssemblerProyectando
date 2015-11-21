@@ -117,9 +117,9 @@ Caminar:
         mov r2, y
         mov r3, #5
         //bl Choque
-        cmp r3, #5
-        subne r2, #5
-        subne y, #5
+        cmp r3, #7
+        subeq r2, #5
+        subeq y, #5
         bl drawImageWithTransparency
 
         ldr r0, =30000
@@ -145,9 +145,9 @@ Caminar:
         mov r2, y
         mov r3, #4
         //bl Choque
-        cmp r3, #4
-        addne r2, #5
-        addne y, #5
+        cmp r3, #6
+        addeq r2, #5
+        addeq y, #5
         bl drawImageWithTransparency
 
         ldr r0, =30000
@@ -444,7 +444,7 @@ GetBackgroundColor:
     mov r2, r0 //posicion en x
     mov r3, r1 //posicion en y
 
-    ldr r5, =laberin
+    ldr r5, =nivel1
 
     pixel .req r5
 
