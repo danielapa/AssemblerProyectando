@@ -111,11 +111,15 @@ Caminar:
         b continuarAnimacion$
 
     moverPersonajeDown:
-
         ldr r0, =direccionPersonaje3
         ldr r0, [r0]
         mov r1, x
         mov r2, y
+        mov r3, #5
+        //bl Choque
+        cmp r3, #5
+        subne r2, #5
+        subne y, #5
         bl drawImageWithTransparency
 
         ldr r0, =30000
@@ -139,6 +143,11 @@ Caminar:
         ldr r0, [r0]
         mov r1, x
         mov r2, y
+        mov r3, #4
+        //bl Choque
+        cmp r3, #4
+        addne r2, #5
+        addne y, #5
         bl drawImageWithTransparency
 
         ldr r0, =30000
@@ -156,7 +165,7 @@ Caminar:
         mov r3, #5
         bl DrawBackgroundRectangle
 
-        // sumar 5px a la posicion en y
+        // restar 5px a la posicion en y
         sub y, #5
         b Revision
 
