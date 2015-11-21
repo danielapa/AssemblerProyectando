@@ -10,11 +10,9 @@
 
 .section .text
 
-
-
 // ******************************************
 // Subrutina para iniciar la animacion del personaje.
-//     Anima un personaje hasta que se presione la tecla "Q" o "q"
+//     Anima un personaje hasta que se presionen las teclas de flecha
 // * No recibe parametros
 // * No tiene salidas
 // ******************************************
@@ -55,13 +53,12 @@ Caminar:
         bl KeyboardGetChar
 
         // -----------------------------
-        // revisar tecla l (si esta presionada)
+        // revisar teclas de flechas (si estan presionadas)
         //  para mover continuamente
         // -----------------------------
-
-        /*teq r0, #'\r'
-        bleq Derecha*/
-        verificar #79
+        cmp r0, #'e'
+        beq finAnimacion //si se presiona esc, se sale del juego
+        verificar #79 
         cmp r0, #0
         bne moverPersonajeDer
         verificar #80
@@ -77,10 +74,6 @@ Caminar:
         b loopContinue$
 
     moverPersonajeDer:
-        /*ldr r7, =0//color del fondo
-        bl GetBackgroundColor
-        cmp r0, r7
-        bne loopContinue$*/
 
         // borrar 5px de ancho
         mov r0, x
@@ -96,6 +89,7 @@ Caminar:
         b continuarAnimacion$
 
     moverPersonajeIzq:
+        
         // borrar 5px de ancho
         ldr r0, =direccionPersonaje4
         ldr r0, [r0]
@@ -114,10 +108,6 @@ Caminar:
         b continuarAnimacion$
 
     moverPersonajeDown:
-        /*ldr r7, =0 //color del fondo
-        bl GetBackgroundColor
-        cmp r0, r7
-        bne loopContinue$*/
 
         ldr r0, =direccionPersonaje3
         ldr r0, [r0]
@@ -198,6 +188,10 @@ Caminar:
         ldreq r0, [r0]
         mov r1, x
         mov r2, y
+        push {r0, r1, r2}
+        //bl Choque
+        pop {r0, r1, r2}
+        //bne loopContinue$
         bl drawImageWithTransparency
 
 
@@ -232,6 +226,66 @@ Caminar:
     .unreq paso_actual
     .unreq x
     .unreq y
+
+// ******************************************
+// Subrutina para determinar si se choco el personaje con una pared
+//    Utiliza DrawPixel y SetForeColour
+//    Asume color transparente como 1
+// * r0 direccion del personaje
+//     * [r0+0] alto del personaje
+//     * [r0+2] ancho del personaje
+//     * [r0+4] primer pixel del personaje
+// * r1 posicion x
+// * r2 posicion y
+// * no tiene salidas
+// ******************************************
+
+//FONDO 53150
+
+.globl Choque
+Choque:
+    push {r4-r12, lr}
+    
+    ldr r4, =53150 //color del fondo, donde debe de estar personaje
+
+    x           .req r5
+    y           .req r6
+    height      .req r7
+    width       .req r8
+    conth       .req r9
+    contw       .req r10
+        
+    mov x, r1
+    mov y, r2
+    mov conth, #0
+    mov contw, #0
+    
+characterLoopC$:
+    add r0, x, contw
+    add r1, y, conth
+
+    bl GetBackgroundColor
+
+    cmp r0, r4
+    bne termino
+
+    add contw, #1
+    cmp contw, width
+    moveq contw, #0
+    addeq conth, #1
+    cmp conth, height
+    beq termino
+    b characterLoopC$
+
+termino:    
+    .unreq x
+    .unreq y
+    .unreq height
+    .unreq width
+    .unreq conth
+    .unreq contw    
+
+    pop {r4-r12, pc}
 
 // ******************************************
 // Subrutina para dibujar un rectangulo con el
@@ -386,6 +440,7 @@ GetBackgroundColor:
     pop {r4-r12, pc}
 
     .unreq pixel
+
 
 // ******************************************
 // Subrutina para dibujar una imagen. 
