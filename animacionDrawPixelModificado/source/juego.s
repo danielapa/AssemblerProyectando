@@ -98,9 +98,9 @@ regreso:
 	pop {lr}
 	mov pc, lr
 
-/**********************************************************************
-* Laberinto
-***********************************************************************/
+//**********************************************************************
+// * Laberinto
+//***********************************************************************/
 .globl laberinto
 laberinto:
 	push {r4-r11, lr}
@@ -117,7 +117,10 @@ laberinto:
 
 	bl drawImageWithTransparency
 
-    // laberinto elementos del laberinto laberinto
+    //****************
+    // * BLOQUES
+    //****************
+
 	ldr r0, =blueLockHeight
 	mov r1,#199
 	mov r2,#49
@@ -140,6 +143,10 @@ laberinto:
     add r1, #50
     mov r2,#628
     bl drawImageWithTransparency
+
+    //****************
+    // * BLOQUES
+    //****************
 
     ldr r0, =blueKeyHeight
     mov r1,#500
@@ -166,23 +173,32 @@ laberinto:
     mov r2,#388
     bl drawImageWithTransparency
 
+    //****************
+    // * VIDAS
+    //****************
+
+    ldr r0, =heartFull
+    mov r1,#700
+    mov r2,#50
+    bl drawImageWithTransparency
+
+    ldr r0, =heartFull
+    mov r1,#800
+    mov r2,#50
+    bl drawImageWithTransparency
+
+    ldr r0, =heartFull
+    mov r1,#900
+    mov r2,#50
+    bl drawImageWithTransparency        
 
 //inicia ciclo laberinto
- ciclo:
-    bl KeyboardUpdate
-    bl KeyboardGetChar
-
-    cmp r0, #'e'
-    beq salir
 
     bl Caminar
 //AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
 //SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
 //ASI CREO QUE SERIA MAS ORDENADO Y SI PIERDE SOLO SE VA A LA ETIQUETA SALIR Y YA SE MUEVE EL LR A PC  EN ORDEN O PODEMOS GUARDARLO EN MEMORIA
 
-    bne ciclo
-
-salir:
 	pop {r4-r11, lr}
 	mov pc, lr
 

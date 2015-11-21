@@ -24,7 +24,7 @@ Caminar:
     bl KeyWasDown
 .endm
 
-    push {lr, r4-r11}
+    push {r4-r11, lr}
 
     paso_actual .req r4
     x .req r5
@@ -49,29 +49,29 @@ Caminar:
         // 1 - revisar teclas
         // *******************************
         Revision:
-        bl KeyboardUpdate
-        bl KeyboardGetChar
+            bl KeyboardUpdate
+            bl KeyboardGetChar
 
-        // -----------------------------
-        // revisar teclas de flechas (si estan presionadas)
-        //  para mover continuamente
-        // -----------------------------
-        cmp r0, #'e'
-        beq finAnimacion //si se presiona esc, se sale del juego
-        verificar #79 
-        cmp r0, #0
-        bne moverPersonajeDer
-        verificar #80
-        cmp r0, #0
-        bne moverPersonajeIzq
-        verificar #81
-        cmp r0, #0
-        bne moverPersonajeDown
-        verificar #82
-        cmp r0, #0
-        bne moverPersonajeUp
+            // -----------------------------
+            // revisar teclas de flechas (si estan presionadas)
+            //  para mover continuamente
+            // -----------------------------
+            cmp r0, #'e'
+            beq finAnimacion //si se presiona esc, se sale del juego
+            verificar #79 
+            cmp r0, #0
+            bne moverPersonajeDer
+            verificar #80
+            cmp r0, #0
+            bne moverPersonajeIzq
+            verificar #81
+            cmp r0, #0
+            bne moverPersonajeDown
+            verificar #82
+            cmp r0, #0
+            bne moverPersonajeUp
 
-        b Revision
+            b Revision
 
     moverPersonajeDer:
 
@@ -215,6 +215,8 @@ Caminar:
         cmp r3, #5 //derecha normal
         bleq drawImageWithTransparency
 
+        bl Llaves
+
         // *******************************
         // 5 - retardo
         // *******************************
@@ -242,7 +244,7 @@ Caminar:
     
 
 
-    pop {pc, r4-r11}
+    pop {r4-r11, pc}
     .unreq paso_actual
     .unreq x
     .unreq y
@@ -285,7 +287,7 @@ Choque:
     mov y, r2
     mov conth, #0
     mov contw, #0
-    
+
 characterLoopC$:
     add r0, x, contw
     add r1, y, conth
@@ -310,6 +312,85 @@ characterLoopC$:
     .unreq width
     .unreq conth
     .unreq contw      
+
+// **********************************************************************
+// Subrutina para determinar si el personaje se encuentra con una llave
+// Entradas:
+// * r1 posicion x
+// * r2 posicion y
+// Salida:
+// * no tiene
+// **********************************************************************
+
+.globl Llaves
+Llaves:
+    push {r4-r12, lr}
+
+
+
+    pop {r4-r12, pc}
+
+// *****************************************************************************************
+// Subrutina para determinar si el personaje se encuentra con una llave para abrir un bloque
+// Entradas:
+// * r0 direccion del personaje
+//     * [r0+0] alto del personaje
+//     * [r0+2] ancho del personaje
+//     * [r0+4] primer pixel del personaje
+// * r1 posicion x
+// * r2 posicion y
+// Salida:
+// * no tiene
+// *****************************************************************************************
+
+.globl PaintingBG
+PaintingBG:
+    addr        .req r4
+    x           .req r5
+    y           .req r6
+    height      .req r7
+    width       .req r8
+    conth       .req r9
+    contw       .req r10
+    
+    push {r4,r5,r6,r7,r8,r9,r10,lr}
+    
+    mov addr, r0
+    mov x, r1
+    mov y, r2
+    mov conth, #0
+    mov contw, #0
+
+    ldrh height, [addr]
+    add addr,#2
+    ldrh width, [addr]
+    add addr,#2
+    
+BGLoop$:
+    ldrh r2, [addr]
+    
+    add r0, x, contw
+    add r1, y, conth
+
+    bl StoreColour
+
+    add contw, #1
+    cmp contw, width
+    moveq contw, #0
+    addeq conth, #1
+    cmp conth, height
+    popeq {r4,r5,r6,r7,r8,r9,r10,pc}
+    add addr, #2
+    b BGLoop$
+    
+    .unreq addr
+    .unreq x
+    .unreq y
+    .unreq height
+    .unreq width
+    .unreq conth
+    .unreq contw
+
 
 // ******************************************
 // Subrutina para dibujar un rectangulo con el
@@ -469,6 +550,40 @@ GetBackgroundColor:
 
     .unreq pixel
 
+// ******************************************
+// Subrutina para colocar color en fondo
+// en una posicion x,y
+// Entradas
+// * r0 posicion x
+// * r1 posicion y
+// * r2 color
+// Salida:
+// * no tiene
+// * (x + (y * ancho)) * tamanio pixel
+// ******************************************
+.globl StoreColour
+StoreColour:
+    push {r3, r4-r12, lr}
+    
+    mov r10, r2 //color a set
+    mov r2, r0 //posicion en x
+    mov r3, r1 //posicion en y
+
+    ldr r5, =bg
+
+    pixel .req r5
+
+    ldr r6, =1024
+    mov r7, #2
+    mul r4, r3, r6 //y * ancho
+    add r3, r2, r4 //x + (y * ancho)
+    mul r2, r3, r7 //*2
+
+    strh r10, [pixel, r2] //coloca color fondo
+
+    pop {r3, r4-r12, pc}
+
+    .unreq pixel
 
 // ******************************************
 // Subrutina para dibujar una imagen. 
@@ -535,3 +650,18 @@ noDrawBlack$:
     .unreq width
     .unreq conth
     .unreq contw
+
+.section .data
+.align 2
+
+.globl LlaveRoja
+    LlaveRoja: .word 0
+
+.globl LlaveAzul
+    LlaveAzul: .word 0
+
+.globl LlaveAma
+    LlaveAma: .word 0
+
+.globl LlaveVert
+    LlaveVert: .word 0
