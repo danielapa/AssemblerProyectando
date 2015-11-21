@@ -251,13 +251,14 @@ Caminar:
 // Subrutina para determinar si se choco el personaje con una pared
 //    Utiliza DrawPixel y SetForeColour
 //    Asume color transparente como 1
+// Entradas:
 // * r0 direccion del personaje
 //     * [r0+0] alto del personaje
 //     * [r0+2] ancho del personaje
-//     * [r0+4] primer pixel del personaje
 // * r1 posicion x
 // * r2 posicion y
-// * no tiene salidas
+// Salida:
+// * r3 contador de lado choque
 // ******************************************
 
 //FONDO 53150
@@ -313,6 +314,7 @@ characterLoopC$:
 // ******************************************
 // Subrutina para dibujar un rectangulo con el
 //    color del fondo
+// Entradas:
 //  * r0: x0
 //  * r1: y0
 //  * r2: ancho
@@ -367,6 +369,7 @@ DrawBackgroundRectangle:
 // Subrutina para dibujar una imagen. 
 //    Utiliza DrawPixel y SetForeColour
 //    Asume color transparente como 1
+// Entradas:
 // * r0 direccion del personaje
 //     * [r0+0] alto del personaje
 //     * [r0+2] ancho del personaje
@@ -434,8 +437,10 @@ characterLoop$:
 // Subrutina para obtener el color del fondo
 // en una posicion x,y
 //    Asume color transparente como 1
+// Entradas
 // * r0 posicion x
 // * r1 posicion y
+// Salida:
 // * salida el color en r0
 // * (x + (y * ancho)) * tamanio pixel
 // ******************************************
@@ -469,6 +474,7 @@ GetBackgroundColor:
 // Subrutina para dibujar una imagen. 
 //    Utiliza DrawPixel y SetForeColour
 //    Asume color transparente como 1
+// Entradas
 // * r0 direccion del personaje
 //     * [r0+0] alto del personaje
 //     * [r0+2] ancho del personaje
