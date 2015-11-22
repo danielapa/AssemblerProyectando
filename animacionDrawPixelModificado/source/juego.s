@@ -14,7 +14,7 @@
 juego:
 	push {lr}
 
-	ldr r0, =fondoInicioHeight
+	ldr r0, =pantallaInicioHeight 
 	mov r1,#0
 	mov r2,#0
 
@@ -39,7 +39,7 @@ drawingBG:
 escogiendo:
 	push {lr}
 
-    ldr r0, =fondoSeleccionHeight
+    ldr r0, =pantallaSeleccionHeight
     mov r1,#0
     mov r2,#0
     bl drawImageWithTransparency
