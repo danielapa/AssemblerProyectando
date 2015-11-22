@@ -259,10 +259,8 @@ Caminar:
     .unreq x
     .unreq y
 
-// ******************************************
+// ************************************************************************
 // Subrutina para determinar si se choco el personaje con una pared
-//    Utiliza DrawPixel y SetForeColour
-//    Asume color transparente como 1
 // Entradas:
 // * r0 direccion del personaje
 //     * [r0+0] alto del personaje
@@ -271,7 +269,7 @@ Caminar:
 // * r2 posicion y
 // Salida:
 // * r3 contador de lado choque
-// ******************************************
+// ************************************************************************
 
 //FONDO 53150
 
@@ -304,21 +302,24 @@ characterLoopC$:
 
     bl GetBackgroundColor
 
-    cmp r0, r4 //compara color de fondo con azul
-    addne r3, #2 //si no es igual, se choco
-    popne {r0, r1, r2, r4-r12, pc}
-
-    ldr r1, =ColorAzul
-    ldrh r1, [r1]
+    mov r11, r0
 
     cmp r0, r1
     moveq r1, #1 
+    moveq r11, r4
     ldreq r2, =LlaveAzul
     streq r1, [r2]
     ldreq r0, =blueKeyHeight
     moveq r1,#199
     moveq r2,#49
-    bleq PaintingBGBlue  
+    bleq PaintingBGBlue    
+
+    cmp r11, r4 //compara color de fondo con azul
+    addne r3, #2 //si no es igual, se choco
+    popne {r0, r1, r2, r4-r12, pc}
+
+    ldr r1, =ColorAzul
+    ldrh r1, [r1]
 
     add contw, #1
     cmp contw, width
@@ -338,11 +339,7 @@ characterLoopC$:
 // **********************************************************************
 // Subrutina para determinar si el personaje se encuentra con una llave
 // Entradas:
-// * r0 direccion del personaje
-//     * [r0+0] alto del personaje
-//     * [r0+2] ancho del personaje
-//     * [r0+4] primer pixel del personaje// * r1 posicion x
-// * r2 posicion y
+// * no tiene
 // Salida:
 // * no tiene
 // **********************************************************************
@@ -789,13 +786,13 @@ noDrawBlack$:
 .align 2
 
 .globl ColorAzul
-    ColorAzul: .hword 9531
+    ColorAzul: .hword 53151
 
 .globl LlaveRoja
     LlaveRoja: .word 0
 
 .globl LlaveAzul
-    LlaveAzul: .word 1
+    LlaveAzul: .word 0
 
 .globl LlaveAma
     LlaveAma: .word 0
