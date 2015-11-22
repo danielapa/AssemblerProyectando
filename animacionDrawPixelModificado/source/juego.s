@@ -171,26 +171,12 @@ laberinto:
     // * LLAVES
     //****************
 
-    /*ldr r0, =blueKeyHeight
-    mov r1,#500
-    add r1,#54
-    mov r2,#300
-    add r2,#54
-    bl PaintingBG*/
-
     ldr r0, =blueKeyHeight
     mov r1,#500
     add r1,#54
     mov r2,#300
     add r2,#54
     bl drawImageWithTransparency
-
-    /*ldr r0, =redKeyHeight
-    mov r1,#800
-    add r1,#77
-    mov r2,#200
-    add r2,#61
-    bl PaintingBG*/
 
     ldr r0, =redKeyHeight
     mov r1,#800
@@ -199,22 +185,11 @@ laberinto:
     add r2,#61
     bl drawImageWithTransparency
 
-    /*ldr r0, =greenKeyHeight
-    mov r1,#400
-    add r1,#67
-    mov r2,#632
-    bl PaintingBG*/
-
     ldr r0, =greenKeyHeight
     mov r1,#400
     add r1,#67
     mov r2,#632
     bl drawImageWithTransparency
-
-    /*ldr r0, =yellowKeyHeight
-    mov r1,#80
-    mov r2,#388
-    bl PaintingBG*/
 
     ldr r0, =yellowKeyHeight
     mov r1,#80
@@ -228,7 +203,17 @@ laberinto:
     ldr r0, =heartFullHeight
     mov r1, #700
     mov r2, #50
+    bl PaintingBG
+
+    ldr r0, =heartFullHeight
+    mov r1, #700
+    mov r2, #50
     bl drawImageWithTransparency
+
+    ldr r0, =heartFullHeight
+    mov r1, #800
+    mov r2, #50
+    bl PaintingBG
 
     ldr r0, =heartFullHeight
     mov r1, #800
@@ -238,7 +223,12 @@ laberinto:
     ldr r0, =heartFullHeight
     mov r1, #900
     mov r2, #50
-    bl drawImageWithTransparency        
+    bl PaintingBG
+
+    ldr r0, =heartFullHeight
+    mov r1, #900
+    mov r2, #50
+    bl drawImageWithTransparency          
 
 //inicia ciclo laberinto
 
