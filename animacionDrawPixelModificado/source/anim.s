@@ -302,11 +302,15 @@ characterLoopC$:
 
     bl GetBackgroundColor
 
+    ldr r1, =ColorAzul
+    ldrh r1, [r1]
+
     mov r11, r0
 
     cmp r0, r1
     moveq r1, #1 
-    moveq r11, r4
+    ldreq r4, =bg //color del fondo, donde debe de estar personaje
+    ldreqh r11, [r4]    
     ldreq r2, =LlaveAzul
     streq r1, [r2]
     ldreq r0, =blueKeyHeight
@@ -317,9 +321,6 @@ characterLoopC$:
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
     popne {r0, r1, r2, r4-r12, pc}
-
-    ldr r1, =ColorAzul
-    ldrh r1, [r1]
 
     add contw, #1
     cmp contw, width

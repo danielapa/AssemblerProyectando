@@ -225,19 +225,19 @@ laberinto:
     // * VIDAS
     //****************
 
-    ldr r0, =heartFull
-    mov r1,#700
-    mov r2,#50
+    ldr r0, =heartFullHeight
+    mov r1, #700
+    mov r2, #50
     bl drawImageWithTransparency
 
-    ldr r0, =heartFull
-    mov r1,#800
-    mov r2,#50
+    ldr r0, =heartFullHeight
+    mov r1, #800
+    mov r2, #50
     bl drawImageWithTransparency
 
-    ldr r0, =heartFull
-    mov r1,#900
-    mov r2,#50
+    ldr r0, =heartFullHeight
+    mov r1, #900
+    mov r2, #50
     bl drawImageWithTransparency        
 
 //inicia ciclo laberinto
@@ -245,7 +245,6 @@ laberinto:
     bl Caminar
 //AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
 //SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
-//ASI CREO QUE SERIA MAS ORDENADO Y SI PIERDE SOLO SE VA A LA ETIQUETA SALIR Y YA SE MUEVE EL LR A PC  EN ORDEN O PODEMOS GUARDARLO EN MEMORIA
 
 	pop {r4-r11, lr}
 	mov pc, lr
