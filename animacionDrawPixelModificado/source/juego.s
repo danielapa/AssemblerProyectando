@@ -105,11 +105,11 @@ regreso:
 laberinto:
 	push {r4-r11, lr}
 
-    ldr r0, =bgHeight //inicia laberinto de fondo y personaje en el inicio
+    /*ldr r0, =bgHeight //inicia laberinto de fondo y personaje en el inicio
     mov r1,#0
     mov r2,#0
 
-    bl drawImageWithTransparency
+    bl drawImageWithTransparency*/
 
 	ldr r0, =nivel1Height //inicia laberinto de fondo y personaje en el inicio
 	mov r1,#0
@@ -232,7 +232,7 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    bl Caminar
+    bl jugarLaberinto
 //AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
 //SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
 

@@ -513,44 +513,44 @@ LOAD .\libcsud.a
 .text           0x007f611c     0x16e4
  *.c.o(.text)
  *(.text)
- .text          0x007f611c      0x6d0 build/anim.o
-                0x007f611c                Caminar
-                0x007f637c                Choque
-                0x007f6414                LlavesOn
-                0x007f656c                PaintingBG
-                0x007f65cc                PaintingBGBlue
-                0x007f6628                DrawBackgroundRectangle
-                0x007f667c                drawImageWithTransparency
-                0x007f66ec                GetBackgroundColor
-                0x007f6718                StoreColour
-                0x007f6748                removeImageWithBlack
- .text          0x007f67ec        0x0 build/bg.o
- .text          0x007f67ec        0x0 build/blueKey.o
- .text          0x007f67ec        0x0 build/blueLock.o
- .text          0x007f67ec      0x124 build/Dibujando.o
-                0x007f67ec                drawImagen
- .text          0x007f6910      0x1f0 build/drawing.o
-                0x007f6910                SetForeColour
-                0x007f6928                DrawPixel
-                0x007f6988                SetGraphicsAddress
-                0x007f6994                DrawLine
-                0x007f6a10                DrawCharacter
-                0x007f6a7c                DrawString
- .text          0x007f6b00        0x0 build/fondo.o
- .text          0x007f6b00       0x60 build/frameBuffer.o
-                0x007f6b00                InitialiseFrameBuffer
- .text          0x007f6b60       0x98 build/gpio.o
-                0x007f6b60                GetGpioAddress
-                0x007f6b68                SetGpioFunction
-                0x007f6bb8                SetGpio
- .text          0x007f6bf8        0x0 build/greenKey.o
- .text          0x007f6bf8        0x0 build/greenLock.o
- .text          0x007f6bf8        0x0 build/heartEmpty.o
- .text          0x007f6bf8        0x0 build/heartFull.o
- .text          0x007f6bf8      0x2f0 build/juego.o
-                0x007f6bf8                juego
-                0x007f6c28                escogiendo
-                0x007f6cf8                laberinto
+ .text          0x007f611c      0x6e4 build/anim.o
+                0x007f611c                jugarLaberinto
+                0x007f6388                Choque
+                0x007f6400                OnObject
+                0x007f6580                PaintingBG
+                0x007f65e0                PaintingBGBlue
+                0x007f663c                DrawBackgroundRectangle
+                0x007f6690                drawImageWithTransparency
+                0x007f6700                GetBackgroundColor
+                0x007f672c                StoreColour
+                0x007f675c                removeImageWithBlack
+ .text          0x007f6800        0x0 build/bg.o
+ .text          0x007f6800        0x0 build/blueKey.o
+ .text          0x007f6800        0x0 build/blueLock.o
+ .text          0x007f6800      0x124 build/Dibujando.o
+                0x007f6800                drawImagen
+ .text          0x007f6924      0x1f0 build/drawing.o
+                0x007f6924                SetForeColour
+                0x007f693c                DrawPixel
+                0x007f699c                SetGraphicsAddress
+                0x007f69a8                DrawLine
+                0x007f6a24                DrawCharacter
+                0x007f6a90                DrawString
+ .text          0x007f6b14        0x0 build/fondo.o
+ .text          0x007f6b14       0x60 build/frameBuffer.o
+                0x007f6b14                InitialiseFrameBuffer
+ .text          0x007f6b74       0x98 build/gpio.o
+                0x007f6b74                GetGpioAddress
+                0x007f6b7c                SetGpioFunction
+                0x007f6bcc                SetGpio
+ .text          0x007f6c0c        0x0 build/greenKey.o
+ .text          0x007f6c0c        0x0 build/greenLock.o
+ .text          0x007f6c0c        0x0 build/heartEmpty.o
+ .text          0x007f6c0c        0x0 build/heartFull.o
+ .text          0x007f6c0c      0x2dc build/juego.o
+                0x007f6c0c                juego
+                0x007f6c3c                escogiendo
+                0x007f6d0c                laberinto
  .text          0x007f6ee8      0x144 build/keyboard.o
                 0x007f6ee8                KeyboardUpdate
                 0x007f6f6c                KeyWasDown

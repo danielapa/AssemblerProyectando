@@ -15,8 +15,8 @@
 // * No recibe parametros
 // * No tiene salidas
 // *********************************************************************
-.globl Caminar
-Caminar:
+.globl jugarLaberinto
+jugarLaberinto:
 
 .macro verificar direccion
     mov r0, \direccion 
@@ -134,9 +134,9 @@ Caminar:
         bl drawImageWithTransparency
         mov r0, x
         mov r1, y
-        bl LlavesOn
-        ldr r0, =30000
-        //bl Wait
+        bl OnObject
+        ldr r0, =10000
+        bl Wait
         b Revision
 
     moverPersonajeUp:
@@ -168,9 +168,9 @@ Caminar:
         bl drawImageWithTransparency
         mov r0, x
         mov r1, y
-        bl LlavesOn
-        ldr r0, =30000
-        //bl Wait
+        bl OnObject
+        ldr r0, =10000
+        bl Wait
 
         b Revision
 
@@ -218,30 +218,19 @@ Caminar:
         cmp r3, #5 //derecha normal
         bleq drawImageWithTransparency
 
-        /*cmp paso_actual, #0
-        ldreq r0,=direccionPersonaje1
-        ldreq r0, [r0]
-        cmp paso_actual, #1
-        ldreq r0,=direccionPersonaje2
-        ldreq r0, [r0]
-        cmp paso_actual, #2
-        ldreq r0,=direccionPersonaje3
-        ldreq r0, [r0]
-        mov r1, x
-        mov r2, y*/
         mov r0, x
         mov r1, y
-        bl LlavesOn
+        bl OnObject
 
         // *******************************
         // 5 - retardo
         // *******************************
-        ldr r0, =30000
-       // bl Wait
+        ldr r0, =20000
+        bl Wait
 
         // *******************************
 
-        b Revision
+        b loopContinue$
 
     finAnimacion:
 
@@ -316,15 +305,7 @@ characterLoopC$:
     cmp r0, r1
     moveq r1, #1 
     ldreq r4, =bg //color del fondo, donde debe de estar personaje
-    ldreqh r11, [r4]    
-    ldreq r2, =LlaveAzul
-    streq r1, [r2]
-    ldreq r0, =blueKey
-    moveq r1,#500
-    addeq r1,#54
-    moveq r2,#300
-    addeq r2,#54
-    bleq PaintingBGBlue   
+    ldreqh r11, [r4]     
 
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
@@ -346,7 +327,8 @@ characterLoopC$:
     .unreq contw      
 
 // **********************************************************************
-// Subrutina para determinar si el personaje se encuentra con una llave
+// Subrutina para determinar si el personaje se encuentra sobre una Llave
+// o en la salida
 // Entradas:
 // * r0 - posicion en x
 // * r1 - posicion en y
@@ -354,8 +336,8 @@ characterLoopC$:
 // * no tiene
 // **********************************************************************
 
-.globl LlavesOn
-LlavesOn:
+.globl OnObject
+OnObject:
     .macro revisando xi, yi, xf, yf
     cmp x, \xi
     addge ok, #1
@@ -368,13 +350,14 @@ LlavesOn:
     //De cumplirse las 4 condiciones, ok=4
     .endm
 
-    xi .req r2  //posicion inicial en x
-    yi .req r3  //posicion incial en y
-    xf .req r4  //posicion final en x
-    yf .req r5  //posicion final en y
-    x .req r6   //posicion en x del personaje
-    y .req r7   //posicion en y del personaje
-    ok .req r8  //registro de verificacion
+    xi .req r2   //posicion inicial en x
+    yi .req r3   //posicion incial en y
+    xf .req r4   //posicion final en x
+    yf .req r5   //posicion final en y
+    x .req r6    //posicion en x del personaje
+    y .req r7    //posicion en y del personaje
+    ok .req r8   //registro de verificacion
+    done .req r9 //registro que determina si termino el juego
 
     push {r2-r12,lr}
 
@@ -382,6 +365,7 @@ LlavesOn:
     mov y, r1
     add x, #36 //centro en x
     add y, #48 //centro en y
+    mov done, #0
 
     //LLAVE AZUL
     mov ok, #0
@@ -398,6 +382,7 @@ LlavesOn:
     moveq r1,#199
     moveq r2,#49
     bleq PaintingBGBlue
+    addeq done, #1
 
     //LLAVE VERDE
     mov ok, #0
@@ -414,6 +399,7 @@ LlavesOn:
     addeq r1,#83
     moveq r2,#264
     bleq PaintingBGBlue
+    addeq done, #1
 
     //LLAVE ROJA
     mov ok, #0
@@ -424,6 +410,7 @@ LlavesOn:
     add xf, xi, #70 
     add yf, yi, #70
     revisando xi, yi, xf, yf
+    addeq done, #1
 
     cmp ok, #4
     ldreq r0, =redLockHeight
@@ -447,6 +434,15 @@ LlavesOn:
     addeq r1, #50
     moveq r2,#628
     bleq PaintingBGBlue
+    addeq done, #1
+
+    //SALIDA - NO FUNCIONA
+    cmp done, #4 //Done=4 cuando los 4 candados fueron abiertos
+
+    ldreq r0, =heartFullHeight
+    moveq r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
+    moveq r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
+    bleq drawImageWithTransparency    
 
     pop {r2-r12,pc}
 
