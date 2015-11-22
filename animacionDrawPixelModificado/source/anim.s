@@ -218,7 +218,7 @@ jugarLaberinto:
         cmp r3, #5 //derecha normal
         bleq drawImageWithTransparency
 
-        bl Muerte
+        bl Vidas
 
         mov r0, x
         mov r1, y
@@ -329,8 +329,7 @@ characterLoopC$:
     .unreq contw      
 
 // **********************************************************************
-// Subrutina para determinar si el personaje se encuentra sobre una Llave
-// o en la salida
+// Subrutina para determinar si el personaje se choco y pierde una vida
 // Entradas:
 // * r3 - numero de choque
 //
@@ -338,8 +337,8 @@ characterLoopC$:
 // * no tiene
 // **********************************************************************
 
-.globl OnObject
-OnObject:
+.globl Vidas
+Vidas:
     push {r4-r12, lr}
 
     mov r7, r3
@@ -348,7 +347,7 @@ OnObject:
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
-    ldreq r2, [r3+2]
+    ldreq r2, [r3, #2]
     ldreq r3, [r3]
     bleq DrawBackgroundRectangle
 
@@ -356,7 +355,7 @@ OnObject:
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
-    ldreq r2, [r3+2]
+    ldreq r2, [r3, #2]
     ldreq r3, [r3]
     bleq DrawBackgroundRectangle    
 
