@@ -3,19 +3,18 @@
 * Proyecto 2
 * Ma. Belen Hernandez
 * Daniela I. Pocasangre A.
-* 
+* r0 - r3 : Parametros de entrada y salida
 * anim.s
 **********************************************************************/
 
-
 .section .text
 
-// ******************************************
+// *********************************************************************
 // Subrutina para iniciar la animacion del personaje.
 //     Anima un personaje hasta que se presionen las teclas de flecha
 // * No recibe parametros
 // * No tiene salidas
-// ******************************************
+// *********************************************************************
 .globl Caminar
 Caminar:
 
@@ -215,7 +214,18 @@ Caminar:
         cmp r3, #5 //derecha normal
         bleq drawImageWithTransparency
 
-        bl Llaves
+        cmp paso_actual, #0
+        ldreq r0,=direccionPersonaje1
+        ldreq r0, [r0]
+        cmp paso_actual, #1
+        ldreq r0,=direccionPersonaje2
+        ldreq r0, [r0]
+        cmp paso_actual, #2
+        ldreq r0,=direccionPersonaje3
+        ldreq r0, [r0]
+        mov r1, x
+        mov r2, y
+        bl LlavesOn
 
         // *******************************
         // 5 - retardo
@@ -297,7 +307,19 @@ characterLoopC$:
     cmp r0, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
     popne {r0, r1, r2, r4-r12, pc}
-    
+
+    ldr r1, =ColorAzul
+    ldrh r1, [r1]
+
+    cmp r0, r1
+    moveq r1, #1 
+    ldreq r2, =LlaveAzul
+    streq r1, [r2]
+    ldreq r0, =blueKeyHeight
+    moveq r1,#199
+    moveq r2,#49
+    bleq PaintingBGBlue  
+
     add contw, #1
     cmp contw, width
     moveq contw, #0
@@ -316,19 +338,67 @@ characterLoopC$:
 // **********************************************************************
 // Subrutina para determinar si el personaje se encuentra con una llave
 // Entradas:
-// * r1 posicion x
+// * r0 direccion del personaje
+//     * [r0+0] alto del personaje
+//     * [r0+2] ancho del personaje
+//     * [r0+4] primer pixel del personaje// * r1 posicion x
 // * r2 posicion y
 // Salida:
 // * no tiene
 // **********************************************************************
 
-.globl Llaves
-Llaves:
+.globl LlavesOn
+LlavesOn:
     push {r4-r12, lr}
 
+    ldr r4, =LlaveAzul
+    ldr r4, [r4]
+    cmp r4, #1
+    ldreq r5, =LlaveAzul
+    moveq r4, #2
+    streq r4, [r5]
+    ldreq r0, =blueLockHeight
+    moveq r1,#199
+    moveq r2,#49
+    bleq PaintingBGBlue
 
+    ldr r4, =LlaveVert
+    ldr r4, [r4]
+    cmp r4, #1
+    ldreq r5, =LlaveVert
+    moveq r4, #2
+    streq r4, [r5]    
+    ldreq r0, =greenLockHeight
+    moveq r1,#700
+    addeq r1,#83
+    moveq r2,#264
+    bleq PaintingBGBlue
 
-    pop {r4-r12, pc}
+    ldr r4, =LlaveAma
+    ldr r4, [r4]
+    cmp r4, #1
+    ldreq r5, =LlaveAma
+    moveq r4, #2
+    streq r4, [r5]
+    ldreq r0, =yellowLockHeight
+    moveq r1,#900
+    addeq r1, #50
+    moveq r2,#628
+    bleq PaintingBG
+
+    ldr r4, =LlaveRoja
+    ldr r4, [r4]
+    cmp r4, #1
+    ldreq r5, =LlaveRoja
+    moveq r4, #2
+    streq r4, [r5]    
+    ldreq r0, =redLockHeight
+    moveq r1,#79
+    moveq r2,#400
+    addeq r2,#73
+    bleq PaintingBG    
+
+    pop {r4-r12, pc} //se ha terminado de revisar
 
 // *****************************************************************************************
 // Subrutina para pintar un espacio de color de un  objeto
@@ -718,11 +788,14 @@ noDrawBlack$:
 .section .data
 .align 2
 
+.globl ColorAzul
+    ColorAzul: .hword 9531
+
 .globl LlaveRoja
     LlaveRoja: .word 0
 
 .globl LlaveAzul
-    LlaveAzul: .word 0
+    LlaveAzul: .word 1
 
 .globl LlaveAma
     LlaveAma: .word 0

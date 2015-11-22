@@ -176,7 +176,21 @@ laberinto:
     add r1,#54
     mov r2,#300
     add r2,#54
+    bl PaintingBG
+
+    ldr r0, =blueKeyHeight
+    mov r1,#500
+    add r1,#54
+    mov r2,#300
+    add r2,#54
     bl drawImageWithTransparency
+
+    ldr r0, =redKeyHeight
+    mov r1,#800
+    add r1,#77
+    mov r2,#200
+    add r2,#61
+    bl PaintingBG
 
     ldr r0, =redKeyHeight
     mov r1,#800
@@ -189,7 +203,18 @@ laberinto:
     mov r1,#400
     add r1,#67
     mov r2,#632
+    bl PaintingBG
+
+    ldr r0, =greenKeyHeight
+    mov r1,#400
+    add r1,#67
+    mov r2,#632
     bl drawImageWithTransparency
+
+    ldr r0, =yellowKeyHeight
+    mov r1,#80
+    mov r2,#388
+    bl PaintingBG
 
     ldr r0, =yellowKeyHeight
     mov r1,#80
@@ -229,10 +254,10 @@ laberinto:
 .align 2
 
 .globl direccionPersonaje1
-direccionPersonaje1: .word 0
+    direccionPersonaje1: .word 0
 .globl direccionPersonaje2
-direccionPersonaje2: .word 0
+    direccionPersonaje2: .word 0
 .globl direccionPersonaje3
-direccionPersonaje3: .word 0
+    direccionPersonaje3: .word 0
 .globl direccionPersonaje4
-direccionPersonaje4: .word 0
+    direccionPersonaje4: .word 0
