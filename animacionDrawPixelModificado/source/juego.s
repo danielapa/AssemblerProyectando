@@ -171,12 +171,12 @@ laberinto:
     // * LLAVES
     //****************
 
-   /* ldr r0, =blueKeyHeight
+    ldr r0, =blueKeyHeight
     mov r1,#500
     add r1,#54
     mov r2,#300
     add r2,#54
-    bl PaintingBG*/
+    bl PaintingBG
 
     ldr r0, =blueKeyHeight
     mov r1,#500

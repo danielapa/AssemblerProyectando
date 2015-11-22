@@ -30,9 +30,6 @@ Caminar:
     y .req r6
     
     mov paso_actual, #0
-    /*mov x, #600
-    add x, #70
-    mov y, #472*/
     mov x, #65
     mov y, #45
 
@@ -137,7 +134,7 @@ Caminar:
         bl drawImageWithTransparency
 
         ldr r0, =30000
-        //bl Wait
+        bl Wait
         b Revision
 
     moverPersonajeUp:
@@ -169,7 +166,7 @@ Caminar:
         bl drawImageWithTransparency
 
         ldr r0, =30000
-        //bl Wait
+        bl Wait
 
         b Revision
 
@@ -228,13 +225,13 @@ Caminar:
         ldreq r0, [r0]
         mov r1, x
         mov r2, y
-        //bl LlavesOn
+        bl LlavesOn
 
         // *******************************
         // 5 - retardo
         // *******************************
         ldr r0, =30000
-        //bl Wait
+        bl Wait
 
         // *******************************
 
@@ -310,8 +307,16 @@ characterLoopC$:
 
     mov r11, r0
 
-    cmp r0, r1 //Si son iguales, esta sobre una llave
-    bleq onKey
+    cmp r0, r1
+    moveq r1, #1 
+    ldreq r4, =bg //color del fondo, donde debe de estar personaje
+    ldreqh r11, [r4]    
+    ldreq r2, =LlaveAzul
+    streq r1, [r2]
+    ldreq r0, =blueKeyHeight
+    moveq r1,#199
+    moveq r2,#49
+    bleq PaintingBGBlue    
 
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
@@ -331,31 +336,6 @@ characterLoopC$:
     .unreq width
     .unreq conth
     .unreq contw      
-
-    onKey:
-    mov r1, #1 
-    ldr r4, =bg //color del fondo, donde debe de estar personaje
-    ldrh r11, [r4]    
-    ldr r2, =LlaveAzul
-    str r1, [r2]
-    ldr r0, =greenKeyHeight
-    mov r1,#500
-    add r1,#54
-    mov r2,#300
-    add r2,#54
-    //push {lr}
-    //bleq PaintingBGBlue
-    bleq DrawBackgroundRectangle
-    //pop {lr}
-    //push {lr}
-    bl LlavesOn 
-   // pop {lr}
-    /*ldr r0, =blueLockHeight
-    mov r1,#199
-    mov r2,#49
-    push {lr}
-    bl PaintingBGBlue 
-    pop {lr}  */
 
 // **********************************************************************
 // Subrutina para determinar si el personaje se encuentra con una llave
@@ -378,10 +358,7 @@ LlavesOn:
     ldreq r0, =blueLockHeight
     moveq r1,#199
     moveq r2,#49
-    //push {lr}
-    //bleq PaintingBGBlue
-    bleq DrawBackgroundRectangle
-    //pop {lr}
+    bleq PaintingBGBlue
 
     ldr r4, =LlaveVert
     ldr r4, [r4]
@@ -393,8 +370,7 @@ LlavesOn:
     moveq r1,#700
     addeq r1,#83
     moveq r2,#264
-    //bleq PaintingBGBlue
-    bleq DrawBackgroundRectangle
+    bleq PaintingBGBlue
 
     ldr r4, =LlaveAma
     ldr r4, [r4]
@@ -406,8 +382,7 @@ LlavesOn:
     moveq r1,#900
     addeq r1, #50
     moveq r2,#628
-    //bleq PaintingBGBlue
-    bleq DrawBackgroundRectangle
+    bleq PaintingBG
 
     ldr r4, =LlaveRoja
     ldr r4, [r4]
@@ -415,17 +390,11 @@ LlavesOn:
     ldreq r5, =LlaveRoja
     moveq r4, #2
     streq r4, [r5]    
-    /*ldreq r0, =redLockHeight
-    moveq r1,#79
-    moveq r2,#400
-    addeq r2,#73
-    bleq PaintingBGBlue*/
     ldreq r0, =redLockHeight
     moveq r1,#79
     moveq r2,#400
     addeq r2,#73
-    //bleq PaintingBGBlue
-    bleq DrawBackgroundRectangle
+    bleq PaintingBG    
 
     pop {r4-r12, pc} //se ha terminado de revisar
 
@@ -821,10 +790,10 @@ noDrawBlack$:
     ColorAzul: .hword 53151
 
 .globl LlaveRoja
-    LlaveRoja: .word 1
+    LlaveRoja: .word 0
 
 .globl LlaveAzul
-    LlaveAzul: .word 1
+    LlaveAzul: .word 0
 
 .globl LlaveAma
     LlaveAma: .word 0
