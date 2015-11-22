@@ -132,9 +132,11 @@ Caminar:
         subeq r2, #5
         subeq y, #5
         bl drawImageWithTransparency
-
+        mov r0, x
+        mov r1, y
+        bl LlavesOn
         ldr r0, =30000
-        bl Wait
+        //bl Wait
         b Revision
 
     moverPersonajeUp:
@@ -164,9 +166,11 @@ Caminar:
         addeq r2, #5
         addeq y, #5
         bl drawImageWithTransparency
-
+        mov r0, x
+        mov r1, y
+        bl LlavesOn
         ldr r0, =30000
-        bl Wait
+        //bl Wait
 
         b Revision
 
@@ -214,7 +218,7 @@ Caminar:
         cmp r3, #5 //derecha normal
         bleq drawImageWithTransparency
 
-        cmp paso_actual, #0
+        /*cmp paso_actual, #0
         ldreq r0,=direccionPersonaje1
         ldreq r0, [r0]
         cmp paso_actual, #1
@@ -224,14 +228,16 @@ Caminar:
         ldreq r0,=direccionPersonaje3
         ldreq r0, [r0]
         mov r1, x
-        mov r2, y
+        mov r2, y*/
+        mov r0, x
+        mov r1, y
         bl LlavesOn
 
         // *******************************
         // 5 - retardo
         // *******************************
         ldr r0, =30000
-        bl Wait
+       // bl Wait
 
         // *******************************
 
@@ -313,10 +319,12 @@ characterLoopC$:
     ldreqh r11, [r4]    
     ldreq r2, =LlaveAzul
     streq r1, [r2]
-    ldreq r0, =blueKeyHeight
-    moveq r1,#199
-    moveq r2,#49
-    bleq PaintingBGBlue    
+    ldreq r0, =blueKey
+    moveq r1,#500
+    addeq r1,#54
+    moveq r2,#300
+    addeq r2,#54
+    bleq PaintingBGBlue   
 
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
@@ -340,25 +348,81 @@ characterLoopC$:
 // **********************************************************************
 // Subrutina para determinar si el personaje se encuentra con una llave
 // Entradas:
-// * no tiene
+// * r0 - posicion en x
+// * r1 - posicion en y
 // Salida:
 // * no tiene
 // **********************************************************************
 
 .globl LlavesOn
 LlavesOn:
-    push {r4-r12, lr}
+    
+    xi .req r2
+    yi .req r3
+    xf .req r4
+    yf .req r5
+    x .req r6
+    y .req r7
+    ok .req r8
 
-    ldr r4, =LlaveAzul
+    push {r2-r12,lr}
+
+    mov x, r0
+    mov y, r1
+    add x, #36 //centro en x
+    add y, #48 //centro en y
+    mov ok, #0
+
+    //Llave verde
+    /*mov xi,#400
+    add xi,#67 
+    mov yi,#632 
+    add xf, r2, #70 
+    add yf, r3, #70*/
+
+    //LlaveAzul
+    mov xi,#500
+    add xi,#54
+    mov yi,#300
+    add yi,#54
+    add xf, xi, #70 
+    add yf, yi, #70
+
+    cmp x, xi
+    addge ok, #1
+    cmp x, xf
+    addle ok, #1
+    cmp y, yi
+    addge ok, #1
+    cmp y, yf
+    addle ok, #1
+
+    cmp ok, #4
+    ldreq r0, =blueLockHeight
+    moveq r1,#199
+    moveq r2,#49
+    bleq PaintingBGBlue
+    
+    
+    pop {r2-r12,pc}
+
+    .unreq xi
+    .unreq yi
+    .unreq xf
+    .unreq yf
+    .unreq x
+    .unreq y
+
+    /*ldr r4, =LlaveAzul
     ldr r4, [r4]
     cmp r4, #1
     ldreq r5, =LlaveAzul
     moveq r4, #2
     streq r4, [r5]
-    ldreq r0, =blueLockHeight
-    moveq r1,#199
-    moveq r2,#49
-    bleq PaintingBGBlue
+    ldr r0, =blueLockHeight
+    mov r1,#199
+    mov r2,#49
+    bl PaintingBGBlue
 
     ldr r4, =LlaveVert
     ldr r4, [r4]
@@ -396,7 +460,8 @@ LlavesOn:
     addeq r2,#73
     bleq PaintingBG    
 
-    pop {r4-r12, pc} //se ha terminado de revisar
+    pop {r4-r12, pc}*/ //se ha terminado de revisar
+
 
 // *****************************************************************************************
 // Subrutina para pintar un espacio de color de un  objeto

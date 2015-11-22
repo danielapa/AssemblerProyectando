@@ -171,12 +171,12 @@ laberinto:
     // * LLAVES
     //****************
 
-    ldr r0, =blueKeyHeight
+    /*ldr r0, =blueKeyHeight
     mov r1,#500
     add r1,#54
     mov r2,#300
     add r2,#54
-    bl PaintingBG
+    bl PaintingBG*/
 
     ldr r0, =blueKeyHeight
     mov r1,#500
@@ -184,26 +184,26 @@ laberinto:
     mov r2,#300
     add r2,#54
     bl drawImageWithTransparency
+
+    /*ldr r0, =redKeyHeight
+    mov r1,#800
+    add r1,#77
+    mov r2,#200
+    add r2,#61
+    bl PaintingBG*/
 
     ldr r0, =redKeyHeight
     mov r1,#800
     add r1,#77
     mov r2,#200
     add r2,#61
-    bl PaintingBG
-
-    ldr r0, =redKeyHeight
-    mov r1,#800
-    add r1,#77
-    mov r2,#200
-    add r2,#61
     bl drawImageWithTransparency
 
-    ldr r0, =greenKeyHeight
+    /*ldr r0, =greenKeyHeight
     mov r1,#400
     add r1,#67
     mov r2,#632
-    bl PaintingBG
+    bl PaintingBG*/
 
     ldr r0, =greenKeyHeight
     mov r1,#400
@@ -211,10 +211,10 @@ laberinto:
     mov r2,#632
     bl drawImageWithTransparency
 
-    ldr r0, =yellowKeyHeight
+    /*ldr r0, =yellowKeyHeight
     mov r1,#80
     mov r2,#388
-    bl PaintingBG
+    bl PaintingBG*/
 
     ldr r0, =yellowKeyHeight
     mov r1,#80
