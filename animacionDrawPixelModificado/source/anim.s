@@ -356,14 +356,25 @@ characterLoopC$:
 
 .globl LlavesOn
 LlavesOn:
-    
-    xi .req r2
-    yi .req r3
-    xf .req r4
-    yf .req r5
-    x .req r6
-    y .req r7
-    ok .req r8
+    .macro revisando xi, yi, xf, yf
+    cmp x, \xi
+    addge ok, #1
+    cmp x, \xf
+    addle ok, #1
+    cmp y, \yi
+    addge ok, #1
+    cmp y, \yf
+    addle ok, #1
+    //De cumplirse las 4 condiciones, ok=4
+    .endm
+
+    xi .req r2  //posicion inicial en x
+    yi .req r3  //posicion incial en y
+    xf .req r4  //posicion final en x
+    yf .req r5  //posicion final en y
+    x .req r6   //posicion en x del personaje
+    y .req r7   //posicion en y del personaje
+    ok .req r8  //registro de verificacion
 
     push {r2-r12,lr}
 
@@ -371,39 +382,72 @@ LlavesOn:
     mov y, r1
     add x, #36 //centro en x
     add y, #48 //centro en y
+
+    //LLAVE AZUL
     mov ok, #0
-
-    //Llave verde
-    /*mov xi,#400
-    add xi,#67 
-    mov yi,#632 
-    add xf, r2, #70 
-    add yf, r3, #70*/
-
-    //LlaveAzul
     mov xi,#500
     add xi,#54
     mov yi,#300
     add yi,#54
     add xf, xi, #70 
     add yf, yi, #70
-
-    cmp x, xi
-    addge ok, #1
-    cmp x, xf
-    addle ok, #1
-    cmp y, yi
-    addge ok, #1
-    cmp y, yf
-    addle ok, #1
+    revisando xi, yi, xf, yf
 
     cmp ok, #4
     ldreq r0, =blueLockHeight
     moveq r1,#199
     moveq r2,#49
     bleq PaintingBGBlue
+
+    //LLAVE VERDE
+    mov ok, #0
+    mov xi,#400
+    add xi,#67 
+    mov yi,#632 
+    add xf, xi, #70 
+    add yf, yi, #70
+    revisando xi, yi, xf, yf
+
+    cmp ok, #4
+    ldreq r0, =greenLockHeight
+    moveq r1,#700
+    addeq r1,#83
+    moveq r2,#264
+    bleq PaintingBGBlue
+
+    //LLAVE ROJA
+    mov ok, #0
+    mov xi,#800
+    add xi,#77 
+    mov yi,#200
+    add yi,#61
+    add xf, xi, #70 
+    add yf, yi, #70
+    revisando xi, yi, xf, yf
+
+    cmp ok, #4
+    ldreq r0, =redLockHeight
+    moveq r1,#79
+    moveq r2,#400
+    addeq r2,#73
+    bleq PaintingBGBlue
     
-    
+
+    //LLAVE AMARILLA
+    mov ok, #0
+    mov xi,#80
+    mov yi,#388
+    add xf, xi, #70 
+    add yf, yi, #70
+    revisando xi, yi, xf, yf
+
+    cmp ok, #4
+    ldreq r0, =yellowLockHeight
+    moveq r1,#900
+    addeq r1, #50
+    moveq r2,#628
+    bleq PaintingBGBlue
+
     pop {r2-r12,pc}
 
     .unreq xi
@@ -412,56 +456,7 @@ LlavesOn:
     .unreq yf
     .unreq x
     .unreq y
-
-    /*ldr r4, =LlaveAzul
-    ldr r4, [r4]
-    cmp r4, #1
-    ldreq r5, =LlaveAzul
-    moveq r4, #2
-    streq r4, [r5]
-    ldr r0, =blueLockHeight
-    mov r1,#199
-    mov r2,#49
-    bl PaintingBGBlue
-
-    ldr r4, =LlaveVert
-    ldr r4, [r4]
-    cmp r4, #1
-    ldreq r5, =LlaveVert
-    moveq r4, #2
-    streq r4, [r5]    
-    ldreq r0, =greenLockHeight
-    moveq r1,#700
-    addeq r1,#83
-    moveq r2,#264
-    bleq PaintingBGBlue
-
-    ldr r4, =LlaveAma
-    ldr r4, [r4]
-    cmp r4, #1
-    ldreq r5, =LlaveAma
-    moveq r4, #2
-    streq r4, [r5]
-    ldreq r0, =yellowLockHeight
-    moveq r1,#900
-    addeq r1, #50
-    moveq r2,#628
-    bleq PaintingBG
-
-    ldr r4, =LlaveRoja
-    ldr r4, [r4]
-    cmp r4, #1
-    ldreq r5, =LlaveRoja
-    moveq r4, #2
-    streq r4, [r5]    
-    ldreq r0, =redLockHeight
-    moveq r1,#79
-    moveq r2,#400
-    addeq r2,#73
-    bleq PaintingBG    
-
-    pop {r4-r12, pc}*/ //se ha terminado de revisar
-
+    .unreq ok
 
 // *****************************************************************************************
 // Subrutina para pintar un espacio de color de un  objeto
