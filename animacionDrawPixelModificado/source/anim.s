@@ -345,7 +345,7 @@ characterLoopC$:
 Vidas:
     push {r4-r12, lr}
 
-    mov r7, r12
+    mov r7, r12 //mueve a r7 contador de vidass
 
     cmp r7, #1 //choco
     addeq r12, #1
