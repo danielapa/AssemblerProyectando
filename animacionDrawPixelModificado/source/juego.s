@@ -237,12 +237,14 @@ laberinto:
 //inicia ciclo laberinto
 
     bl jugarLaberinto
+    cmp r0, #1  //Si el usario presione esc, el juego no continua 
+    beq salir
 
 //Tras terminar el laberinto, inicia el nivel final
 
     bl bossStage
 
-
+    salir:
 	pop {r4-r11, lr}
 	mov pc, lr
 
