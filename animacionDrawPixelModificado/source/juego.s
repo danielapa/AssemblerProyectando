@@ -250,6 +250,9 @@ bossStage:
 
     bl drawImageWithTransparency
 
+
+    bl jugarBoss
+
     pop {r4-r11, lr}
     mov pc, lr
 
