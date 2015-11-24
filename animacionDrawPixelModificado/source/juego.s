@@ -234,6 +234,13 @@ laberinto:
 //inicia ciclo laberinto
 
     bl jugarLaberinto
+
+    ldr r0, =heartFullHeight
+    mov r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
+    mov r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
+    bl drawImageWithTransparency  
+
+
 //AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
 //SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
 

@@ -143,7 +143,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
         ldr r0, =10000
-        bl Wait
+        //bl Wait
         b Revision
 
     moverPersonajeUp:
@@ -177,7 +177,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
         ldr r0, =10000
-        bl Wait
+        //bl Wait
 
         b Revision
 
@@ -237,7 +237,7 @@ jugarLaberinto:
         // 5 - retardo
         // *******************************
         ldr r0, =20000
-        bl Wait
+        //bl Wait
 
         // *******************************
 
@@ -414,14 +414,15 @@ OnObject:
     //De cumplirse las 4 condiciones, ok=4
     .endm
 
-    xi .req r2   //posicion inicial en x
-    yi .req r3   //posicion incial en y
-    xf .req r4   //posicion final en x
-    yf .req r5   //posicion final en y
-    x .req r6    //posicion en x del personaje
-    y .req r7    //posicion en y del personaje
-    ok .req r8   //registro de verificacion
-    done .req r9 //registro que determina si termino el juego
+    xi .req r2        //posicion inicial en x
+    yi .req r3        //posicion incial en y
+    xf .req r4        //posicion final en x
+    yf .req r5        //posicion final en y
+    x .req r6         //posicion en x del personaje
+    y .req r7         //posicion en y del personaje
+    ok .req r8        //registro de verificacion
+    done .req r9      //registro que determina si termino el juego
+    dirDone .req r10  //registro con la direccion al espacio en memoria de verificacion
 
     push {r2-r12,lr}
 
@@ -429,7 +430,8 @@ OnObject:
     mov y, r1
     add x, #36 //centro en x
     add y, #48 //centro en y
-    mov done, #0
+    mov done, #1
+    ldr dirDone, =VerificarDone
 
     //LLAVE AZUL
     mov ok, #0
@@ -446,8 +448,7 @@ OnObject:
     moveq r1,#199
     moveq r2,#49
     bleq PaintingBGBlue
-    addeq done, #1
-
+    
     //LLAVE VERDE
     mov ok, #0
     mov xi,#400
@@ -463,7 +464,6 @@ OnObject:
     addeq r1,#83
     moveq r2,#264
     bleq PaintingBGBlue
-    addeq done, #1
 
     //LLAVE ROJA
     mov ok, #0
@@ -474,7 +474,7 @@ OnObject:
     add xf, xi, #70 
     add yf, yi, #70
     revisando xi, yi, xf, yf
-    addeq done, #1
+    
 
     cmp ok, #4
     ldreq r0, =redLockHeight
@@ -493,20 +493,38 @@ OnObject:
     revisando xi, yi, xf, yf
 
     cmp ok, #4
+    streq done, [dirDone]
     ldreq r0, =yellowLockHeight
     moveq r1,#900
     addeq r1, #50
     moveq r2,#628
     bleq PaintingBGBlue
-    addeq done, #1
+
+    //SALIDA
+    mov ok, #0
+    mov xi,#900
+    add xi,#50 
+    mov yi,#628
+    add xf, xi, #70 
+    add yf, yi, #70
+    revisando xi, yi, xf, yf
+
+    cmp ok, #4
+    ldreq r0, =heartFullHeight
+    moveq r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
+    moveq r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
+    bleq drawImageWithTransparency
+
+
+
 
     //SALIDA - NO FUNCIONA
-    cmp done, #4 //Done=4 cuando los 4 candados fueron abiertos
+    /*cmp done, #4 //Done=4 cuando los 4 candados fueron abiertos
 
     ldreq r0, =heartFullHeight
     moveq r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
     moveq r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
-    bleq drawImageWithTransparency    
+    bleq drawImageWithTransparency   */ 
 
     pop {r2-r12,pc}
 
@@ -961,3 +979,6 @@ GpioAdd: .word 0
 
 .globl LlaveVert
     LlaveVert: .word 0
+
+.globl VerificarDone
+    VerificarDone: .word 0
