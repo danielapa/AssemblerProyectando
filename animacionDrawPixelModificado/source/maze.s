@@ -13,7 +13,8 @@
 // Subrutina para iniciar la animacion del personaje.
 //     Anima un personaje hasta que se presionen las teclas de flecha
 // * No recibe parametros
-// * No tiene salidas
+// * Salidas:
+// *    -r0: devuelve 1 si el usuario decidio abandonar la partida
 // *********************************************************************
 .globl jugarLaberinto
 jugarLaberinto:
@@ -69,6 +70,7 @@ jugarLaberinto:
             //  para mover continuamente
             // -----------------------------
             cmp r0, #'e'
+            moveq r5, #1 //indicador de que el usuario desea salir del juego, para que finAnimacion no nos lleve a la pelea conel hechicero.
             beq finAnimacion //si se presiona esc, se sale del juego
             verificar #79 
             cmp r0, #0
@@ -274,6 +276,7 @@ jugarLaberinto:
     mov r12, #0
     ldr r11, =CantVidas
     str r12, [r11]
+    mov r0, r5 //Si r5 es uno, no debe iniciar la pelea con el hechicero 
 
     pop {r4-r11, pc}
     .unreq paso_actual

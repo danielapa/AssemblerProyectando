@@ -22,11 +22,22 @@ jugarBoss:
     paso_actual .req r4
     x .req r5
     y .req r6
-    
+    xe .req r7
+    ye .req r8
+    enemigo .req r9
+    dirEnemigoW .req r10
+    dirEnemigoH .req r11
+    /*xslime .req r11
+    yslime .req r12*/
+
     mov paso_actual, #0
+    mov enemigo, #0
     mov x, #208
     mov y, #600
     add y, #14
+    mov xe, #840
+    mov ye, #568
+
 
     loopContinue$:
 
@@ -39,10 +50,77 @@ jugarBoss:
         bl drawImageWithTransparency2
         // -----------------------------
 
+        /*ldr r0, =Fly1Height
+        mov r1, xfly
+        mov r2, yfly
+        bl drawImageWithTransparency2
+
+        ldr r0, =Snail1Height
+        mov r1, xsnail
+        mov r2, ysnail
+        bl drawImageWithTransparency2*/
+
+
+        //Eleccion de enemigo
+        CambioEnemigo:
+        add enemigo, #1
+        cmp enemigo, #3
+        moveq enemigo, #0
+
+        cmp enemigo, #0
+        ldreq dirEnemigoH, =Fly1Height
+        ldreq dirEnemigoW, =Fly1Width
+        cmp enemigo, #1
+        ldreq dirEnemigoH, =Snail1Height
+        ldreq dirEnemigoW, =Snail1Width
+        cmp enemigo, #2
+        ldreq dirEnemigoH, =Slime1Height
+        ldreq dirEnemigoW, =Slime1Width
+
         // *******************************
         // 1 - revisar teclas
         // *******************************
+
         Revision:
+        
+        // -----------------------------
+        // Enemigos
+        // borrar 5px de ancho
+        mov r0, dirEnemigoW
+        ldrh r0, [r0]
+        add r0, xe, r0
+        sub r0, #1
+        mov r1, ye
+        mov r2, #1
+        mov r3, dirEnemigoH
+        ldrh r3,[r3]
+        bl DrawBackgroundRectangle2
+
+        // sumar 5px a la posicion en x
+        sub xe, #1
+
+        mov r0, dirEnemigoH
+        mov r1, xe
+        mov r2, ye
+        bl drawImageWithTransparency2
+
+        cmp x, #0
+        movle xe, #840
+        movle ye, #568
+        ble CambioEnemigo
+
+        /*ldr r0, =30000
+        bl Wait
+
+        ldr r0, =Snail2Height
+        mov r1, xsnail
+        mov r2, ysnail
+        bl drawImageWithTransparency2
+        ldr r0, =30000
+        bl Wait*/
+        // -----------------------------
+
+
             bl KeyboardUpdate
             bl KeyboardGetChar
 
@@ -58,6 +136,13 @@ jugarBoss:
             verificar #80
             cmp r0, #0
             bne moverPersonajeIzq
+            verificar #81
+            cmp r0, #0
+            bne moverPersonajeDown
+            verificar #82
+            cmp r0, #0
+            bne moverPersonajeUp
+
 
             b Revision
 
@@ -73,9 +158,8 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        cmp x, #964 
-        addlt x, #5
-        //mov r3, #5
+        add x, #5
+        mov r3, #5
         b continuarAnimacion$
 
     moverPersonajeIzq:
@@ -94,9 +178,46 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        cmp x, #0
-        subgt x, #5
+        sub x, #5
         mov r3, #4
+        b continuarAnimacion$
+
+    moverPersonajeDown:
+    // borrar 5px de alto
+        mov r0, x
+        mov r1, y
+        ldr r2, =direccionPersonaje4
+        ldr r2, [r2]
+        ldrh r2,[r2]
+        mov r3, #5
+        bl DrawBackgroundRectangle2
+
+        // sumar 5px a la posicion en y
+        mov r0, #600
+        add r0, #70
+        cmp y, r0
+        addlt y, #5
+        b continuarAnimacion$
+
+    moverPersonajeUp:
+        // borrar 5px de alto
+        mov r0, x
+        ldr r1, =direccionPersonaje1
+        ldr r1, [r1]
+        ldrh r1, [r1]
+        add r1, y, r1
+        sub r1, #5
+        ldr r2, =direccionPersonaje4
+        ldr r2, [r2]
+        ldrh r2,[r2]
+        mov r3, #5
+        bl DrawBackgroundRectangle2
+
+        // restar 5px a la posicion en y
+        mov r0, #500
+        add r0, #15
+        cmp y, r0
+        subgt y, #5
         b continuarAnimacion$
 
 
