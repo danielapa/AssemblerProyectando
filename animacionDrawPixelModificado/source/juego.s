@@ -237,13 +237,9 @@ laberinto:
 //inicia ciclo laberinto
 
     //bl jugarLaberinto
-<<<<<<< HEAD
-    cmp r0, #1  //Si el usario presione esc, el juego no continua 
-    beq salir
-=======
+
     //cmp r0, #1  //Si el usario presione esc, el juego no continua 
     //beq salir
->>>>>>> origin/master
 
 //Tras terminar el laberinto, inicia el nivel final
 
