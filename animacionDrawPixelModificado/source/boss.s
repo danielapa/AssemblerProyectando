@@ -40,6 +40,11 @@ jugarBoss:
         // -----------------------------
 
 
+        ldr r7, =ContadorPoderes
+        ldr r7, [r7]
+        cmp r7, #5
+        blgt AnimandoPoderes
+
         // *******************************
         // 1 - revisar teclas
         // *******************************
@@ -176,13 +181,36 @@ jugarBoss:
 TirandoPoder:
     push {r4-r12, lr}
     
-    mov r4, r0
-    mov r5, r1
+    mov r4, r0 //posicion x
+    mov r5, r1 //posicion y
 
     x .req r4
     y .req r5
 
+    ldr r8, =ContadorPoderes
+    ldr r8, [r8]
+
+    cmp r8, #1
+    ldreq r7, =PosicionY1 //primer poder
+
+    cmp r8, #2
+    ldreq r7, =PosicionY2 //segundo poder
+
+    cmp r8, #3
+    ldreq r7, =PosicionY3 //tercer poder
+
+    cmp r8, #4
+    ldreq r7, =PosicionY4 //cuarto poder
+
+    cmp r8, #5
+    ldreq r7, =PosicionY5 //ultimo poder
+
     sub r6, y, #100
+    streq r6, [r7]
+
+    add r8, #1
+    ldr r9, =ContadorPoderes
+    str r8, [r9]
 
     ldr r0, =Poderes
     ldr r0, [r0]
@@ -194,6 +222,21 @@ TirandoPoder:
 
     .unreq x
     .unreq y
+
+// ******************************************
+// Subrutina para tirar poder
+// Entradas
+// * r0 posicion x
+// * r1 posicion y
+// Salida:
+// * no tiene
+// ******************************************
+.globl AnimandoPoderes
+AnimandoPoderes:
+    push {r4-r12, lr}
+    
+
+    pop {r4-r12, pc}
 
 // ******************************************
 // Subrutina para obtener el color del fondo
@@ -351,3 +394,19 @@ characterLoop$:
     .unreq width
     .unreq conth
     .unreq contw
+
+.section .data
+.align 2
+
+.globl ContadorPoderes
+    ContadorPoderes: .word 1
+.globl PosicionY1
+    PosicionY1: .word 0
+.globl PosicionY2
+    PosicionY2: .word 0
+.globl PosicionY3
+    PosicionY3: .word 0
+.globl PosicionY4
+    PosicionY4: .word 0
+.globl PosicionY5
+    PosicionY5: .word 0
