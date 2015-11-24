@@ -322,7 +322,7 @@ characterLoopC$:
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r0, r1, r2, r4-r12, pc} //se ha terminado de revisar y no hay choques
+    popeq {r0, r1, r2, r4-r11, pc} //se ha terminado de revisar y no hay choques
     b characterLoopC$
 
     .unreq x
