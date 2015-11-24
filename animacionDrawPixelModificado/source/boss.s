@@ -346,11 +346,10 @@ TirandoPoder:
     ldreq r7, =PosicionX5 //ultimo poder
 
 SustrayendoPoderes:
-    str x, [r7]
+    str x, [r7] //guarda en memoria pos en x del poder
+    sub y, #100 //resta 100 a pos en y para que poder salga arriba
 
-    sub y, #100
-
-    ldr r0, =Poderes
+    ldr r0, =Poderes //pinta poder en posicion x,yj
     ldr r0, [r0]
     mov r1, x
     mov r2, y
@@ -361,14 +360,13 @@ SustrayendoPoderes:
     .unreq x
     .unreq y
 
-// ******************************************
-// Subrutina para tirar poder
+// *********************************************
+// Subrutina para animar el poder del personaje
 // Entradas
-// * r0 posicion x
-// * r1 posicion y
+// * no tiene
 // Salida:
 // * no tiene
-// ******************************************
+// *********************************************
 .globl AnimandoPoderes
 AnimandoPoderes:
     push {r4-r12, lr}
@@ -438,6 +436,82 @@ AnimandoPoderes:
     sub r9, #50
     ldr r10, =PosicionY
     str r9, [r10]
+
+//borrando
+//  * r0: x0
+//  * r1: y0
+//  * r2: ancho
+//  * r3: alto
+
+ /*   ldr r7, =PosicionX1 //primer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+
+    mov r0, r6
+    mov r1, r9
+    ldr r3, =Poderes
+    ldr r3, [r3]
+    add r2, r3, #2
+    bl DrawBackgroundRectangle2
+
+    ldr r7, =PosicionX2 //segundo poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+
+    mov r0, r6
+    mov r1, r9
+    ldr r3, =Poderes
+    ldr r3, [r3]
+    add r2, r3, #2
+    bl DrawBackgroundRectangle2
+
+    ldr r7, =PosicionX3 //tercer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+
+    mov r0, r6
+    mov r1, r9
+    ldr r3, =Poderes
+    ldr r3, [r3]
+    add r2, r3, #2
+    bl DrawBackgroundRectangle2
+
+    ldr r7, =PosicionX4 //cuarto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+
+    mov r0, r6
+    mov r1, r9
+    ldr r3, =Poderes
+    ldr r3, [r3]
+    add r2, r3, #2
+    bl DrawBackgroundRectangle2
+
+    ldr r7, =PosicionX5 //quinto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+
+    mov r0, r6
+    mov r1, r9
+    ldr r3, =Poderes
+    ldr r3, [r3]
+    add r2, r3, #2
+    bl DrawBackgroundRectangle2*/
 
     pop {r4-r12, pc}
 
