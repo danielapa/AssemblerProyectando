@@ -32,7 +32,13 @@ jugarLaberinto:
     mov paso_actual, #0
     mov x, #65
     mov y, #45
-    mov r12, #0
+
+    /* Direccion GPIO base */
+    bl GetGpioAddress
+    mov r8,r0
+
+    ldr r7, =GpioAdd
+    str r8, [r7]
 
     loopContinue$:
 
@@ -224,6 +230,8 @@ jugarLaberinto:
         mov r0, x
         mov r1, y
         bl OnObject
+
+        //bl RevisarPush
 
         // *******************************
         // 5 - retardo
@@ -830,6 +838,41 @@ StoreColour:
     .unreq pixel
 
 // ******************************************
+// Subrutina para revisar un push button
+// Entradas
+// * no tiene
+// Salidas
+// * no tiene
+// ******************************************
+.globl RevisarPush
+RevisarPush:
+    push {r4-r12,lr}
+
+    ldr r7, =GpioAdd
+    ldr r8, [r7]
+
+    ldr r10,[r8,#0x34]
+    mov r0,#1
+    lsl r0, #14
+    and r10,r0 
+
+    /* Si el boton esta en nivel alto se enciende el GPIO 8 */
+    teq r10,#0
+    movne r0,#8
+    movne r1,#1
+    bne luz
+
+    /* Sino se apaga el GPIO 8 */
+    teq r10,#0
+    moveq r0,#8
+    moveq r1,#0
+
+luz:
+    bl SetGpio
+
+    pop {r4-r12,lr}
+
+// ******************************************
 // Subrutina para dibujar una imagen. 
 //    Utiliza DrawPixel y SetForeColour
 //    Asume color transparente como 1
@@ -897,6 +940,9 @@ noDrawBlack$:
 
 .section .data
 .align 2
+
+.globl GpioAdd
+GpioAdd: .word 0
 
 .globl CantVidas
     CantVidas: .word 0

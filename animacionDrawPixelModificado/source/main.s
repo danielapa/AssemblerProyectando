@@ -38,6 +38,19 @@ main:
 * Setup the screen.
 */
 
+	/* Configuracion de puertos GPIO */
+	mov r0,#14
+	mov r1,#0
+	bl SetGpioFunction
+	
+	mov r0,#8
+	mov r1,#1
+	bl SetGpioFunction
+
+	mov r0,#8
+	mov r1,#1
+	bl SetGpio
+
 	mov r0,#1024
 	mov r1,#768
 	mov r2,#16
@@ -48,7 +61,7 @@ main:
 */
 	teq r0,#0
 	bne noError$
-		
+
 	mov r0,#16
 	mov r1,#1
 	bl SetGpioFunction
