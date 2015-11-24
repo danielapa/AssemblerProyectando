@@ -39,6 +39,7 @@ jugarBoss:
         bl drawImageWithTransparency2
         // -----------------------------
 
+
         // *******************************
         // 1 - revisar teclas
         // *******************************
@@ -52,6 +53,12 @@ jugarBoss:
             // -----------------------------
             cmp r0, #'e'
             beq finAnimacion //si se presiona esc, se sale del juego
+            cmp r0, #' '
+            moveq r0, x
+            moveq r1, y
+            bleq TirandoPoder
+
+            bl KeyboardUpdate            
             verificar #79 
             cmp r0, #0
             bne moverPersonajeDer
@@ -126,9 +133,6 @@ jugarBoss:
         mov r2, y
         bl drawImageWithTransparency2
         
-
-        //bl Vidas
-
         bl RevisarPush
 
         // *******************************
@@ -154,18 +158,44 @@ jugarBoss:
     ldr r3, [r3]
     ldrh r3,[r3]
     bl DrawBackgroundRectangle2
-    
-    /*mov r12, #0
-    ldr r11, =CantVidas
-    str r12, [r11]*/
 
     pop {r4-r11, pc}
     .unreq paso_actual
     .unreq x
     .unreq y
 
+// ******************************************
+// Subrutina para tirar poder
+// Entradas
+// * r0 posicion x
+// * r1 posicion y
+// Salida:
+// * no tiene
+// ******************************************
+.globl TirandoPoder
+TirandoPoder:
+    push {r4-r12, lr}
+    
+    mov r4, r0
+    mov r5, r1
 
-    // ******************************************
+    x .req r4
+    y .req r5
+
+    sub r6, y, #100
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, x
+    mov r2, r6
+    bl drawImageWithTransparency2
+
+    pop {r4-r12, pc}
+
+    .unreq x
+    .unreq y
+
+// ******************************************
 // Subrutina para obtener el color del fondo
 // en una posicion x,y
 //    Asume color transparente como 1
@@ -201,7 +231,7 @@ GetBackgroundColor2:
 
     .unreq pixel
 
-    // ******************************************
+// ******************************************
 // Subrutina para dibujar un rectangulo con el
 //    color del fondo
 // Entradas:
@@ -321,4 +351,3 @@ characterLoop$:
     .unreq width
     .unreq conth
     .unreq contw
-

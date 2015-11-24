@@ -62,8 +62,8 @@ again:
     ldreq r0, =p1_1Width
     ldreq r5, =direccionPersonaje4
     streq r0, [r5]        
-    ldreq r0, =BluePower
-    ldreq r5, =PowerPerso
+    ldreq r0, =VertPowerHeight
+    ldreq r5, =Poderes
     streq r0, [r5]           
     beq regreso
 
@@ -80,8 +80,8 @@ again:
     ldreq r0, =p2_1Width
     ldreq r5, =direccionPersonaje4
     streq r0, [r5]  
-    ldreq r0, =BluePower
-    ldreq r5, =PowerPerso
+    ldreq r0, =BluePowerHeight
+    ldreq r5, =Poderes
     streq r0, [r5]       
     beq regreso
 
@@ -98,8 +98,8 @@ again:
     ldreq r0, =p3_1Width
     ldreq r5, =direccionPersonaje4
     streq r0, [r5]
-    ldreq r0, =PinkPower
-    ldreq r5, =PowerPerso
+    ldreq r0, =PinkPowerHeight
+    ldreq r5, =Poderes
     streq r0, [r5]        
     bne again
 
@@ -236,9 +236,9 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    bl jugarLaberinto
-    cmp r0, #1  //Si el usario presione esc, el juego no continua 
-    beq salir
+    //bl jugarLaberinto
+    //cmp r0, #1  //Si el usario presione esc, el juego no continua 
+    //beq salir
 
 //Tras terminar el laberinto, inicia el nivel final
 
@@ -249,18 +249,17 @@ laberinto:
 	mov pc, lr
 
 //**********************************************************************
-// * Laberinto
+// * Hechicero
 //***********************************************************************/
 .globl bossStage
 bossStage:
     push {r4-r11, lr}
 
-    ldr r0, =fondoHechiceroHeight //inicia laberinto de fondo y personaje en el inicio
+    ldr r0, =fondoHechiceroHeight //inicia pantalla hechiero
     mov r1,#0
     mov r2,#0
 
     bl drawImageWithTransparency
-
 
     bl jugarBoss
 
@@ -271,6 +270,8 @@ bossStage:
 .section .data
 .align 2
 
+.globl Poderes
+    Poderes: .word 0
 .globl direccionPersonaje1
     direccionPersonaje1: .word 0
 .globl direccionPersonaje2
@@ -279,5 +280,3 @@ bossStage:
     direccionPersonaje3: .word 0
 .globl direccionPersonaje4
     direccionPersonaje4: .word 0
-.globl PowerPerso
-    PowerPerso: .word 0
