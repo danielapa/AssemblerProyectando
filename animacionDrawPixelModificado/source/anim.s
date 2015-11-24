@@ -214,16 +214,12 @@ StoreColour:
 RevisarPush:
     push {r4-r12,lr}
 
-    /* Direccion GPIO base */
-    bl GetGpioAddress
-    mov r8,r0
-
-    ldr r10, [r8, #0x34]
+    ldr r10, =0x20200034
     mov r0,#1
     lsl r0, #14
     and r10, r0
 
-    mov r10, #1
+    //mov r10, #1
 
     /* Si el boton esta en nivel alto se enciende el GPIO 8 */
     teq r10, #0
@@ -233,7 +229,6 @@ RevisarPush:
     moveq r0, #8
     moveq r1, #0
 
-luz:
     bl SetGpio
 
     pop {r4-r12, pc}

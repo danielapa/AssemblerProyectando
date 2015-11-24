@@ -13,7 +13,7 @@
 * parameters, should preserve registers r4-r8,r10-r11,sp between calls, and 
 * should return values in r0 (and r1 if needed). 
 * It does also stipulate many things about how methods should use the registers
-* and stack during calls, but we're using hand coded assembly. All we need to 
+* and stack during calls, but were using hand coded assembly. All we need to 
 * do is obey the start and end conditions, and if all our methods do this, they
 * would all work from C.
 */
