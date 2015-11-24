@@ -168,7 +168,7 @@ game:
 	push {lr}
 	bl juego
 	pop {lr}
-	b TerminalClear
+	b reset$
 
 
 ok:

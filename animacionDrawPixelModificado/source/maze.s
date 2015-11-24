@@ -151,6 +151,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
         cmp r0, #1
+        moveq r5, r1
         beq finAnimacion
 
         bl Buzz
@@ -188,6 +189,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
         cmp r0, #1
+        moveq r5, r1
         beq finAnimacion
 
         bl Buzz
@@ -244,6 +246,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
         cmp r0, #1
+        moveq r5, r1
         beq finAnimacion
 
 
@@ -557,17 +560,7 @@ OnObject:
     cmp ok, #4
     moveq r0, #1
     movne r0, #0
-
-
-
-
-    //SALIDA - NO FUNCIONA
-    /*cmp done, #4 //Done=4 cuando los 4 candados fueron abiertos
-
-    ldreq r0, =heartFullHeight
-    moveq r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
-    moveq r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
-    bleq drawImageWithTransparency   */ 
+    mov r1, #0
 
     pop {r2-r12,pc}
 

@@ -236,16 +236,39 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    //bl jugarLaberinto
+    bl jugarLaberinto
 
-    //cmp r0, #1  //Si el usario presione esc, el juego no continua 
-    //beq salir
+    cmp r0, #1  //Si el usario presione esc, el juego no continua 
+    beq salir
 
 //Tras terminar el laberinto, inicia el nivel final
 
     bl bossStage
 
     salir:
+
+    ldr r0, =finHeight //final pantalla
+    mov r1,#0
+    mov r2,#0
+
+    bl drawImageWithTransparency
+
+    ldr r0, =3000000
+    bl Wait
+
+    ldr r0, =0x0000
+    bl SetForeColour
+
+    mov r0, #1024
+    mov r1, #768
+    mov r2, #0
+    mov r3, #0    
+
+    bl DrawRectangle
+
+    ldr r0, =0xFFFF
+    bl SetForeColour    
+
 	pop {r4-r11, lr}
 	mov pc, lr
 
