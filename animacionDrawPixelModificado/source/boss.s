@@ -73,8 +73,9 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        add x, #5
-        mov r3, #5
+        cmp x, #964 
+        addlt x, #5
+        //mov r3, #5
         b continuarAnimacion$
 
     moverPersonajeIzq:
@@ -93,7 +94,8 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        sub x, #5
+        cmp x, #0
+        subgt x, #5
         mov r3, #4
         b continuarAnimacion$
 
@@ -125,34 +127,7 @@ jugarBoss:
         bl drawImageWithTransparency2
         
 
-        /*bl Choque //revisa si el personaje se choco
-        cmp r3, #6 //si se sumo 2 a r3 y este era 4, iba a la izquierda
-        addeq r1, #5
-        addeq x, #5
-        push {r3}
-        bleq drawImageWithTransparency2
-        pop {r3}
-        cmp r3, #7 //si se sumo 2 a r3 y este era 5, iba a la derecha
-        subeq r1, #5
-        subeq x, #5
-        push {r3}
-        bleq drawImageWithTransparency2
-        pop {r3}
-        cmp r3, #4 //izquierda normal
-        push {r3}
-        bleq drawImageWithTransparency2
-        pop {r3}
-        cmp r3, #5 //derecha normal
-        bleq drawImageWithTransparency2
-
-        bl Vidas
-
-        mov r0, x
-        mov r1, y
-        bl OnObject
-        cmp r0, #1
-        beq finAnimacion*/
-
+        //bl Vidas
 
         bl RevisarPush
 
