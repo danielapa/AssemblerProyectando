@@ -217,9 +217,7 @@ jugarLaberinto:
         bleq drawImageWithTransparency
         pop {r3}
         cmp r3, #5 //derecha normal
-        push {r3}
         bleq drawImageWithTransparency
-        pop {r3}
 
         bl Vidas
 
@@ -252,7 +250,9 @@ jugarLaberinto:
     ldrh r3,[r3]
     bl DrawBackgroundRectangle
     
-
+    mov r12, #0
+    ldr r11, =CantVidas
+    str r12, [r11]
 
     pop {r4-r11, pc}
     .unreq paso_actual
@@ -314,7 +314,10 @@ characterLoopC$:
 
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
-    addne r12, #1
+    ldrne r12, =CantVidas
+    ldrne r11, [r12]
+    addne r11, #1
+    strne r11, [r12]
     popne {r0, r1, r2, r4-r11, pc}
 
     add contw, #1
@@ -335,7 +338,7 @@ characterLoopC$:
 // **********************************************************************
 // Subrutina para determinar si el personaje se choco y pierde una vida
 // Entradas:
-// * r3 - numero de choque
+// * no tiene
 //
 // Salida:
 // * no tiene
@@ -343,12 +346,12 @@ characterLoopC$:
 
 .globl Vidas
 Vidas:
-    push {r4-r12, lr}
+    push {r4-r11, lr}
 
-    mov r7, r12 //mueve a r7 contador de vidass
+    ldr r7, =CantVidas
+    ldr r7, [r7] //mueve a r7 contador de vidas
 
     cmp r7, #1 //choco
-    addeq r12, #1
     moveq r0, #700 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
@@ -358,7 +361,6 @@ Vidas:
     beq borrar
 
     cmp r7, #2 //choco
-    addeq r12, #1
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
@@ -368,7 +370,6 @@ Vidas:
     beq borrar
 
     cmp r7, #3 //choco
-    addeq r12, #1
     moveq r0, #900 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
@@ -379,7 +380,7 @@ Vidas:
 borrar:
     bleq DrawBackgroundRectangle
 
-    pop {r4-r12, lr}
+    pop {r4-r11, lr}
 
 // **********************************************************************
 // Subrutina para determinar si el personaje se encuentra sobre una Llave
@@ -896,6 +897,9 @@ noDrawBlack$:
 
 .section .data
 .align 2
+
+.globl CantVidas
+    CantVidas: .word 0
 
 .globl ColorAzul
     ColorAzul: .hword 53151
