@@ -216,7 +216,9 @@ jugarLaberinto:
         bleq drawImageWithTransparency
         pop {r3}
         cmp r3, #5 //derecha normal
+        push {r3}
         bleq drawImageWithTransparency
+        pop {r3}
 
         bl Vidas
 
@@ -347,17 +349,21 @@ Vidas:
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
-    ldreq r2, [r3, #2]
+    ldreq r2, =heartFullWidth
+    ldreq r2, [r2]
     ldreq r3, [r3]
-    bleq DrawBackgroundRectangle
+    beq borrar
 
     cmp r7, #7 //choco
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
-    ldreq r2, [r3, #2]
+    ldreq r2, =heartFullWidth
+    ldreq r2, [r2]
     ldreq r3, [r3]
-    bleq DrawBackgroundRectangle    
+
+borrar:
+    bleq DrawBackgroundRectangle
 
     pop {r4-r12, lr}
 

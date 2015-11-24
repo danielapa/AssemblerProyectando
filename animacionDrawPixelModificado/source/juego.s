@@ -203,27 +203,12 @@ laberinto:
     ldr r0, =heartFullHeight
     mov r1, #700
     mov r2, #50
-    bl PaintingBG
-
-    ldr r0, =heartFullHeight
-    mov r1, #700
-    mov r2, #50
     bl drawImageWithTransparency
 
     ldr r0, =heartFullHeight
     mov r1, #800
     mov r2, #50
-    bl PaintingBG
-
-    ldr r0, =heartFullHeight
-    mov r1, #800
-    mov r2, #50
     bl drawImageWithTransparency
-
-    ldr r0, =heartFullHeight
-    mov r1, #900
-    mov r2, #50
-    bl PaintingBG
 
     ldr r0, =heartFullHeight
     mov r1, #900
