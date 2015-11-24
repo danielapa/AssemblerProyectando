@@ -33,12 +33,18 @@ jugarLaberinto:
     mov x, #65
     mov y, #45
 
-    /* Direccion GPIO base */
-    bl GetGpioAddress
-    mov r8,r0
+    /* Configuracion de puertos GPIO */
+    mov r0,#14
+    mov r1,#0
+    bl SetGpioFunction
+    
+    mov r0,#8
+    mov r1,#1
+    bl SetGpioFunction
 
-    ldr r7, =GpioAdd
-    str r8, [r7]
+    mov r0,#7
+    mov r1,#1
+    bl SetGpioFunction    
 
     loopContinue$:
 
@@ -231,7 +237,7 @@ jugarLaberinto:
         mov r1, y
         bl OnObject
 
-        //bl RevisarPush
+        bl RevisarPush
 
         // *******************************
         // 5 - retardo
@@ -848,29 +854,36 @@ StoreColour:
 RevisarPush:
     push {r4-r12,lr}
 
-    ldr r7, =GpioAdd
-    ldr r8, [r7]
+    /* Direccion GPIO base */
+    bl GetGpioAddress
+    mov r8,r0
 
-    ldr r10,[r8,#0x34]
+    ldr r10, [r8, #0x34]
     mov r0,#1
     lsl r0, #14
-    and r10,r0 
+    and r10, r0
+
+    mov r10, #1
 
     /* Si el boton esta en nivel alto se enciende el GPIO 8 */
-    teq r10,#0
+    teq r10, #0
     movne r0,#8
     movne r1,#1
-    bne luz
+
+    //bl SetGpio
+
+    /*mov r0,#7
+    mov r1,#1*/
 
     /* Sino se apaga el GPIO 8 */
-    teq r10,#0
-    moveq r0,#8
-    moveq r1,#0
+    teq r10, #0
+    moveq r0, #8
+    moveq r1, #0
 
 luz:
     bl SetGpio
 
-    pop {r4-r12,lr}
+    pop {r4-r12, pc}
 
 // ******************************************
 // Subrutina para dibujar una imagen. 
@@ -940,9 +953,6 @@ noDrawBlack$:
 
 .section .data
 .align 2
-
-.globl GpioAdd
-GpioAdd: .word 0
 
 .globl CantVidas
     CantVidas: .word 0
