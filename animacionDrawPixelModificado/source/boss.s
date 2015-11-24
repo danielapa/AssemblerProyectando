@@ -50,7 +50,6 @@ jugarBoss:
         bl drawImageWithTransparency2
         // -----------------------------
 
-<<<<<<< HEAD
         /*ldr r0, =Fly1Height
         mov r1, xfly
         mov r2, yfly
@@ -77,13 +76,11 @@ jugarBoss:
         cmp enemigo, #2
         ldreq dirEnemigoH, =Slime1Height
         ldreq dirEnemigoW, =Slime1Width
-=======
 
-        ldr r7, =ContadorPoderes
-        ldr r7, [r7]
-        cmp r7, #5
+        ldr r3, =ContadorPoderes
+        ldr r3, [r3]
+        cmp r3, #5
         blgt AnimandoPoderes
->>>>>>> origin/master
 
         // *******************************
         // 1 - revisar teclas
