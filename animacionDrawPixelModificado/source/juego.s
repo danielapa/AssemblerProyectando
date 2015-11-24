@@ -61,7 +61,10 @@ again:
     streq r0, [r5]  
     ldreq r0, =p1_1Width
     ldreq r5, =direccionPersonaje4
-    streq r0, [r5]                 
+    streq r0, [r5]        
+    ldreq r0, =BluePower
+    ldreq r5, =PowerPerso
+    streq r0, [r5]           
     beq regreso
 
     teq r0, #'n' //personaje2 - azul
@@ -76,6 +79,9 @@ again:
     streq r0, [r5]  
     ldreq r0, =p2_1Width
     ldreq r5, =direccionPersonaje4
+    streq r0, [r5]  
+    ldreq r0, =BluePower
+    ldreq r5, =PowerPerso
     streq r0, [r5]       
     beq regreso
 
@@ -91,7 +97,10 @@ again:
     streq r0, [r5] 
     ldreq r0, =p3_1Width
     ldreq r5, =direccionPersonaje4
-    streq r0, [r5]      
+    streq r0, [r5]
+    ldreq r0, =PinkPower
+    ldreq r5, =PowerPerso
+    streq r0, [r5]        
     bne again
 
 regreso:
@@ -227,7 +236,7 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    //bl jugarLaberinto
+    bl jugarLaberinto
 
 //Tras terminar el laberinto, inicia el nivel final
 
@@ -268,3 +277,5 @@ bossStage:
     direccionPersonaje3: .word 0
 .globl direccionPersonaje4
     direccionPersonaje4: .word 0
+.globl PowerPerso
+    PowerPerso: .word 0
