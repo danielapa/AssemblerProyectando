@@ -512,7 +512,7 @@ LOAD .\libcsud.a
  .ARM.attributes
                 0x007f60e8       0x32 .\libcsud.a(platform.broadcom2835.c.o)
 
-.text           0x007f611c     0x16fc
+.text           0x007f611c     0x171c
  *.c.o(.text)
  *(.text)
  .text          0x007f611c      0x1d0 build/anim.o
@@ -543,62 +543,63 @@ LOAD .\libcsud.a
  .text          0x007f65d4        0x0 build/greenLock.o
  .text          0x007f65d4        0x0 build/heartEmpty.o
  .text          0x007f65d4        0x0 build/heartFull.o
- .text          0x007f65d4      0x2f0 build/juego.o
+ .text          0x007f65d4      0x304 build/juego.o
                 0x007f65d4                juego
                 0x007f6604                escogiendo
                 0x007f66d4                laberinto
- .text          0x007f68c4      0x144 build/keyboard.o
-                0x007f68c4                KeyboardUpdate
-                0x007f6948                KeyWasDown
-                0x007f6978                KeyboardGetChar
- .text          0x007f6a08       0x6c build/mailbox.o
-                0x007f6a08                GetMailboxBase
-                0x007f6a10                MailboxRead
-                0x007f6a44                MailboxWrite
- .text          0x007f6a74      0x1b0 build/main.o
- .text          0x007f6c24       0x48 build/maths.o
-                0x007f6c24                DivideU32
- .text          0x007f6c6c      0x63c build/maze.o
-                0x007f6c6c                jugarLaberinto
-                0x007f6f04                Choque
-                0x007f6f8c                Vidas
-                0x007f6ffc                OnObject
-                0x007f71ac                PaintingBG
-                0x007f720c                PaintingBGBlue
- .text          0x007f72a8        0x0 build/nivel1.o
- .text          0x007f72a8        0x0 build/p1_1.o
- .text          0x007f72a8        0x0 build/p1_2.o
- .text          0x007f72a8        0x0 build/p1_3.o
- .text          0x007f72a8        0x0 build/p2_1.o
- .text          0x007f72a8        0x0 build/p2_2.o
- .text          0x007f72a8        0x0 build/p2_3.o
- .text          0x007f72a8        0x0 build/p3_1.o
- .text          0x007f72a8        0x0 build/p3_2.o
- .text          0x007f72a8        0x0 build/p3_3.o
- .text          0x007f72a8        0x0 build/pantallaInicio.o
- .text          0x007f72a8        0x0 build/pantallaSeleccion.o
- .text          0x007f72a8       0x18 build/random.o
-                0x007f72a8                Random
- .text          0x007f72c0        0x0 build/redKey.o
- .text          0x007f72c0        0x0 build/redLock.o
- .text          0x007f72c0       0x40 build/systemTimer.o
-                0x007f72c0                GetSystemTimerBase
-                0x007f72c8                GetTimeStamp
-                0x007f72d8                Wait
- .text          0x007f7300       0x74 build/tags.o
-                0x007f7300                FindTag
- .text          0x007f7374      0x2c0 build/terminal.o
-                0x007f73ac                TerminalDisplay
-                0x007f7454                TerminalClear
-                0x007f746c                Print
-                0x007f7544                ReadLine
- .text          0x007f7634      0x1e4 build/text.o
-                0x007f7634                ReverseString
-                0x007f7660                UnsignedString
-                0x007f76b0                SignedString
-                0x007f76dc                FormatString
- .text          0x007f7818        0x0 build/yellowKey.o
- .text          0x007f7818        0x0 build/yellowLock.o
+                0x007f6844                bossStage
+ .text          0x007f68d8      0x144 build/keyboard.o
+                0x007f68d8                KeyboardUpdate
+                0x007f695c                KeyWasDown
+                0x007f698c                KeyboardGetChar
+ .text          0x007f6a1c       0x6c build/mailbox.o
+                0x007f6a1c                GetMailboxBase
+                0x007f6a24                MailboxRead
+                0x007f6a58                MailboxWrite
+ .text          0x007f6a88      0x1b0 build/main.o
+ .text          0x007f6c38       0x48 build/maths.o
+                0x007f6c38                DivideU32
+ .text          0x007f6c80      0x648 build/maze.o
+                0x007f6c80                jugarLaberinto
+                0x007f6f30                Choque
+                0x007f6fb8                Vidas
+                0x007f7028                OnObject
+                0x007f71cc                PaintingBG
+                0x007f722c                PaintingBGBlue
+ .text          0x007f72c8        0x0 build/nivel1.o
+ .text          0x007f72c8        0x0 build/p1_1.o
+ .text          0x007f72c8        0x0 build/p1_2.o
+ .text          0x007f72c8        0x0 build/p1_3.o
+ .text          0x007f72c8        0x0 build/p2_1.o
+ .text          0x007f72c8        0x0 build/p2_2.o
+ .text          0x007f72c8        0x0 build/p2_3.o
+ .text          0x007f72c8        0x0 build/p3_1.o
+ .text          0x007f72c8        0x0 build/p3_2.o
+ .text          0x007f72c8        0x0 build/p3_3.o
+ .text          0x007f72c8        0x0 build/pantallaInicio.o
+ .text          0x007f72c8        0x0 build/pantallaSeleccion.o
+ .text          0x007f72c8       0x18 build/random.o
+                0x007f72c8                Random
+ .text          0x007f72e0        0x0 build/redKey.o
+ .text          0x007f72e0        0x0 build/redLock.o
+ .text          0x007f72e0       0x40 build/systemTimer.o
+                0x007f72e0                GetSystemTimerBase
+                0x007f72e8                GetTimeStamp
+                0x007f72f8                Wait
+ .text          0x007f7320       0x74 build/tags.o
+                0x007f7320                FindTag
+ .text          0x007f7394      0x2c0 build/terminal.o
+                0x007f73cc                TerminalDisplay
+                0x007f7474                TerminalClear
+                0x007f748c                Print
+                0x007f7564                ReadLine
+ .text          0x007f7654      0x1e4 build/text.o
+                0x007f7654                ReverseString
+                0x007f7680                UnsignedString
+                0x007f76d0                SignedString
+                0x007f76fc                FormatString
+ .text          0x007f7838        0x0 build/yellowKey.o
+ .text          0x007f7838        0x0 build/yellowLock.o
 
 /DISCARD/
  *(*)

@@ -106,12 +106,6 @@ regreso:
 laberinto:
 	push {r4-r11, lr}
 
-    /*ldr r0, =bgHeight //inicia laberinto de fondo y personaje en el inicio
-    mov r1,#0
-    mov r2,#0
-
-    bl drawImageWithTransparency*/
-
 	ldr r0, =nivel1Height //inicia laberinto de fondo y personaje en el inicio
 	mov r1,#0
 	mov r2,#0
@@ -235,17 +229,30 @@ laberinto:
 
     bl jugarLaberinto
 
-    ldr r0, =heartFullHeight
-    mov r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
-    mov r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
-    bl drawImageWithTransparency  
+//Tras terminar el laberinto, inicia el nivel final
 
+    bl bossStage
 
-//AQUI VA EL CODIGO QUE MANDA A MOVER PERSONAJE DEPENDIENDO DE (X,Y) Y TODO LO QUE VA DENTRO DEL FUNCIONAMIENTO DEL LABERINTO
-//SE ME OCURRIA HACER SUBRUTINAS PARA: MOVER, DISPAROS, CHOQUE, ENEMIGOS
 
 	pop {r4-r11, lr}
 	mov pc, lr
+
+//**********************************************************************
+// * Laberinto
+//***********************************************************************/
+.globl bossStage
+bossStage:
+    push {r4-r11, lr}
+
+    ldr r0, =fondoHechiceroHeight //inicia laberinto de fondo y personaje en el inicio
+    mov r1,#0
+    mov r2,#0
+
+    bl drawImageWithTransparency
+
+    pop {r4-r11, lr}
+    mov pc, lr
+
 
 .section .data
 .align 2

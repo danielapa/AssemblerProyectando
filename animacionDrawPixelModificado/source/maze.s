@@ -146,6 +146,9 @@ jugarLaberinto:
         mov r0, x
         mov r1, y
         bl OnObject
+        cmp r0, #1
+        beq finAnimacion
+
         ldr r0, =10000
         //bl Wait
         b Revision
@@ -180,6 +183,9 @@ jugarLaberinto:
         mov r0, x
         mov r1, y
         bl OnObject
+        cmp r0, #1
+        beq finAnimacion
+
         ldr r0, =10000
         //bl Wait
 
@@ -234,6 +240,9 @@ jugarLaberinto:
         mov r0, x
         mov r1, y
         bl OnObject
+        cmp r0, #1
+        beq finAnimacion
+
 
         bl RevisarPush
 
@@ -401,10 +410,11 @@ borrar:
 // * r0 - posicion en x
 // * r1 - posicion en y
 // Salida:
-// * no tiene
+// * r0 - devuelve 0 si aun no ha salido, devuelve 1 si ya salio del laberinto
 // **********************************************************************
 
 .globl OnObject
+
 OnObject:
     .macro revisando xi, yi, xf, yf
     cmp x, \xi
@@ -497,7 +507,6 @@ OnObject:
     revisando xi, yi, xf, yf
 
     cmp ok, #4
-    streq done, [dirDone]
     ldreq r0, =yellowLockHeight
     moveq r1,#900
     addeq r1, #50
@@ -514,10 +523,8 @@ OnObject:
     revisando xi, yi, xf, yf
 
     cmp ok, #4
-    ldreq r0, =heartFullHeight
-    moveq r1, #500                      //SE DIBUJA UN CUARTO CORAZON COMO PRUEBA
-    moveq r2, #50                       //AQUI DEBERIA PINTARSE EL FONDO DEL MAGO
-    bleq drawImageWithTransparency
+    moveq r0, #1
+    movne r0, #0
 
 
 
