@@ -368,10 +368,6 @@ characterLoopC$:
 .globl Buzz
 Buzz:
     push {r4-r11, lr}
-
-    mov r0,#8
-    mov r1,#1
-    bl SetGpio
     
     mov r0,#7
     mov r1,#0
@@ -379,10 +375,6 @@ Buzz:
 
     ldr r0, =10000
     bl Wait
-    
-    mov r0,#8
-    mov r1,#0
-    bl SetGpio
     
     mov r0,#7
     mov r1,#1

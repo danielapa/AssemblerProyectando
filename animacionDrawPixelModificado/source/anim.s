@@ -230,13 +230,6 @@ RevisarPush:
     movne r0,#8
     movne r1,#1
 
-    //bl SetGpio
-
-    /*mov r0,#7
-    mov r1,#1*/
-
-    /* Sino se apaga el GPIO 8 */
-    teq r10, #0
     moveq r0, #8
     moveq r1, #0
 
