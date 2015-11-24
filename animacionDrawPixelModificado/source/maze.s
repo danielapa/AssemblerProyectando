@@ -379,10 +379,18 @@ Buzz:
     mov r1,#0
     bl SetGpio
 
+    mov r0,#8
+    mov r1,#0
+    bl SetGpio
+
     ldr r0, =10000
     bl Wait
     
     mov r0,#7
+    mov r1,#1
+    bl SetGpio
+
+    mov r0,#8
     mov r1,#1
     bl SetGpio
 
