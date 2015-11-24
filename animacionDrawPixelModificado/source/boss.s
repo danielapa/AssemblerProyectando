@@ -223,13 +223,14 @@ TirandoPoder:
     ldreq r7, =PosicionX5 //ultimo poder
 
 SustrayendoPoderes:
-    sub r6, y, #100
-    str r6, [r7]
+    str x, [r7]
+
+    sub y, #100
 
     ldr r0, =Poderes
     ldr r0, [r0]
     mov r1, x
-    mov r2, r6
+    mov r2, y
     bl drawImageWithTransparency2
 
     pop {r4-r12, pc}
@@ -311,7 +312,7 @@ AnimandoPoderes:
 
     ldr r9, =PosicionY
     ldr r9, [r9]
-    sub r9, #100
+    sub r9, #50
     ldr r10, =PosicionY
     str r9, [r10]
 
