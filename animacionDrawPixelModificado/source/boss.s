@@ -187,30 +187,44 @@ TirandoPoder:
     x .req r4
     y .req r5
 
+    ldr r9, =ContadorPoderes
+
     ldr r8, =ContadorPoderes
     ldr r8, [r8]
 
     cmp r8, #1
-    ldreq r7, =PosicionY1 //primer poder
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX1 //primer poder
+    beq SustrayendoPoderes
 
     cmp r8, #2
-    ldreq r7, =PosicionY2 //segundo poder
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX2 //segundo poder
+    beq SustrayendoPoderes
 
     cmp r8, #3
-    ldreq r7, =PosicionY3 //tercer poder
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX3 //tercer poder
+    beq SustrayendoPoderes
 
     cmp r8, #4
-    ldreq r7, =PosicionY4 //cuarto poder
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX4 //cuarto poder
+    beq SustrayendoPoderes
+
 
     cmp r8, #5
-    ldreq r7, =PosicionY5 //ultimo poder
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX5 //ultimo poder
 
+SustrayendoPoderes:
     sub r6, y, #100
-    streq r6, [r7]
-
-    add r8, #1
-    ldr r9, =ContadorPoderes
-    str r8, [r9]
+    str r6, [r7]
 
     ldr r0, =Poderes
     ldr r0, [r0]
@@ -234,7 +248,72 @@ TirandoPoder:
 .globl AnimandoPoderes
 AnimandoPoderes:
     push {r4-r12, lr}
-    
+
+    ldr r7, =PosicionX1 //primer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX2 //segundo poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX3 //tercer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX4 //cuarto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX5 //quinto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #100
+    ldr r10, =PosicionY
+    str r9, [r10]
 
     pop {r4-r12, pc}
 
@@ -400,13 +479,15 @@ characterLoop$:
 
 .globl ContadorPoderes
     ContadorPoderes: .word 1
-.globl PosicionY1
-    PosicionY1: .word 0
-.globl PosicionY2
-    PosicionY2: .word 0
-.globl PosicionY3
-    PosicionY3: .word 0
+.globl PosicionY
+    PosicionY: .word 514
+.globl PosicionX1
+    PosicionX1: .word 0
+.globl PosicionX2
+    PosicionX2: .word 0
+.globl PosicionX3
+    PosicionX3: .word 0
 .globl PosicionY4
-    PosicionY4: .word 0
-.globl PosicionY5
-    PosicionY5: .word 0
+    PosicionX4: .word 0
+.globl PosicionX5
+    PosicionX5: .word 0
