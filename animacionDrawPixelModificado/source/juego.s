@@ -236,7 +236,7 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    bl jugarLaberinto
+    //bl jugarLaberinto
 
     cmp r0, #1  //Si el usario presione esc, el juego no continua 
     beq salir

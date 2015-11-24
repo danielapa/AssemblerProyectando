@@ -90,6 +90,11 @@ jugarBoss:
         cmp r2, #5
         blgt AnimandoPoderes
 
+        ldr r2, =ContadorPoderes
+        ldr r2, [r2]
+        cmp r2, #5
+        
+
         // *******************************
         // 1 - revisar teclas
         // *******************************
