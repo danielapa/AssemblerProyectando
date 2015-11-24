@@ -50,6 +50,7 @@ jugarBoss:
         bl drawImageWithTransparency2
         // -----------------------------
 
+<<<<<<< HEAD
         /*ldr r0, =Fly1Height
         mov r1, xfly
         mov r2, yfly
@@ -76,6 +77,13 @@ jugarBoss:
         cmp enemigo, #2
         ldreq dirEnemigoH, =Slime1Height
         ldreq dirEnemigoW, =Slime1Width
+=======
+
+        ldr r7, =ContadorPoderes
+        ldr r7, [r7]
+        cmp r7, #5
+        blgt AnimandoPoderes
+>>>>>>> origin/master
 
         // *******************************
         // 1 - revisar teclas
@@ -130,6 +138,12 @@ jugarBoss:
             // -----------------------------
             cmp r0, #'e'
             beq finAnimacion //si se presiona esc, se sale del juego
+            cmp r0, #' '
+            moveq r0, x
+            moveq r1, y
+            bleq TirandoPoder
+
+            bl KeyboardUpdate            
             verificar #79 
             cmp r0, #0
             bne moverPersonajeDer
@@ -247,9 +261,6 @@ jugarBoss:
         mov r2, y
         bl drawImageWithTransparency2
         
-
-        //bl Vidas
-
         bl RevisarPush
 
         // *******************************
@@ -275,18 +286,162 @@ jugarBoss:
     ldr r3, [r3]
     ldrh r3,[r3]
     bl DrawBackgroundRectangle2
-    
-    /*mov r12, #0
-    ldr r11, =CantVidas
-    str r12, [r11]*/
 
     pop {r4-r11, pc}
     .unreq paso_actual
     .unreq x
     .unreq y
 
+// ******************************************
+// Subrutina para tirar poder
+// Entradas
+// * r0 posicion x
+// * r1 posicion y
+// Salida:
+// * no tiene
+// ******************************************
+.globl TirandoPoder
+TirandoPoder:
+    push {r4-r12, lr}
+    
+    mov r4, r0 //posicion x
+    mov r5, r1 //posicion y
 
-    // ******************************************
+    x .req r4
+    y .req r5
+
+    ldr r9, =ContadorPoderes
+
+    ldr r8, =ContadorPoderes
+    ldr r8, [r8]
+
+    cmp r8, #1
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX1 //primer poder
+    beq SustrayendoPoderes
+
+    cmp r8, #2
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX2 //segundo poder
+    beq SustrayendoPoderes
+
+    cmp r8, #3
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX3 //tercer poder
+    beq SustrayendoPoderes
+
+    cmp r8, #4
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX4 //cuarto poder
+    beq SustrayendoPoderes
+
+
+    cmp r8, #5
+    addeq r8, #1
+    streq r8, [r9]
+    ldreq r7, =PosicionX5 //ultimo poder
+
+SustrayendoPoderes:
+    str x, [r7]
+
+    sub y, #100
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, x
+    mov r2, y
+    bl drawImageWithTransparency2
+
+    pop {r4-r12, pc}
+
+    .unreq x
+    .unreq y
+
+// ******************************************
+// Subrutina para tirar poder
+// Entradas
+// * r0 posicion x
+// * r1 posicion y
+// Salida:
+// * no tiene
+// ******************************************
+.globl AnimandoPoderes
+AnimandoPoderes:
+    push {r4-r12, lr}
+
+    ldr r7, =PosicionX1 //primer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX2 //segundo poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX3 //tercer poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX4 //cuarto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r7, =PosicionX5 //quinto poder
+    ldr r6, [r7]
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+
+    ldr r0, =Poderes
+    ldr r0, [r0]
+    mov r1, r6
+    mov r2, r9
+    bl drawImageWithTransparency2
+
+    ldr r9, =PosicionY
+    ldr r9, [r9]
+    sub r9, #50
+    ldr r10, =PosicionY
+    str r9, [r10]
+
+    pop {r4-r12, pc}
+
+// ******************************************
 // Subrutina para obtener el color del fondo
 // en una posicion x,y
 //    Asume color transparente como 1
@@ -322,7 +477,7 @@ GetBackgroundColor2:
 
     .unreq pixel
 
-    // ******************************************
+// ******************************************
 // Subrutina para dibujar un rectangulo con el
 //    color del fondo
 // Entradas:
@@ -443,3 +598,20 @@ characterLoop$:
     .unreq conth
     .unreq contw
 
+.section .data
+.align 2
+
+.globl ContadorPoderes
+    ContadorPoderes: .word 1
+.globl PosicionY
+    PosicionY: .word 514
+.globl PosicionX1
+    PosicionX1: .word 0
+.globl PosicionX2
+    PosicionX2: .word 0
+.globl PosicionX3
+    PosicionX3: .word 0
+.globl PosicionY4
+    PosicionX4: .word 0
+.globl PosicionX5
+    PosicionX5: .word 0
