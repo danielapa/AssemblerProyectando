@@ -77,9 +77,9 @@ jugarBoss:
         ldreq dirEnemigoH, =Slime1Height
         ldreq dirEnemigoW, =Slime1Width
 
-        ldr r3, =ContadorPoderes
-        ldr r3, [r3]
-        cmp r3, #5
+        ldr r2, =ContadorPoderes
+        ldr r2, [r2]
+        cmp r2, #5
         blgt AnimandoPoderes
 
         // *******************************
