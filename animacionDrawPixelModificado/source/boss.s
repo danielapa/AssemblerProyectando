@@ -28,19 +28,6 @@ jugarBoss:
     mov y, #600
     add y, #14
 
-    /* Configuracion de puertos GPIO */
-    /*mov r0,#14
-    mov r1,#0
-    bl SetGpioFunction
-    
-    mov r0,#8
-    mov r1,#1
-    bl SetGpioFunction
-
-    mov r0,#7
-    mov r1,#1
-    bl SetGpioFunction */   
-
     loopContinue$:
 
         // -----------------------------

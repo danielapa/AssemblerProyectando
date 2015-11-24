@@ -4,9 +4,11 @@
 * Ma. Belen Hernandez
 * Daniela I. Pocasangre A.
 * r0 - r3 : Parametros de entrada y salida
-* anim.s
+* maze.s
 **********************************************************************/
+
 .section .text
+
 // *********************************************************************
 // Subrutina para iniciar la animacion del personaje.
 //     Anima un personaje hasta que se presionen las teclas de flecha
@@ -42,7 +44,7 @@ jugarLaberinto:
 
     mov r0,#7
     mov r1,#1
-    bl SetGpioFunction    
+    bl SetGpioFunction
 
     loopContinue$:
 
@@ -149,8 +151,8 @@ jugarLaberinto:
         cmp r0, #1
         beq finAnimacion
 
-        ldr r0, =10000
-        //bl Wait
+        bl Buzz
+
         b Revision
 
     moverPersonajeUp:
@@ -186,8 +188,7 @@ jugarLaberinto:
         cmp r0, #1
         beq finAnimacion
 
-        ldr r0, =10000
-        //bl Wait
+        bl Buzz
 
         b Revision
 
@@ -249,8 +250,7 @@ jugarLaberinto:
         // *******************************
         // 5 - retardo
         // *******************************
-        ldr r0, =20000
-        //bl Wait
+        bl Buzz
 
         // *******************************
 
@@ -354,7 +354,44 @@ characterLoopC$:
     .unreq height
     .unreq width
     .unreq conth
-    .unreq contw      
+    .unreq contw   
+
+// **********************************************************************
+// Subrutina para accionar el buzzer.
+// Entradas:
+// * no tiene
+//
+// Salida:
+// * no tiene
+// **********************************************************************
+
+.globl Buzz
+Buzz:
+    push {r4-r11, lr}
+
+    mov r0,#8
+    mov r1,#1
+    bl SetGpio
+    
+    mov r0,#7
+    mov r1,#0
+    bl SetGpio
+
+    ldr r0, =10000
+    bl Wait
+    
+    mov r0,#8
+    mov r1,#0
+    bl SetGpio
+    
+    mov r0,#7
+    mov r1,#1
+    bl SetGpio
+
+    ldr r0, =10000
+    bl Wait
+
+    pop {r4-r11, pc}
 
 // **********************************************************************
 // Subrutina para determinar si el personaje se choco y pierde una vida
