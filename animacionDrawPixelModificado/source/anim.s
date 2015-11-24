@@ -32,6 +32,7 @@ jugarLaberinto:
     mov paso_actual, #0
     mov x, #65
     mov y, #45
+    mov r12, #0
 
     loopContinue$:
 
@@ -274,7 +275,7 @@ jugarLaberinto:
 
 .globl Choque
 Choque:
-    push {r0, r1, r2, r4-r12, lr}
+    push {r0, r1, r2, r4-r11, lr}
     
     ldr r4, =bg //color del fondo, donde debe de estar personaje
     ldrh r4, [r4]
@@ -313,7 +314,8 @@ characterLoopC$:
 
     cmp r11, r4 //compara color de fondo con azul
     addne r3, #2 //si no es igual, se choco
-    popne {r0, r1, r2, r4-r12, pc}
+    addne r12, #1
+    popne {r0, r1, r2, r4-r11, pc}
 
     add contw, #1
     cmp contw, width
@@ -343,9 +345,20 @@ characterLoopC$:
 Vidas:
     push {r4-r12, lr}
 
-    mov r7, r3
+    mov r7, r12
 
-    cmp r7, #6 //choco
+    cmp r7, #1 //choco
+    addeq r12, #1
+    moveq r0, #700 //x
+    moveq r1, #50  //y
+    ldreq r3, =heartFullHeight
+    ldreq r2, =heartFullWidth
+    ldreq r2, [r2]
+    ldreq r3, [r3]
+    beq borrar
+
+    cmp r7, #2 //choco
+    addeq r12, #1
     moveq r0, #800 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
@@ -354,13 +367,14 @@ Vidas:
     ldreq r3, [r3]
     beq borrar
 
-    cmp r7, #7 //choco
-    moveq r0, #800 //x
+    cmp r7, #3 //choco
+    addeq r12, #1
+    moveq r0, #900 //x
     moveq r1, #50  //y
     ldreq r3, =heartFullHeight
     ldreq r2, =heartFullWidth
     ldreq r2, [r2]
-    ldreq r3, [r3]
+    ldreq r3, [r3]    
 
 borrar:
     bleq DrawBackgroundRectangle
@@ -518,7 +532,7 @@ PaintingBG:
     conth       .req r9
     contw       .req r10
     
-    push {r4,r5,r6,r7,r8,r9,r10,r11, lr}
+    push {r4,r5,r6,r7,r8,r9,r10,r11, r12, lr}
     
     mov addr, r0
     mov x, r1
@@ -547,7 +561,7 @@ BGLoop$:
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r4,r5,r6,r7,r8,r9,r10,r11, pc}
+    popeq {r4,r5,r6,r7,r8,r9,r10,r11, r12, pc}
     add addr, #2
     b BGLoop$
     
@@ -582,7 +596,7 @@ PaintingBGBlue:
     conth       .req r9
     contw       .req r10
     
-    push {r4,r5,r6,r7,r8,r9,r10,r11, lr}
+    push {r4,r5,r6,r7,r8,r9,r10,r11, r12, lr}
     
     mov addr, r0
     mov x, r1
@@ -609,7 +623,7 @@ BGLoopB$:
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r4,r5,r6,r7,r8,r9,r10,r11, pc}
+    popeq {r4,r5,r6,r7,r8,r9,r10,r11, r12, pc}
     add addr, #2
     b BGLoopB$
     
@@ -640,7 +654,7 @@ DrawBackgroundRectangle:
     x .req r8
     y .req r9
 
-    push {r4-r9,lr}
+    push {r4-r9,r12,lr}
     
     mov px, r0
     mov py, r1
@@ -666,7 +680,7 @@ DrawBackgroundRectangle:
         addeq y, #1
         cmp y, height
         bne loopLine$
-    pop {r4-r9,pc}
+    pop {r4-r9,r12,pc}
     .unreq px
     .unreq py
     .unreq width
@@ -699,7 +713,7 @@ drawImageWithTransparency:
     conth       .req r9
     contw       .req r10
     
-    push {r4,r5,r6,r7,r8,r9,r10,lr}
+    push {r4,r5,r6,r7,r8,r9,r10,r12,lr}
     
     mov addr, r0
     mov x, r1
@@ -729,7 +743,7 @@ characterLoop$:
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r4,r5,r6,r7,r8,r9,r10,pc}
+    popeq {r4,r5,r6,r7,r8,r9,r10,r12,pc}
     add addr, #2
     b characterLoop$
     
@@ -838,7 +852,7 @@ removeImageWithBlack:
     conth       .req r9
     contw       .req r10
     
-    push {r4,r5,r6,r7,r8,r9,r10,lr}
+    push {r4,r5,r6,r7,r8,r9,r10,r12, lr}
     
     mov addr, r0
     mov x, r1
@@ -868,7 +882,7 @@ noDrawBlack$:
     moveq contw, #0
     addeq conth, #1
     cmp conth, height
-    popeq {r4,r5,r6,r7,r8,r9,r10,pc}
+    popeq {r4,r5,r6,r7,r8,r9,r10,r12,pc}
     add addr, #2
     b characterLoopBlack$
     
