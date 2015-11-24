@@ -63,9 +63,17 @@ jugarBoss:
 
         //Eleccion de enemigo
         CambioEnemigo:
+        mov r0,  #0
+        mov r1, #500
+        add r1, #68
+        mov r2, #100
+        mov r3, #100
+        bl DrawBackgroundRectangle2
         add enemigo, #1
         cmp enemigo, #3
         moveq enemigo, #0
+
+        add ye, #5
 
         cmp enemigo, #0
         ldreq dirEnemigoH, =Fly1Height
@@ -94,22 +102,22 @@ jugarBoss:
         mov r0, dirEnemigoW
         ldrh r0, [r0]
         add r0, xe, r0
-        sub r0, #1
+        sub r0, #2
         mov r1, ye
-        mov r2, #1
+        mov r2, #2
         mov r3, dirEnemigoH
         ldrh r3,[r3]
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        sub xe, #1
+        sub xe, #2
 
         mov r0, dirEnemigoH
         mov r1, xe
         mov r2, ye
         bl drawImageWithTransparency2
 
-        cmp x, #0
+        cmp xe, #0
         movle xe, #840
         movle ye, #568
         ble CambioEnemigo
@@ -169,8 +177,10 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        add x, #5
-        mov r3, #5
+        mov r0, #900
+        add r0, #62
+        cmp x, r0
+        addle x, #5
         b continuarAnimacion$
 
     moverPersonajeIzq:
@@ -189,8 +199,8 @@ jugarBoss:
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en x
-        sub x, #5
-        mov r3, #4
+        cmp x, #155
+        subgt x, #5
         b continuarAnimacion$
 
     moverPersonajeDown:
@@ -200,7 +210,6 @@ jugarBoss:
         ldr r2, =direccionPersonaje4
         ldr r2, [r2]
         ldrh r2,[r2]
-        mov r3, #5
         bl DrawBackgroundRectangle2
 
         // sumar 5px a la posicion en y
