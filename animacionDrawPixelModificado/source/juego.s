@@ -227,7 +227,7 @@ laberinto:
 
 //inicia ciclo laberinto
 
-    bl jugarLaberinto
+    //bl jugarLaberinto
 
 //Tras terminar el laberinto, inicia el nivel final
 

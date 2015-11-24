@@ -58,12 +58,6 @@ jugarBoss:
             verificar #80
             cmp r0, #0
             bne moverPersonajeIzq
-            verificar #81
-            cmp r0, #0
-            bne moverPersonajeDown
-            verificar #82
-            cmp r0, #0
-            bne moverPersonajeUp
 
             b Revision
 
@@ -103,78 +97,6 @@ jugarBoss:
         mov r3, #4
         b continuarAnimacion$
 
-    moverPersonajeDown:
-
-        // borrar 5px de alto
-        mov r0, x
-        mov r1, y
-        ldr r2, =direccionPersonaje4
-        ldr r2, [r2]
-        ldrh r2,[r2]
-        mov r3, #5
-        bl DrawBackgroundRectangle2
-
-        // sumar 5px a la posicion en y
-        add y, #5
-
-        ldr r0, =direccionPersonaje3
-        ldr r0, [r0]
-        mov r1, x
-        mov r2, y
-        mov r3, #5
-       /*bl Choque
-        cmp r3, #7
-        subeq r2, #5
-        subeq y, #5
-        bl drawImageWithTransparency2
-        mov r0, x
-        mov r1, y
-        bl OnObject
-        cmp r0, #1
-        beq finAnimacion*/
-
-        ldr r0, =10000
-        //bl Wait
-        b Revision
-
-    moverPersonajeUp:
-        // borrar 5px de alto
-        mov r0, x
-        ldr r1, =direccionPersonaje1
-        ldr r1, [r1]
-        ldrh r1, [r1]
-        add r1, y, r1
-        sub r1, #5
-        ldr r2, =direccionPersonaje4
-        ldr r2, [r2]
-        ldrh r2,[r2]
-        mov r3, #5
-        bl DrawBackgroundRectangle2
-
-        // restar 5px a la posicion en y
-        sub y, #5
-
-        ldr r0, =direccionPersonaje3
-        ldr r0, [r0]
-        mov r1, x
-        mov r2, y
-        mov r3, #4
-        /*bl Choque
-        cmp r3, #6
-        addeq r2, #5
-        addeq y, #5
-        bl drawImageWithTransparency2
-        mov r0, x
-        mov r1, y
-        bl OnObject
-        cmp r0, #1
-        beq finAnimacion*/
-
-        ldr r0, =10000
-        //bl Wait
-
-        b Revision
-
 
     continuarAnimacion$:
 
@@ -197,8 +119,12 @@ jugarBoss:
         cmp paso_actual, #2
         ldreq r0,=direccionPersonaje3
         ldreq r0, [r0]
+
         mov r1, x
         mov r2, y
+        bl drawImageWithTransparency2
+        
+
         /*bl Choque //revisa si el personaje se choco
         cmp r3, #6 //si se sumo 2 a r3 y este era 4, iba a la izquierda
         addeq r1, #5
@@ -225,10 +151,10 @@ jugarBoss:
         mov r1, y
         bl OnObject
         cmp r0, #1
-        beq finAnimacion
+        beq finAnimacion*/
 
 
-        bl RevisarPush*/
+        bl RevisarPush
 
         // *******************************
         // 5 - retardo
